@@ -1,1422 +1,207 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ff2f92">
-
-<title>Teddyzhu Global | Official Artist & Fan Platform</title>
-
-<meta name="description" content="Teddyzhu Global — official music, videos, releases, fan community, challenges, news, events and support.">
-<meta name="author" content="Teddyzhu">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teddyzhu PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
- --pink:#ff2f92;
- --pink2:#ff67b2;
- --black:#050505;
- --dark:#0b0b0b;
- --card:#111;
- --line:#262626;
- --white:#fff;
- --muted:#9b9b9b;
- --green:#27d477;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#07070a;color:white;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(140,82,255,.15),transparent 30%),radial-gradient(circle at 80% 20%,rgba(0,224,255,.12),transparent 30%);z-index:-1}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;position:sticky;top:0;background:rgba(7,7,10,.85);backdrop-filter:blur(15px);border-bottom:1px solid #222}
+.logo{font-size:30px;font-weight:900;background:linear-gradient(90deg,#9d5cff,#00d4ff);-webkit-background-clip:text;color:transparent;text-shadow:0 0 30px rgba(157,92,255,.6)}
+nav a{margin:0 12px;color:#bbb;text-decoration:none}
+nav a:hover{color:white}
+.btn{padding:12px 22px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
+.primary{background:linear-gradient(90deg,#9d5cff,#00d4ff);color:#000}
+.secondary{background:#141419;color:white;border:1px solid #333}
+.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 6%;gap:50px}
+.hero h1{font-size:72px;line-height:.9;font-weight:900;text-shadow:0 8px 30px #000}
+.hero h1 span{background:linear-gradient(90deg,#9d5cff,#00d4ff);-webkit-background-clip:text;color:transparent}
+.hero p{margin:25px 0;color:#aaa;font-size:18px}
+.card3d{background:linear-gradient(145deg,#171720,#0b0b0f);padding:35px;border-radius:30px;border:1px solid #333;box-shadow:0 25px 60px rgba(0,0,0,.5)}
+.card3d h2{font-size:40px;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:25px}
+.stats div{text-align:center}
+.stats b{font-size:28px;display:block;color:#00d4ff}
+section{padding:80px 6%}
+.title{font-size:48px;font-weight:900;margin-bottom:15px}
+.title span{background:linear-gradient(90deg,#9d5cff,#00d4ff);-webkit-background-clip:text;color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.feature{background:#111118;padding:28px;border-radius:22px;border:1px solid #2c2c35;transition:.3s}
+.feature:hover{transform:translateY(-8px);border-color:#8b5cf6}
+.feature h3{margin:15px 0}
+.ai{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.terminal{background:#050509;border:1px solid #333;border-radius:20px;padding:25px;color:#00e0ff;font-family:monospace}
+.paybox{display:flex;justify-content:space-between;align-items:center;background:#12121a;padding:35px;border-radius:24px;border:1px solid #333}
+footer{padding:30px;text-align:center;color:#666;border-top:1px solid #222}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;justify-content:center;align-items:center}
+.modal-content{background:#111118;padding:35px;border-radius:22px;width:360px;border:1px solid #333}
+.modal h2{text-align:center;margin-bottom:20px}
+.modal input{width:100%;padding:14px;margin:10px 0;border-radius:10px;border:1px solid #333;background:#08080d;color:white}
+.modal button{width:100%;margin-top:10px}
+.switch{text-align:center;color:#00d4ff;margin-top:15px;cursor:pointer}
+
+@media(max-width:900px){
+.hero,.ai{grid-template-columns:1fr}
+.hero h1{font-size:52px}
+nav{display:none}
 }
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth}
-
-body{
- font-family:Inter,Arial,sans-serif;
- background:var(--black);
- color:var(--white);
- line-height:1.6;
- overflow-x:hidden;
-}
-
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}
-
-.container{
- width:min(1180px,92%);
- margin:auto;
-}
-
-section{padding:100px 0}
-
-header{
- position:fixed;
- top:0;
- left:0;
- width:100%;
- z-index:9999;
- background:rgba(5,5,5,.88);
- backdrop-filter:blur(20px);
- border-bottom:1px solid #222;
-}
-
-.nav{
- min-height:74px;
- display:flex;
- align-items:center;
- justify-content:space-between;
-}
-
-.logo{
- font-size:25px;
- font-weight:1000;
- letter-spacing:4px;
- color:var(--pink);
-}
-
-.navlinks{
- display:flex;
- gap:22px;
- list-style:none;
-}
-
-.navlinks a{
- color:#ccc;
- font-size:13px;
- font-weight:800;
-}
-
-.navlinks a:hover{color:var(--pink)}
-
-.menu{
- display:none;
- border:0;
- background:none;
- color:white;
- font-size:28px;
- cursor:pointer;
-}
-
-.btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:8px;
- padding:14px 25px;
- border-radius:50px;
- border:1px solid var(--pink);
- background:var(--pink);
- color:white;
- font-weight:900;
- cursor:pointer;
- transition:.25s;
-}
-
-.btn:hover{
- transform:translateY(-3px);
- box-shadow:0 15px 35px rgba(255,47,146,.25);
-}
-
-.btn.secondary{
- background:transparent;
- color:var(--pink);
-}
-
-.hero{
- min-height:100vh;
- padding-top:130px;
- display:flex;
- align-items:center;
- text-align:center;
- background:
- radial-gradient(circle at 50% 25%,rgba(255,47,146,.25),transparent 28%),
- radial-gradient(circle at 0 100%,rgba(255,47,146,.1),transparent 30%),
- linear-gradient(135deg,#030303,#18000e,#030303);
-}
-
-.hero-content{width:100%}
-
-.artist-photo{
- width:210px;
- height:210px;
- object-fit:cover;
- border-radius:50%;
- border:4px solid var(--pink);
- box-shadow:0 0 80px rgba(255,47,146,.25);
- margin-bottom:30px;
-}
-
-.hero h1{
- font-size:clamp(60px,11vw,130px);
- line-height:.9;
- letter-spacing:7px;
- color:var(--pink);
-}
-
-.hero h2{
- margin:22px 0 12px;
- font-size:22px;
- color:#ddd;
-}
-
-.hero p{
- max-width:750px;
- margin:auto;
- color:#aaa;
-}
-
-.hero-actions{
- margin-top:28px;
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:12px;
-}
-
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:14px;
- margin-top:55px;
-}
-
-.stat{
- background:#0e0e0e;
- border:1px solid #222;
- border-radius:18px;
- padding:20px;
-}
-
-.stat strong{
- display:block;
- color:var(--pink);
- font-size:28px;
-}
-
-.stat span{
- color:#777;
- font-size:12px;
-}
-
-.ticker{
- background:var(--pink);
- padding:10px;
- overflow:hidden;
- white-space:nowrap;
- font-weight:1000;
-}
-
-.ticker-track{
- animation:scroll 25s linear infinite;
-}
-
-@keyframes scroll{
- from{transform:translateX(0)}
- to{transform:translateX(-50%)}
-}
-
-.heading{
- text-align:center;
- max-width:760px;
- margin:0 auto 50px;
-}
-
-.heading h2{
- color:var(--pink);
- font-size:clamp(35px,5vw,55px);
- line-height:1.05;
-}
-
-.heading p{
- color:var(--muted);
- margin-top:12px;
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
- gap:22px;
-}
-
-.card{
- background:linear-gradient(145deg,#151515,#0b0b0b);
- border:1px solid var(--line);
- border-radius:22px;
- padding:25px;
- transition:.25s;
-}
-
-.card:hover{
- transform:translateY(-5px);
- border-color:var(--pink);
-}
-
-.card h3{
- margin:12px 0 6px;
- font-size:22px;
-}
-
-.card p{color:#888}
-
-.cover{
- height:220px;
- border-radius:16px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:linear-gradient(135deg,#31001e,#080808);
- color:var(--pink);
- font-size:40px;
- font-weight:1000;
-}
-
-audio{
- width:100%;
- margin-top:15px;
-}
-
-.download{
- margin-top:12px;
- width:100%;
-}
-
-.about{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:25px;
-}
-
-.story-card{
- background:#101010;
- border:1px solid #242424;
- border-radius:25px;
- padding:35px;
-}
-
-.story-card h3{
- color:var(--pink);
- font-size:28px;
- margin-bottom:14px;
-}
-
-.story-card p{
- color:#aaa;
- margin-bottom:16px;
-}
-
-.timeline{
- max-width:850px;
- margin:auto;
-}
-
-.timeline-item{
- border-left:3px solid var(--pink);
- padding:0 0 38px 30px;
- position:relative;
-}
-
-.timeline-item:before{
- content:"";
- position:absolute;
- width:12px;
- height:12px;
- background:var(--pink);
- border-radius:50%;
- left:-7px;
- top:7px;
-}
-
-.timeline-item h3{
- color:var(--pink);
- font-size:25px;
-}
-
-.timeline-item p{color:#999}
-
-.video{
- border-radius:22px;
- overflow:hidden;
- border:1px solid var(--line);
- background:#101010;
-}
-
-.video-box{
- aspect-ratio:16/9;
- background:radial-gradient(circle,#330020,#050505);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:60px;
- color:var(--pink);
-}
-
-.video-info{padding:20px}
-
-.gallery{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:16px;
-}
-
-.gallery img{
- width:100%;
- height:270px;
- object-fit:cover;
- border-radius:18px;
- border:1px solid #222;
-}
-
-.challenge{
- background:linear-gradient(145deg,#19000f,#090909);
- border:1px solid rgba(255,47,146,.4);
- border-radius:28px;
- padding:35px;
-}
-
-.challenge h3{
- color:var(--pink);
- font-size:30px;
-}
-
-.challenge p{color:#999}
-
-.challenge-actions{
- margin-top:20px;
- display:flex;
- gap:10px;
- flex-wrap:wrap;
-}
-
-.leaderboard{
- margin-top:30px;
- display:grid;
- gap:10px;
-}
-
-.rank{
- display:flex;
- justify-content:space-between;
- padding:15px 18px;
- background:#111;
- border:1px solid #222;
- border-radius:14px;
-}
-
-.rank strong{color:var(--pink)}
-
-.news{
- display:grid;
- gap:18px;
-}
-
-.news-item{
- background:#101010;
- border:1px solid #222;
- border-radius:18px;
- padding:25px;
-}
-
-.news-item small{color:var(--pink)}
-
-.news-item h3{margin:7px 0}
-
-.news-item p{color:#888}
-
-.events{
- display:grid;
- gap:14px;
-}
-
-.event{
- background:#101010;
- border:1px solid #222;
- border-radius:18px;
- padding:22px;
- display:flex;
- justify-content:space-between;
- gap:20px;
-}
-
-.event-date{
- color:var(--pink);
- font-weight:1000;
-}
-
-.support{
- background:
- radial-gradient(circle at center,rgba(255,47,146,.2),transparent 40%),
- #120008;
-}
-
-.support-box{
- max-width:700px;
- margin:auto;
- background:#090909;
- border:1px solid rgba(255,47,146,.4);
- border-radius:28px;
- padding:35px;
- text-align:center;
-}
-
-.amounts{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
- margin:25px 0;
-}
-
-.amount{
- border:1px solid #333;
- background:#151515;
- color:#fff;
- padding:14px;
- border-radius:12px;
- cursor:pointer;
- font-weight:900;
-}
-
-.amount:hover,
-.amount.active{
- background:var(--pink);
- border-color:var(--pink);
-}
-
-.input{
- width:100%;
- padding:15px;
- background:#050505;
- border:1px solid #333;
- color:#fff;
- border-radius:12px;
- margin:6px 0;
- outline:none;
-}
-
-.input:focus{border-color:var(--pink)}
-
-.full{width:100%;margin-top:10px}
-
-.security{
- color:#777;
- font-size:12px;
- margin-top:17px;
-}
-
-.security strong{color:var(--green)}
-
-.community{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:22px;
-}
-
-.login-box,
-.chat-box{
- background:#101010;
- border:1px solid #252525;
- border-radius:22px;
- padding:30px;
-}
-
-.login-buttons{
- display:grid;
- gap:10px;
- margin-top:20px;
-}
-
-.login-btn{
- padding:14px;
- border-radius:12px;
- border:1px solid #333;
- background:#151515;
- color:white;
- cursor:pointer;
- font-weight:800;
-}
-
-.chat{
- height:230px;
- overflow:auto;
- background:#070707;
- border-radius:15px;
- padding:15px;
- margin:15px 0;
-}
-
-.message{
- padding:9px 12px;
- background:#151515;
- border-radius:10px;
- margin-bottom:8px;
-}
-
-.message b{color:var(--pink)}
-
-.contact{
- text-align:center;
-}
-
-.email{
- color:var(--pink);
- font-weight:900;
-}
-
-.socials{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:10px;
- margin-top:25px;
-}
-
-.social{
- border:1px solid var(--pink);
- color:var(--pink);
- border-radius:30px;
- padding:10px 18px;
- font-weight:800;
-}
-
-footer{
- padding:45px 20px;
- text-align:center;
- background:#020202;
- border-top:1px solid #202020;
- color:#666;
-}
-
-footer strong{color:var(--pink)}
-
-.top{
- position:fixed;
- right:20px;
- bottom:25px;
- width:45px;
- height:45px;
- border-radius:50%;
- background:#111;
- color:var(--pink);
- border:1px solid var(--pink);
- cursor:pointer;
- display:none;
- z-index:999;
-}
-
-@media(max-width:850px){
-
- .navlinks{
-  position:absolute;
-  top:74px;
-  left:0;
-  width:100%;
-  display:none;
-  flex-direction:column;
-  background:#080808;
-  padding:25px;
- }
-
- .navlinks.open{display:flex}
- .menu{display:block}
- .about,.community{grid-template-columns:1fr}
- .stats{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:550px){
-
- section{padding:75px 0}
-
- .artist-photo{
-  width:170px;
-  height:170px;
- }
-
- .hero h1{
-  font-size:60px;
-  letter-spacing:3px;
- }
-
- .amounts{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .event{
-  flex-direction:column;
- }
-
- .stats{
-  grid-template-columns:1fr 1fr;
- }
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-<div class="container nav">
-
-<a href="#home" class="logo">TEDDYZHU</a>
-
-<button class="menu" onclick="toggleMenu()">☰</button>
-
-<ul class="navlinks" id="navlinks">
-<li><a href="#home">Home</a></li>
-<li><a href="#music">Music</a></li>
-<li><a href="#community">Community</a></li>
-<li><a href="#challenges">Challenges</a></li>
-<li><a href="#videos">Videos</a></li>
-<li><a href="#story">Story</a></li>
-<li><a href="#news">News</a></li>
-<li><a href="#support">Support</a></li>
-</ul>
-
+<div class="logo">TEDDYZHU PRO</div>
+<nav>
+<a href="#">Discover</a>
+<a href="#">Music</a>
+<a href="#">Videos</a>
+<a href="#">AI</a>
+<a href="#">Community</a>
+</nav>
+<div>
+<button class="btn secondary" onclick="login()">Login</button>
+<button class="btn primary" onclick="signup()">Join</button>
 </div>
-
 </header>
 
-<section class="hero" id="home">
-
-<div class="container hero-content">
-
-<img src="teddyzhu.jpg" class="artist-photo" alt="Teddyzhu">
-
-<h1>TEDDYZHU</h1>
-
-<h2>Artist • Songwriter • Creative Visionary</h2>
-
-<p>
-Welcome to the official Teddyzhu Global platform — a home for
-music, stories, videos, fans, challenges, news, events and the
-creative journey.
-</p>
-
-<div class="hero-actions">
-
-<a href="#music" class="btn">🎵 Explore Music</a>
-
-<a href="#community" class="btn secondary">👥 Join The Community</a>
-
-<a href="#support" class="btn">❤️ Support</a>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-<strong>∞</strong>
-<span>Music Journey</span>
-</div>
-
-<div class="stat">
-<strong>🌍</strong>
-<span>Global Vision</span>
-</div>
-
-<div class="stat">
-<strong>🎵</strong>
-<span>Original Music</span>
-</div>
-
-<div class="stat">
-<strong>❤️</strong>
-<span>Fan Community</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="ticker">
-
-<div class="ticker-track">
-TEDDYZHU GLOBAL • OFFICIAL WEBSITE • MUSIC • FANS • CHALLENGES •
-NEWS • VIDEOS • EVENTS • CREATIVITY • TEDDYZHU GLOBAL • OFFICIAL WEBSITE •
-MUSIC • FANS • CHALLENGES • NEWS • VIDEOS • EVENTS • CREATIVITY •
-</div>
-
-</div>
-
-<section id="music">
-
-<div class="container">
-
-<div class="heading">
-<h2>Music Universe</h2>
-<p>Stream, discover and download authorized Teddyzhu releases.</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<div class="cover">N1</div>
-
-<h3>Number One</h3>
-
-<p>Love • Teddyzhu</p>
-
-<audio controls>
-<source src="" type="audio/mpeg">
-</audio>
-
-<a href="#" class="btn download">⬇ Download</a>
-
-</div>
-
-<div class="card">
-
-<div class="cover">MT</div>
-
-<h3>My Time</h3>
-
-<p>Teddyzhu</p>
-
-<audio controls>
-<source src="" type="audio/mpeg">
-</audio>
-
-<a href="#" class="btn download">⬇ Download</a>
-
-</div>
-
-<div class="card">
-
-<div class="cover">VU</div>
-
-<h3>Vumilia</h3>
-
-<p>Teddyzhu</p>
-
-<audio controls>
-<source src="" type="audio/mpeg">
-</audio>
-
-<a href="#" class="btn download">⬇ Download</a>
-
-</div>
-
-<div class="card">
-
-<div class="cover">GHM</div>
-
-<h3>God Help Me</h3>
-
-<p>Gospel • Teddyzhu</p>
-
-<audio controls>
-<source src="" type="audio/mpeg">
-</audio>
-
-<a href="#" class="btn download">⬇ Download</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<div class="heading">
-<h2>Artist Story</h2>
-<p>The journey behind the music.</p>
-</div>
-
-<div class="about">
-
-<div class="story-card">
-
-<h3>Who Is Teddyzhu?</h3>
-
-<p>
-Teddyzhu is a Kenyan recording artist, songwriter and creative
-artist born in 2007 and raised in Kisii, Kenya.
-</p>
-
-<p>
-His music is influenced by love, hope, faith, memories,
-personal experiences and the determination to build a future
-through creativity.
-</p>
-
-<p>
-The mission is to turn real experiences into music and connect
-with listeners beyond borders.
-</p>
-
-</div>
-
-<div class="story-card">
-
-<h3>The Vision</h3>
-
-<p>
-Teddyzhu is building more than a collection of songs.
-The vision is a complete creative universe involving music,
-visuals, stories, fans, digital experiences and community.
-</p>
-
-<p>
-From Kisii to Africa and eventually to audiences around the
-world, every release is another chapter.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="story">
-
-<div class="container">
-
-<div class="heading">
-<h2>The Journey</h2>
-<p>From beginnings to the future.</p>
-</div>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h3>2007 — The Beginning</h3>
-<p>
-Teddyzhu was born in 2007 and raised in Kisii, Kenya.
-</p>
-</div>
-
-<div class="timeline-item">
-<h3>Discovering Music</h3>
-<p>
-Music became a powerful way to express emotion, dreams,
-experiences and hope.
-</p>
-</div>
-
-<div class="timeline-item">
-<h3>Recording Journey</h3>
-<p>
-The passion developed into songwriting, recording and releasing
-music for an expanding audience.
-</p>
-</div>
-
-<div class="timeline-item">
-<h3>Building The Brand</h3>
-<p>
-Music, visual storytelling, digital creativity and fan
-connection became part of the larger Teddyzhu vision.
-</p>
-</div>
-
-<div class="timeline-item">
-<h3>The Future</h3>
-<p>
-The journey continues toward a global audience and a lasting
-creative legacy.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="videos">
-
-<div class="container">
-
-<div class="heading">
-<h2>Video World</h2>
-<p>Music videos, performances and visual stories.</p>
-</div>
-
-<div class="grid">
-
-<div class="video">
-<div class="video-box">▶</div>
-<div class="video-info">
-<h3>Official Music Video</h3>
-<p>Add YouTube video embed here.</p>
-</div>
-</div>
-
-<div class="video">
-<div class="video-box">▶</div>
-<div class="video-info">
-<h3>Animated Music Video</h3>
-<p>Add your animation here.</p>
-</div>
-</div>
-
-<div class="video">
-<div class="video-box">▶</div>
-<div class="video-info">
-<h3>Behind The Scenes</h3>
-<p>Studio and creative content.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="challenges">
-
-<div class="container">
-
-<div class="heading">
-<h2>Challenge Center 🔥</h2>
-<p>Fans can join official Teddyzhu challenges.</p>
-</div>
-
-<div class="challenge">
-
-<h3>Join The Next Teddyzhu Challenge</h3>
-
-<p>
-Record your version, dance, cover, reaction or creative
-interpretation and submit it to the official challenge.
-</p>
-
-<div class="challenge-actions">
-
-<button class="btn" onclick="challengeLogin()">
-🎥 Submit Challenge
-</button>
-
-<button class="btn secondary" onclick="challengeLogin()">
-🏆 View Leaderboard
-</button>
-
-</div>
-
-<div class="leaderboard">
-
-<div class="rank">
-<span>🥇 Top Fan</span>
-<strong>Coming Soon</strong>
-</div>
-
-<div class="rank">
-<span>🥈 Rising Star</span>
-<strong>Coming Soon</strong>
-</div>
-
-<div class="rank">
-<span>🥉 Creative Fan</span>
-<strong>Coming Soon</strong>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<div class="heading">
-<h2>Gallery</h2>
-<p>Official photos and fan moments.</p>
-</div>
-
-<div class="gallery">
-
-<img src="teddyzhu.jpg" alt="Teddyzhu">
-
-</div>
-
-</div>
-
-</section>
-
-<section id="news">
-
-<div class="container">
-
-<div class="heading">
-<h2>News & Updates</h2>
-<p>Official Teddyzhu announcements.</p>
-</div>
-
-<div class="news">
-
-<div class="news-item">
-<small>OFFICIAL</small>
-<h3>Welcome To Teddyzhu Global</h3>
-<p>
-The official digital home for music, fans, stories and creativity.
-</p>
-</div>
-
-<div class="news-item">
-<small>MUSIC</small>
-<h3>New Music Coming</h3>
-<p>
-Follow the platform for future releases and announcements.
-</p>
-</div>
-
-<div class="news-item">
-<small>COMMUNITY</small>
-<h3>Fan Community Coming</h3>
-<p>
-A dedicated space for fans, challenges and creative submissions
-is being prepared.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<div class="heading">
-<h2>Events</h2>
-<p>Performances and appearances.</p>
-</div>
-
-<div class="events">
-
-<div class="event">
-
+<section class="hero">
 <div>
-<h3>Upcoming Teddyzhu Event</h3>
-<p style="color:#777">
-Official event information will be announced here.
-</p>
+<h1>CREATE.<br><span>RELEASE.</span><br>CONNECT.</h1>
+<p>Professional creator platform with Music, Videos, AI Studio, Community, M-Pesa integration and premium creator tools.</p>
+<button class="btn primary" onclick="signup()">Create Account</button>
 </div>
 
-<div class="event-date">SOON</div>
-
+<div class="card3d">
+<h2>Live Creator Hub</h2>
+<p>Everything a modern artist needs in one premium platform.</p>
+<div class="stats">
+<div><b>24K</b>Fans</div>
+<div><b>1.2M</b>Streams</div>
+<div><b>89</b>Releases</div>
 </div>
-
 </div>
-
-</div>
-
-</section>
-
-<section id="community">
-
-<div class="container">
-
-<div class="heading">
-<h2>Fan Community</h2>
-<p>
-The future home for Teddyzhu fans around the world.
-</p>
-</div>
-
-<div class="community">
-
-<div class="login-box">
-
-<h3>Join Teddyzhu Global</h3>
-
-<p style="color:#888">
-Create an account to access fan features.
-</p>
-
-<div class="login-buttons">
-
-<button class="login-btn" onclick="loginNotice()">
-Continue with Google
-</button>
-
-<button class="login-btn" onclick="loginNotice()">
-Continue with Facebook
-</button>
-
-<button class="login-btn" onclick="loginNotice()">
-Continue with Email
-</button>
-
-</div>
-
-<p style="font-size:12px;color:#666;margin-top:15px">
-Authentication will be connected securely through the
-backend/authentication provider.
-</p>
-
-</div>
-
-<div class="chat-box">
-
-<h3>Fan Chat</h3>
-
-<div class="chat">
-
-<div class="message">
-<b>Teddyzhu Global:</b> Welcome fans ❤️
-</div>
-
-<div class="message">
-<b>Community:</b> Live chat coming soon.
-</div>
-
-</div>
-
-<input class="input"
-placeholder="Login to send a message"
-disabled>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="support" id="support">
-
-<div class="container">
-
-<div class="heading">
-<h2>Support Teddyzhu ❤️</h2>
-<p>
-Support the music, visuals and creative journey.
-</p>
-</div>
-
-<div class="support-box">
-
-<h3>Secure M-PESA Support</h3>
-
-<p style="color:#888;margin-top:8px">
-Choose an amount or enter your own.
-</p>
-
-<div class="amounts">
-
-<button class="amount" onclick="amount(100,this)">KSh 100</button> <button class="amount" onclick="amount(200,this)">KSh 200</button> <button class="amount" onclick="amount(300,this)">KSh 300</button> <button class="amount" onclick="amount(400,this)">KSh 400</button> <button class="amount" onclick="amount(500,this)">KSh 500</button> <button class="amount" onclick="amount(1000,this)">KSh 1,000</button>
-
-</div>
-
-<input
-class="input"
-id="supportAmount"
-type="number"
-min="1"
-placeholder="Custom amount in KSh"
-
->
-
-<input
-class="input"
-id="supportPhone"
-type="tel"
-inputmode="numeric"
-placeholder="M-PESA number e.g. 0712345678"
-
->
-
-<button class="btn full" onclick="supportMpesa()">
-❤️ Continue With M-PESA
-</button>
-
-<p style="margin-top:15px;color:#777">
-M-PESA Support Number:
-<strong style="color:var(--pink)">0719157643</strong>
-</p>
-
-<p class="security">
-🔒 Your M-PESA PIN is never requested, collected or stored
-by this website. The real STK Push will be handled by the
-secure payment backend and the official M-PESA prompt.
-</p>
-
-</div>
-
-</div>
-
 </section>
 
 <section>
-
-<div class="container">
-
-<div class="heading">
-<h2>Booking & Contact</h2>
-<p>Official business and collaboration inquiries.</p>
+<h2 class="title"><span>Music</span> Platform</h2>
+<div class="grid">
+<div class="feature"><h3>🎵 Songs</h3><p>Release singles, albums and playlists.</p></div>
+<div class="feature"><h3>🎬 Music Videos</h3><p>Upload official videos and shorts.</p></div>
+<div class="feature"><h3>📊 Analytics</h3><p>Views, streams and audience insights.</p></div>
+<div class="feature"><h3>🌍 Global Reach</h3><p>Share your music worldwide.</p></div>
 </div>
+</section>
 
-<div class="contact">
-
-<p>
-📧
-<a class="email"
-href="mailto:vincentkaundaombasa@gmail.com">
-vincentkaundaombasa@gmail.com
-</a>
-</p>
-
-<div class="socials">
-
-<a class="social" href="#">YouTube</a> <a class="social" href="#">Instagram</a> <a class="social" href="#">Facebook</a> <a class="social" href="#">TikTok</a> <a class="social" href="#">Spotify</a>
-
+<section>
+<h2 class="title"><span>AI Studio</span></h2>
+<div class="ai">
+<div>
+<h3 style="font-size:34px;margin-bottom:20px">Creator AI</h3>
+<p style="color:#aaa;margin-bottom:25px">Generate lyrics, captions, ideas, release plans and social content.</p>
+<button class="btn primary">Launch AI</button>
 </div>
+<div class="terminal">
+> Teddyzhu AI Ready
 
+✓ Lyrics Generator
+
+✓ Caption Creator
+
+✓ Video Ideas
+
+✓ Album Concepts
+
+✓ Creator Assistant
 </div>
-
 </div>
+</section>
 
+<section>
+<h2 class="title"><span>Community</span></h2>
+<div class="grid">
+<div class="feature"><h3>👤 Profiles</h3><p>Artist and fan profiles.</p></div>
+<div class="feature"><h3>❤️ Likes</h3><p>Like, follow and interact.</p></div>
+<div class="feature"><h3>💬 Messaging</h3><p>Realtime conversations.</p></div>
+<div class="feature"><h3>🔔 Notifications</h3><p>Instant updates.</p></div>
+</div>
+</section>
+
+<section>
+<div class="paybox">
+<div>
+<h2 class="title"><span>M-Pesa</span></h2>
+<p style="color:#aaa">Secure STK Push integration using Supabase backend.</p>
+</div>
+<button class="btn primary">Donate Now</button>
+</div>
 </section>
 
 <footer>
-
-<p>
-© 2026 <strong>TEDDYZHU</strong>. All Rights Reserved.
-</p>
-
-<p>
-Official Artist Website • Music • Community • Creativity
-</p>
-
+© 2026 Teddyzhu PRO • Music • Videos • AI • Community • Payments
 </footer>
 
-<button class="top" id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
-</button>
+<!-- AUTH MODAL -->
+<div class="modal" id="authModal">
+<div class="modal-content">
+<h2 id="title">Create Account</h2>
+
+<div id="usernameField">
+<input type="text" placeholder="Username">
+</div>
+
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+
+<div id="confirmField">
+<input type="password" placeholder="Confirm Password">
+</div>
+
+<button class="btn primary" id="mainBtn">Create Account</button>
+
+<div class="switch" onclick="toggleAuth()" id="switchText">Already have an account? Login</div>
+
+</div>
+</div>
 
 <script>
+let mode="signup";
 
-function toggleMenu(){
-
- document
- .getElementById("navlinks")
- .classList.toggle("open");
-
+function signup(){
+mode="signup";
+document.getElementById("authModal").style.display="flex";
+document.getElementById("title").innerHTML="Create Account";
+document.getElementById("usernameField").style.display="block";
+document.getElementById("confirmField").style.display="block";
+document.getElementById("mainBtn").innerHTML="Create Account";
+document.getElementById("switchText").innerHTML="Already have an account? Login";
 }
 
-function amount(value,button){
-
- document.getElementById("supportAmount").value=value;
-
- document
- .querySelectorAll(".amount")
- .forEach(x=>x.classList.remove("active"));
-
- button.classList.add("active");
-
+function login(){
+mode="login";
+document.getElementById("authModal").style.display="flex";
+document.getElementById("title").innerHTML="Welcome Back";
+document.getElementById("usernameField").style.display="none";
+document.getElementById("confirmField").style.display="none";
+document.getElementById("mainBtn").innerHTML="Login";
+document.getElementById("switchText").innerHTML="Create new account";
 }
 
-function loginNotice(){
-
- alert(
- "Secure login will be activated when the authentication backend is connected."
- );
-
+function toggleAuth(){
+if(mode==="signup") login();
+else signup();
 }
 
-function challengeLogin(){
-
- alert(
- "Challenge submissions require a secure fan account. " +
- "The upload system will be connected to the backend."
- );
-
+window.onclick=function(e){
+if(e.target==document.getElementById("authModal")){
+document.getElementById("authModal").style.display="none";
 }
-
-async function supportMpesa(){
-
- const amountValue =
- Number(document.getElementById("supportAmount").value);
-
- const phone =
- document.getElementById("supportPhone").value.trim();
-
- if(!amountValue || amountValue < 1){
-
-  alert("Please select or enter a support amount.");
-
-  return;
-
- }
-
- if(!/^07\\d{8}$/.test(phone)){
-
-  alert("Please enter a valid Kenyan M-PESA number.");
-
-  return;
-
- }
-
- /*
- SECURE BACKEND INTEGRATION POINT
-
- Do NOT put Safaricom credentials here.
-
- Future request:
-
- fetch("/api/mpesa/stkpush",{
-   method:"POST",
-   headers:{
-     "Content-Type":"application/json"
-   },
-   body:JSON.stringify({
-     amount:amountValue,
-     phone:phone
-   })
- })
-
- The backend will communicate with Safaricom Daraja
- and trigger the official STK Push.
- */
-
- alert(
- "STK Push backend is not connected yet.\\n\\n" +
- "Amount: KSh " + amountValue +
- "\\nPhone: " + phone +
- "\\n\\nNo M-PESA PIN is requested by this website."
- );
-
 }
-
-window.addEventListener("scroll",()=>{
-
- const top=document.getElementById("top");
-
- top.style.display =
- window.scrollY>500 ? "block" : "none";
-
-});
-
 </script>
 
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-const SUPABASE_URL = "WEKA_PROJECT_URL_HAPA";
-const SUPABASE_PUBLISHABLE_KEY = "WEKA_PUBLISHABLE_KEY_HAPA";
-
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
-</script>
