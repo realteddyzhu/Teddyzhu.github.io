@@ -1,240 +1,838 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Teddyzhu | Official Website</title>
 
+<meta name="description" content="Official website of Teddyzhu — music, biography, videos, latest releases, creative projects and fan support.">
+<meta name="author" content="Teddyzhu">
+
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #090909;
-    color: white;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070707;
+    color:#fff;
+    line-height:1.7;
 }
 
-header {
-    background: #111;
-    padding: 20px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    background:rgba(5,5,5,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,72,157,.25);
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff4fa3;
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:17px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
+.logo{
+    color:#ff4fa3;
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:3px;
 }
 
-nav a:hover {
-    color: #ff4fa3;
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:22px;
+    font-weight:bold;
+    transition:.3s;
 }
 
-.hero {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #090909, #260016, #090909);
+nav a:hover{
+    color:#ff4fa3;
 }
 
-.hero h1 {
-    font-size: 70px;
-    color: #ff4fa3;
-    margin-bottom: 15px;
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:130px 20px 80px;
+    background:
+    radial-gradient(circle at center,rgba(255,79,163,.23),transparent 38%),
+    linear-gradient(135deg,#050505,#230016,#080808);
 }
 
-.hero p {
-    font-size: 20px;
-    color: #ddd;
+.hero-content{
+    max-width:950px;
 }
 
-.button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 30px;
-    background: #ff4fa3;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
+.artist-photo{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #ff4fa3;
+    box-shadow:0 0 50px rgba(255,79,163,.45);
+    margin-bottom:30px;
 }
 
-section {
-    padding: 80px 7%;
-    text-align: center;
+.hero h1{
+    font-size:clamp(55px,10vw,105px);
+    line-height:1;
+    color:#ff4fa3;
+    letter-spacing:6px;
 }
 
-section h2 {
-    font-size: 38px;
-    color: #ff4fa3;
-    margin-bottom: 40px;
+.hero h2{
+    margin-top:20px;
+    font-size:23px;
+    font-weight:400;
+    color:#ddd;
 }
 
-.music-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+.hero p{
+    max-width:720px;
+    margin:20px auto;
+    color:#aaa;
 }
 
-.card {
-    background: #151515;
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #292929;
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    margin:10px 6px;
+    border-radius:35px;
+    text-decoration:none;
+    font-weight:bold;
+    background:#ff4fa3;
+    color:#fff;
+    transition:.3s;
 }
 
-.card h3 {
-    margin-bottom: 15px;
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(255,79,163,.35);
 }
 
-.card a {
-    color: #ff4fa3;
-    text-decoration: none;
+.btn-outline{
+    background:transparent;
+    border:1px solid #ff4fa3;
+    color:#ff4fa3;
 }
 
-.about {
-    max-width: 850px;
-    margin: auto;
-    line-height: 1.8;
-    color: #ccc;
+section{
+    padding:100px 20px;
 }
 
-.socials a {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    border: 1px solid #ff4fa3;
-    border-radius: 25px;
-    color: #ff4fa3;
-    text-decoration: none;
+.container{
+    max-width:1100px;
+    margin:auto;
 }
 
-footer {
-    padding: 30px;
-    text-align: center;
-    background: #111;
-    color: #888;
+.title{
+    text-align:center;
+    margin-bottom:55px;
 }
 
-@media (max-width: 700px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
+.title h2{
+    font-size:44px;
+    color:#ff4fa3;
+}
+
+.title p{
+    color:#888;
+    margin-top:8px;
+}
+
+.about-box{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:25px;
+    padding:45px;
+}
+
+.about-box p{
+    color:#c9c9c9;
+    margin-bottom:20px;
+    font-size:17px;
+}
+
+.highlight{
+    color:#ff4fa3;
+    font-weight:bold;
+}
+
+.music-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:24px;
+}
+
+.card{
+    background:linear-gradient(145deg,#171717,#0d0d0d);
+    border:1px solid #292929;
+    border-radius:20px;
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#ff4fa3;
+}
+
+.card h3{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#999;
+}
+
+.play{
+    display:inline-block;
+    margin-top:18px;
+    color:#ff4fa3;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.story{
+    background:#0e0e0e;
+}
+
+.timeline{
+    max-width:850px;
+    margin:auto;
+}
+
+.timeline-item{
+    border-left:3px solid #ff4fa3;
+    padding-left:28px;
+    margin-bottom:35px;
+}
+
+.timeline-item h3{
+    color:#ff4fa3;
+    font-size:23px;
+}
+
+.timeline-item p{
+    color:#bbb;
+}
+
+.video-box{
+    background:#111;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    border:1px solid #292929;
+}
+
+.video-placeholder{
+    height:280px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#181818;
+    border-radius:15px;
+    color:#777;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:18px;
+    border:1px solid #292929;
+}
+
+.support{
+    background:
+    radial-gradient(circle at center,rgba(255,79,163,.18),transparent 45%),
+    #100009;
+}
+
+.support-box{
+    max-width:650px;
+    margin:auto;
+    background:#111;
+    border:1px solid rgba(255,79,163,.4);
+    border-radius:25px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 15px 50px rgba(0,0,0,.4);
+}
+
+.support-box h3{
+    font-size:30px;
+    color:#ff4fa3;
+    margin-bottom:10px;
+}
+
+.support-box p{
+    color:#aaa;
+}
+
+.amounts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:25px 0;
+}
+
+.amount{
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#181818;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.amount:hover,
+.amount.active{
+    background:#ff4fa3;
+    border-color:#ff4fa3;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin:8px 0;
+    background:#090909;
+    color:white;
+    border:1px solid #333;
+    border-radius:10px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#ff4fa3;
+}
+
+.support-btn{
+    width:100%;
+    padding:16px;
+    border:0;
+    border-radius:12px;
+    background:#ff4fa3;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.mpesa-note{
+    margin-top:18px;
+    font-size:13px;
+    color:#777;
+}
+
+.email{
+    color:#ff4fa3;
+    text-decoration:none;
+}
+
+.socials{
+    text-align:center;
+}
+
+.social{
+    display:inline-block;
+    margin:7px;
+    padding:12px 22px;
+    border:1px solid #ff4fa3;
+    border-radius:30px;
+    color:#ff4fa3;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.social:hover{
+    background:#ff4fa3;
+    color:white;
+}
+
+footer{
+    background:#050505;
+    border-top:1px solid #222;
+    text-align:center;
+    padding:35px 20px;
+    color:#777;
+}
+
+footer strong{
+    color:#ff4fa3;
+}
+
+@media(max-width:700px){
+
+    nav{
+        display:none;
     }
 
-    nav a {
-        margin: 0 8px;
-        font-size: 14px;
+    .hero h1{
+        font-size:52px;
+        letter-spacing:3px;
     }
 
-    .hero h1 {
-        font-size: 45px;
+    .hero h2{
+        font-size:18px;
+    }
+
+    .artist-photo{
+        width:180px;
+        height:180px;
+    }
+
+    .about-box,
+    .support-box{
+        padding:25px;
+    }
+
+    .amounts{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    section{
+        padding:75px 18px;
     }
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <div class="logo">TEDDYZHU</div>
+<div class="navbar">
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#music">Music</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<div class="logo">TEDDYZHU</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#music">Music</a>
+<a href="#videos">Videos</a>
+<a href="#story">Journey</a>
+<a href="#support">Support</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</div>
 </header>
 
+<!-- HERO -->
+
 <section class="hero" id="home">
-    <div>
-        <h1>TEDDYZHU</h1>
-        <p>Official Website • Music • Stories • Creativity</p>
-        <a class="button" href="#music">Explore My Music</a>
-    </div>
+
+<div class="hero-content">
+
+<!-- CHANGE THIS FILE NAME IF YOUR PHOTO HAS A DIFFERENT NAME -->
+
+<img src="teddyzhu.jpg" class="artist-photo" alt="Teddyzhu">
+
+<h1>TEDDYZHU</h1>
+
+<h2>Recording Artist • Songwriter • Creative Artist</h2>
+
+<p>
+Welcome to the official website of Teddyzhu — discover the music,
+story, videos, creative journey and latest updates of a young
+African artist building his dream one song at a time.
+</p>
+
+<a href="#music" class="btn">Explore Music</a> <a href="#support" class="btn btn-outline">Support Teddyzhu</a>
+
+</div>
+
 </section>
 
-<section id="music">
-    <h2>Latest Music</h2>
-
-    <div class="music-grid">
-
-        <div class="card">
-            <h3>Number One</h3>
-            <p>Latest Release</p>
-            <br>
-            <a href="#">Listen Now</a>
-        </div>
-
-        <div class="card">
-            <h3>My Time</h3>
-            <p>Official Release</p>
-            <br>
-            <a href="#">Listen Now</a>
-        </div>
-
-        <div class="card">
-            <h3>Vumilia</h3>
-            <p>Music Release</p>
-            <br>
-            <a href="#">Listen Now</a>
-        </div>
-
-        <div class="card">
-            <h3>God Help Me</h3>
-            <p>Gospel Release</p>
-            <br>
-            <a href="#">Listen Now</a>
-        </div>
-
-    </div>
-</section>
+<!-- ABOUT -->
 
 <section id="about">
-    <h2>About Teddyzhu</h2>
 
-    <div class="about">
-        <p>
-            Welcome to the official website of Teddyzhu.
-            This is the home of my music, videos, creative projects,
-            latest releases and official updates.
-        </p>
-    </div>
+<div class="container">
+
+<div class="title">
+<h2>About Teddyzhu</h2>
+<p>The story behind the artist</p>
+</div>
+
+<div class="about-box">
+
+<p>
+<strong class="highlight">Teddyzhu</strong> is a Kenyan recording
+artist, songwriter and creative artist born in <span class="highlight">2007</span>
+and raised in Kisii, Kenya.
+</p>
+
+<p>
+His journey into music is connected to a life filled with challenges,
+dreams, emotions and experiences that shaped the person and artist
+he continues to become.
+</p>
+
+<p>
+From an early age, music became something more than entertainment.
+It became a way to express feelings, tell stories and create hope.
+As his passion developed, Teddyzhu began working toward recording
+and releasing his own music.
+</p>
+
+<p>
+His music explores different sides of life — including love, faith,
+struggle, memories, hope and ambition. Each release represents
+another chapter in an ongoing artistic journey.
+</p>
+
+<p>
+Teddyzhu believes that difficult circumstances do not have to
+determine the final destination. His goal is to transform real
+experiences into music that can connect with listeners both in
+Africa and around the world.
+</p>
+
+<p>
+Today, Teddyzhu continues developing his sound, visual identity
+and creative projects while building a global audience through
+digital platforms.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
-<section id="contact">
-    <h2>Connect With Teddyzhu</h2>
+<!-- MUSIC -->
 
-    <div class="socials">
-        <a href="#">YouTube</a>
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-    </div>
+<section id="music">
+
+<div class="container">
+
+<div class="title">
+<h2>Latest Music</h2>
+<p>Explore the sounds of Teddyzhu</p>
+</div>
+
+<div class="music-grid">
+
+<div class="card">
+<h3>Number One</h3>
+<p>A love-inspired song about emotion, connection and finding that special person.</p>
+<a href="#" class="play">▶ Listen Now</a>
+</div>
+
+<div class="card">
+<h3>My Time</h3>
+<p>A song representing ambition, confidence, growth and the belief that your moment will come.</p>
+<a href="#" class="play">▶ Listen Now</a>
+</div>
+
+<div class="card">
+<h3>Vumilia</h3>
+<p>A message about patience, endurance and continuing to move forward through difficult moments.</p>
+<a href="#" class="play">▶ Listen Now</a>
+</div>
+
+<div class="card">
+<h3>God Help Me</h3>
+<p>A gospel-inspired expression of faith, hope and the search for strength.</p>
+<a href="#" class="play">▶ Listen Now</a>
+</div>
+
+<div class="card">
+<h3>Pumzika Mama</h3>
+<p>An emotional tribute created in memory of a mother and the love that remains forever.</p>
+<a href="#" class="play">▶ Listen Now</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VIDEOS -->
+
+<section id="videos">
+
+<div class="container">
+
+<div class="title">
+<h2>Music Videos</h2>
+<p>Watch Teddyzhu</p>
+</div>
+
+<div class="video-box">
+
+<div class="video-placeholder">
+<p>🎬 Your YouTube music videos will appear here.</p>
+</div>
+
+<p style="margin-top:20px;color:#888;">
+Add your YouTube video links here when they are ready.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- JOURNEY -->
+
+<section class="story" id="story">
+
+<div class="container">
+
+<div class="title">
+<h2>The Journey</h2>
+<p>From struggle to music</p>
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>The Beginning</h3>
+<p>
+Born in 2007 and raised in Kisii, Kenya, Teddyzhu grew up
+experiencing circumstances that taught him resilience and the
+importance of holding onto dreams.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>Discovering Music</h3>
+<p>
+Music gradually became a powerful form of expression. Singing
+became a way to communicate emotions and imagine a different future.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>Recording & Creating</h3>
+<p>
+As the passion became stronger, Teddyzhu began taking recording
+and songwriting seriously, developing his own artistic identity
+through original releases.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>Turning Life Into Art</h3>
+<p>
+Love, faith, pain, memories, struggle and hope became important
+themes within his creative world.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>The Vision</h3>
+<p>
+The mission is simple: keep creating, keep improving and take
+Teddyzhu's music from Kisii to Africa and eventually to a global audience.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section>
+
+<div class="container">
+
+<div class="title">
+<h2>Gallery</h2>
+<p>Moments from the Teddyzhu journey</p>
+</div>
+
+<div class="gallery">
+
+<img src="teddyzhu.jpg" alt="Teddyzhu">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SUPPORT -->
+
+<section class="support" id="support">
+
+<div class="container">
+
+<div class="title">
+<h2>Support Teddyzhu</h2>
+<p>Your support helps the music and creative journey continue.</p>
+</div>
+
+<div class="support-box">
+
+<h3>❤️ Support With M-PESA</h3>
+
+<p>
+Choose an amount below and support Teddyzhu.
+</p>
+
+<div class="amounts">
+
+<button class="amount" onclick="selectAmount(100)">KSh 100</button> <button class="amount" onclick="selectAmount(200)">KSh 200</button> <button class="amount" onclick="selectAmount(300)">KSh 300</button> <button class="amount" onclick="selectAmount(400)">KSh 400</button> <button class="amount" onclick="selectAmount(500)">KSh 500</button> <button class="amount" onclick="selectAmount(1000)">KSh 1,000</button>
+
+</div>
+
+<input
+type="number"
+id="amount"
+placeholder="Or enter another amount (KSh)"
+min="1"
+
+>
+
+<input
+type="tel"
+id="phone"
+placeholder="Enter your M-PESA phone number"
+
+>
+
+<button class="support-btn" onclick="supportTeddyzhu()">
+Continue With M-PESA
+</button>
+
+<p class="mpesa-note">
+M-PESA STK Push will be connected through a secure payment
+backend. Never enter your M-PESA PIN on this website.
+</p>
+
+<p style="margin-top:15px;">
+Current M-PESA support number:
+<strong class="highlight">0719157643</strong>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="title">
+<h2>Contact Teddyzhu</h2>
+<p>For bookings, collaborations and official inquiries</p>
+</div>
+
+<div class="about-box" style="text-align:center;">
+
+<p>
+📧 Email:
+<a class="email" href="mailto:vincentkaundaombasa@gmail.com">
+vincentkaundaombasa@gmail.com
+</a>
+</p>
+
+<p>
+For music collaborations, performances, creative projects,
+business inquiries and official communication, contact Teddyzhu
+through the email above.
+</p>
+
+</div>
+
+<div class="socials" style="margin-top:30px;">
+
+<a href="#" class="social">YouTube</a> <a href="#" class="social">Facebook</a> <a href="#" class="social">Instagram</a> <a href="#" class="social">TikTok</a>
+
+</div>
+
+</div>
+
 </section>
 
 <footer>
-    © 2026 Teddyzhu. All Rights Reserved.
+
+<p>
+© 2026 <strong>Teddyzhu</strong>. All Rights Reserved.
+</p>
+
+<p>Official Teddyzhu Website</p>
+
 </footer>
+
+<script>
+
+function selectAmount(value){
+
+    document.getElementById("amount").value = value;
+
+    document.querySelectorAll(".amount").forEach(button=>{
+        button.classList.remove("active");
+    });
+
+    event.target.classList.add("active");
+}
+
+function supportTeddyzhu(){
+
+    const amount = document.getElementById("amount").value;
+    const phone = document.getElementById("phone").value;
+
+    if(!amount || amount < 1){
+        alert("Please choose or enter a support amount.");
+        return;
+    }
+
+    if(!phone){
+        alert("Please enter your M-PESA phone number.");
+        return;
+    }
+
+    alert(
+        "Thank you for supporting Teddyzhu! ❤️\n\n" +
+        "Amount: KSh " + amount +
+        "\nPhone: " + phone +
+        "\n\nSTK Push will be connected here through the secure M-PESA backend."
+    );
+
+}
+
+</script>
 
 </body>
 </html>
