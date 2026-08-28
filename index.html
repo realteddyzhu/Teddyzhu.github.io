@@ -8018,3 +8018,32 @@ if(window.innerWidth > 700){
 
 </body>
 </html>
+<script>
+let progress = 0;
+
+const loaderBar = document.getElementById("loaderBar");
+const loaderPercent = document.getElementById("loaderPercent");
+const loader = document.getElementById("loader");
+
+const loading = setInterval(() => {
+
+    progress += 10;
+
+    if (progress >= 100) {
+        progress = 100;
+        clearInterval(loading);
+
+        loaderBar.style.width = "100%";
+        loaderPercent.innerText = "100%";
+
+        setTimeout(() => {
+            loader.classList.add("hide");
+            document.body.style.overflow = "auto";
+        }, 150);
+    }
+
+    loaderBar.style.width = progress + "%";
+    loaderPercent.innerText = progress + "%";
+
+}, 30);
+</script>
