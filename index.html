@@ -4,8013 +4,2096 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Teddyzhu — Official Website</title>
+<title>Teddyzhu — Official</title>
 
-<meta name="description" content="Official website of Teddyzhu — artist, songwriter and creative from Kenya. Discover the journey, music, creative work and latest updates.">
+<meta name="description" content="Official Teddyzhu website. Discover the artist, music journey, releases, biography, achievements and official support.">
 <meta name="author" content="Teddyzhu">
-<meta name="theme-color" content="#090909">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-TEDDYZHU — OFFICIAL WEBSITE
-FRONTEND ONLY
-NO BACKEND
-NO AUDIO
-NO VIDEO
-NO PERSON PHOTOS
-========================================================= */
-
 :root{
-    --bg:#070707;
-    --bg2:#0c0c0c;
-    --bg3:#111111;
-    --card:#141414;
-    --card2:#181818;
-    --white:#ffffff;
-    --muted:#8c8c8c;
-    --muted2:#5f5f5f;
-    --line:rgba(255,255,255,.09);
-    --gold:#d7b46a;
-    --gold2:#f1d99a;
-    --green:#35d07f;
-    --danger:#ff5c5c;
-    --radius:24px;
+--bg:#050606;
+--bg2:#090b0a;
+--card:#0d100f;
+--card2:#111513;
+--green:#00e676;
+--green2:#00c853;
+--soft:#8d9992;
+--white:#ffffff;
+--line:rgba(255,255,255,.09);
+--shadow:0 30px 100px rgba(0,0,0,.55);
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
-    color:var(--white);
-    font-family:Inter,Arial,sans-serif;
-    overflow-x:hidden;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at 80% 5%,rgba(0,230,118,.10),transparent 25%),
+radial-gradient(circle at 0% 40%,rgba(0,230,118,.055),transparent 28%),
+var(--bg);
+color:white;
+overflow-x:hidden;
+}
+
+a{
+color:inherit;
+text-decoration:none;
 }
 
 button,
 input,
-textarea{
-    font:inherit;
+select{
+font-family:inherit;
 }
 
-button{
-    cursor:pointer;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-/* =========================================================
-GLOBAL BACKGROUND
-========================================================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-3;
-
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(215,180,106,.10),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(255,255,255,.045),
-            transparent 30%
-        );
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-2;
-    opacity:.035;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.7) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.7) 1px,
-            transparent 1px
-        );
-
-    background-size:70px 70px;
-}
-
-/* =========================================================
-PRELOADER
-========================================================= */
-
-.preloader{
-    position:fixed;
-    inset:0;
-    background:#050505;
-    z-index:99999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transition:opacity .7s,visibility .7s;
-}
-
-.preloader.hide{
-    opacity:0;
-    visibility:hidden;
-}
+/* =========================
+LOADER
+========================= */
 
 .loader{
-    text-align:center;
+position:fixed;
+inset:0;
+background:#020303;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.5s ease;
 }
 
-.loader-logo{
-    font-size:34px;
-    font-weight:900;
-    letter-spacing:8px;
+.loader.done{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
 }
 
-.loader-line{
-    width:150px;
-    height:2px;
-    background:#222;
-    margin:20px auto;
-    overflow:hidden;
+.loaderBox{
+width:min(350px,85%);
+text-align:center;
 }
 
-.loader-line span{
-    display:block;
-    width:45%;
-    height:100%;
-    background:var(--gold);
-    animation:loader 1.2s infinite;
+.loaderLogo{
+font-size:43px;
+font-weight:900;
+letter-spacing:-4px;
 }
 
-@keyframes loader{
-    from{transform:translateX(-150px)}
-    to{transform:translateX(200px)}
+.loaderLogo span{
+color:var(--green);
 }
 
-/* =========================================================
+.loaderText{
+font-size:9px;
+letter-spacing:4px;
+color:#69736d;
+margin-top:8px;
+}
+
+.loaderLine{
+height:3px;
+background:#18201b;
+border-radius:20px;
+margin-top:30px;
+overflow:hidden;
+}
+
+.loaderProgress{
+width:0;
+height:100%;
+background:linear-gradient(90deg,#00a844,#00ff83);
+box-shadow:0 0 20px rgba(0,230,118,.8);
+transition:.05s;
+}
+
+.loaderPercent{
+font-size:11px;
+font-weight:800;
+color:var(--green);
+margin-top:12px;
+}
+
+/* =========================
+BACKGROUND
+========================= */
+
+.gridBackground{
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.13;
+background-image:
+linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+background-size:60px 60px;
+mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+/* =========================
 HEADER
-========================================================= */
+========================= */
 
 header{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-
-    height:82px;
-
-    z-index:5000;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 5%;
-
-    background:rgba(7,7,7,.78);
-    backdrop-filter:blur(20px);
-
-    border-bottom:1px solid var(--line);
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:500;
+height:78px;
+padding:0 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid var(--line);
+background:rgba(5,6,6,.72);
+backdrop-filter:blur(22px);
 }
 
 .logo{
-    font-weight:900;
-    font-size:24px;
-    letter-spacing:5px;
+font-size:25px;
+font-weight:900;
+letter-spacing:-1.5px;
 }
 
 .logo span{
-    color:var(--gold2);
+color:var(--green);
 }
 
 nav{
-    display:flex;
-    align-items:center;
-    gap:27px;
+display:flex;
+gap:28px;
 }
 
 nav a{
-    color:#858585;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    transition:.25s;
+font-size:12px;
+font-weight:600;
+color:#8d9690;
+transition:.25s;
 }
 
-nav a:hover,
-nav a.active{
-    color:white;
+nav a:hover{
+color:white;
 }
 
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:9px;
+.headerRight{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-.icon-btn{
-    width:42px;
-    height:42px;
-    border:1px solid var(--line);
-    background:#111;
-    color:white;
-    border-radius:50%;
+.lang{
+background:#0d1110;
+color:white;
+border:1px solid var(--line);
+border-radius:10px;
+padding:10px 12px;
+outline:none;
 }
 
-.header-btn{
-    padding:12px 19px;
-    border-radius:30px;
-    border:1px solid var(--gold);
-    background:transparent;
-    color:var(--gold2);
-    font-size:11px;
-    font-weight:800;
+.supportBtn{
+border:none;
+border-radius:11px;
+padding:11px 17px;
+background:var(--green);
+color:#001b0b;
+font-weight:900;
+cursor:pointer;
+transition:.25s;
 }
 
-.menu-button{
-    display:none;
+.supportBtn:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(0,230,118,.22);
 }
 
-/* =========================================================
-MOBILE MENU
-========================================================= */
-
-.mobile-menu{
-    position:fixed;
-    top:82px;
-    left:0;
-    right:0;
-    z-index:4900;
-
-    background:#0b0b0b;
-    border-bottom:1px solid var(--line);
-
-    padding:18px;
-
-    display:none;
-}
-
-.mobile-menu.open{
-    display:block;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:16px 5px;
-    border-bottom:1px solid var(--line);
-    color:#aaa;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-/* =========================================================
+/* =========================
 HERO
-========================================================= */
+========================= */
 
 .hero{
-    min-height:100vh;
-
-    position:relative;
-
-    display:flex;
-    align-items:center;
-
-    padding:150px 7% 100px;
-
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            #070707 0%,
-            rgba(7,7,7,.92) 35%,
-            rgba(7,7,7,.55) 70%,
-            rgba(7,7,7,.88) 100%
-        );
+min-height:100vh;
+padding:150px 7% 80px;
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:70px;
+align-items:center;
+position:relative;
 }
 
-.hero-orbit{
-    position:absolute;
-    width:650px;
-    height:650px;
-
-    right:-180px;
-    top:50%;
-    transform:translateY(-50%);
-
-    border:1px solid rgba(215,180,106,.12);
-    border-radius:50%;
+.heroSmall{
+display:inline-flex;
+align-items:center;
+gap:8px;
+font-size:10px;
+letter-spacing:2px;
+font-weight:800;
+color:#8affb5;
+border:1px solid rgba(0,230,118,.18);
+background:rgba(0,230,118,.045);
+padding:10px 14px;
+border-radius:50px;
 }
 
-.hero-orbit::before{
-    content:"";
-    position:absolute;
-    inset:70px;
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:50%;
-}
-
-.hero-orbit::after{
-    content:"";
-    position:absolute;
-    inset:160px;
-    border:1px solid rgba(215,180,106,.09);
-    border-radius:50%;
-}
-
-.hero-content{
-    max-width:900px;
-    position:relative;
-    z-index:2;
-}
-
-.eyebrow{
-    color:var(--gold2);
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    margin-bottom:20px;
+.dot{
+width:7px;
+height:7px;
+background:var(--green);
+border-radius:50%;
+box-shadow:0 0 12px var(--green);
 }
 
 .hero h1{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(75px,12vw,170px);
-    line-height:.82;
-    letter-spacing:-7px;
-    font-weight:800;
+font-size:clamp(55px,8vw,105px);
+line-height:.88;
+letter-spacing:-7px;
+font-weight:900;
+margin-top:27px;
 }
 
 .hero h1 span{
-    color:var(--gold2);
+color:var(--green);
 }
 
-.hero-description{
-    max-width:650px;
-    color:#9b9b9b;
-    line-height:1.9;
-    font-size:15px;
-    margin:35px 0;
+.heroText{
+max-width:650px;
+color:#8c9790;
+font-size:16px;
+line-height:1.9;
+margin-top:28px;
 }
 
-.hero-actions{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.gold-button{
-    border:0;
-    background:var(--gold);
-    color:#080808;
-    padding:15px 24px;
-    border-radius:30px;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:.5px;
-}
-
-.outline-button{
-    border:1px solid rgba(255,255,255,.2);
-    background:transparent;
-    color:white;
-    padding:15px 24px;
-    border-radius:30px;
-    font-size:11px;
-    font-weight:800;
-}
-
-.hero-facts{
-    position:absolute;
-    right:7%;
-    bottom:90px;
-    z-index:2;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-
-    width:370px;
-}
-
-.fact{
-    padding:17px;
-    background:rgba(15,15,15,.8);
-    border:1px solid var(--line);
-    border-radius:15px;
-    backdrop-filter:blur(10px);
-}
-
-.fact b{
-    display:block;
-    font-size:20px;
-    margin-bottom:5px;
-}
-
-.fact span{
-    color:#666;
-    font-size:9px;
-    text-transform:uppercase;
-}
-
-/* =========================================================
-SECTIONS
-========================================================= */
-
-section{
-    padding:110px 6%;
-}
-
-.section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:30px;
-    margin-bottom:40px;
-}
-
-.section-kicker{
-    color:var(--gold2);
-    font-size:10px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.section-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(40px,5vw,70px);
-    line-height:1;
-}
-
-.section-subtitle{
-    max-width:550px;
-    color:#707070;
-    font-size:13px;
-    line-height:1.8;
-    margin-top:12px;
-}
-
-.view-link{
-    color:var(--gold2);
-    font-size:10px;
-    letter-spacing:2px;
-    white-space:nowrap;
-}
-
-/* =========================================================
-WHO IS TEDDYZHU
-========================================================= */
-
-.identity{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.identity-main{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:28px;
-    padding:45px;
-}
-
-.identity-main h3{
-    font-family:"Playfair Display",serif;
-    font-size:43px;
-    margin-bottom:20px;
-}
-
-.identity-main p{
-    color:#858585;
-    line-height:1.9;
-    font-size:14px;
-    margin-bottom:18px;
-}
-
-.identity-side{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.identity-box{
-    min-height:190px;
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:22px;
-    padding:25px;
-    transition:.3s;
-}
-
-.identity-box:hover{
-    transform:translateY(-5px);
-    border-color:rgba(215,180,106,.4);
-}
-
-.identity-icon{
-    font-size:27px;
-    margin-bottom:30px;
-}
-
-.identity-box h4{
-    font-size:15px;
-    margin-bottom:8px;
-}
-
-.identity-box p{
-    color:#666;
-    font-size:11px;
-    line-height:1.7;
-}
-
-/* =========================================================
-ARTIST STATEMENT
-========================================================= */
-
-.statement{
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-
-    padding:100px 0;
-
-    text-align:center;
-}
-
-.statement-mark{
-    color:var(--gold);
-    font-size:60px;
-    font-family:Georgia,serif;
-}
-
-.statement h2{
-    max-width:1000px;
-    margin:15px auto 25px;
-
-    font-family:"Playfair Display",serif;
-    font-size:clamp(35px,5vw,65px);
-
-    line-height:1.12;
-}
-
-.statement p{
-    color:#666;
-    font-size:12px;
-    max-width:650px;
-    margin:auto;
-    line-height:1.8;
-}
-
-/* =========================================================
-MUSIC CATALOG
-========================================================= */
-
-.catalog{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
-
-.track{
-    position:relative;
-    overflow:hidden;
-
-    min-height:280px;
-
-    border-radius:22px;
-    border:1px solid var(--line);
-
-    background:#111;
-
-    transition:.35s;
-}
-
-.track:hover{
-    transform:translateY(-7px);
-    border-color:rgba(215,180,106,.35);
-}
-
-.track-art{
-    height:180px;
-    position:relative;
-    overflow:hidden;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:
-        radial-gradient(circle at 50% 50%,#353535,#111 50%,#070707);
-}
-
-.track-art::before{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(215,180,106,.5);
-
-    box-shadow:
-        0 0 0 15px rgba(215,180,106,.04),
-        0 0 0 35px rgba(215,180,106,.025);
-}
-
-.track-art::after{
-    content:"";
-    position:absolute;
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    background:var(--gold);
-    box-shadow:0 0 0 7px #111;
-}
-
-.track-content{
-    padding:18px;
-}
-
-.track-content small{
-    color:#666;
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-.track-content h3{
-    margin:7px 0;
-    font-size:17px;
-}
-
-.track-content p{
-    color:#666;
-    font-size:11px;
-}
-
-.track-button{
-    position:absolute;
-    right:16px;
-    bottom:16px;
-
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-    border:1px solid var(--line);
-
-    background:#1b1b1b;
-    color:white;
-}
-
-.track-button:hover{
-    background:var(--gold);
-    color:black;
-}
-
-/* =========================================================
-MUSIC NOTE — NO AUDIO
-========================================================= */
-
-.no-audio{
-    margin-top:20px;
-    padding:15px 18px;
-
-    border:1px solid rgba(215,180,106,.16);
-    border-radius:14px;
-
-    background:rgba(215,180,106,.035);
-
-    color:#777;
-    font-size:11px;
-    line-height:1.6;
-}
-
-/* =========================================================
-CREATIVE ELEMENTS
-========================================================= */
-
-.creative-grid{
-    display:grid;
-    grid-template-columns:1.4fr .8fr .8fr;
-    gap:16px;
-}
-
-.creative-card{
-    min-height:360px;
-    position:relative;
-    overflow:hidden;
-
-    background:#101010;
-
-    border:1px solid var(--line);
-    border-radius:24px;
-
-    padding:30px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-}
-
-.creative-card.large{
-    min-height:550px;
-}
-
-.creative-card::before{
-    content:"";
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    border:1px solid rgba(215,180,106,.13);
-    border-radius:50%;
-
-    right:-100px;
-    top:-80px;
-}
-
-.creative-card::after{
-    content:"";
-    position:absolute;
-
-    width:150px;
-    height:150px;
-
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:50%;
-
-    right:0;
-    top:0;
-}
-
-.creative-number{
-    position:absolute;
-    top:25px;
-    left:25px;
-
-    color:#555;
-    font-size:12px;
-    letter-spacing:3px;
-}
-
-.creative-symbol{
-    position:absolute;
-    top:70px;
-    left:35px;
-
-    font-size:75px;
-    color:rgba(215,180,106,.55);
-}
-
-.creative-content{
-    position:relative;
-    z-index:2;
-}
-
-.creative-content h3{
-    font-family:"Playfair Display",serif;
-    font-size:37px;
-}
-
-.creative-content p{
-    color:#777;
-    font-size:12px;
-    line-height:1.8;
-    margin-top:10px;
-}
-
-/* =========================================================
-INSTRUMENT SECTION
-========================================================= */
-
-.instrument-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.instrument{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:28px;
-    min-height:230px;
-    transition:.3s;
-}
-
-.instrument:hover{
-    transform:translateY(-5px);
-}
-
-.instrument-art{
-    height:80px;
-    position:relative;
-    margin-bottom:20px;
-}
-
-.guitar{
-    width:45px;
-    height:72px;
-    border:3px solid var(--gold);
-    border-radius:50% 50% 45% 45%;
-    position:absolute;
-    left:25px;
-    transform:rotate(18deg);
-}
-
-.guitar::before{
-    content:"";
-    position:absolute;
-    width:9px;
-    height:90px;
-    background:#777;
-    left:15px;
-    top:-55px;
-    border-radius:5px;
-}
-
-.guitar::after{
-    content:"";
-    position:absolute;
-    width:12px;
-    height:12px;
-    border:2px solid var(--gold);
-    border-radius:50%;
-    top:28px;
-    left:13px;
-}
-
-.mic{
-    width:32px;
-    height:62px;
-    border:3px solid var(--gold);
-    border-radius:20px;
-    position:absolute;
-    left:30px;
-}
-
-.mic::before{
-    content:"";
-    position:absolute;
-    width:2px;
-    height:25px;
-    background:#777;
-    left:12px;
-    top:58px;
-}
-
-.mic::after{
-    content:"";
-    position:absolute;
-    width:45px;
-    height:2px;
-    background:#777;
-    left:-8px;
-    top:83px;
-}
-
-.instrument h3{
-    font-size:15px;
-    margin-bottom:8px;
-}
-
-.instrument p{
-    color:#666;
-    font-size:11px;
-    line-height:1.7;
-}
-
-/* =========================================================
-JOURNEY
-========================================================= */
-
-.journey{
-    position:relative;
-    max-width:1000px;
-    margin:auto;
-}
-
-.journey-line{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:50%;
-    width:1px;
-    background:#282828;
-}
-
-.journey-item{
-    width:50%;
-    padding:20px 45px;
-    position:relative;
-}
-
-.journey-item:nth-child(even){
-    margin-left:50%;
-}
-
-.journey-dot{
-    position:absolute;
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    background:var(--gold);
-    top:31px;
-}
-
-.journey-item:nth-child(odd) .journey-dot{
-    right:-5px;
-}
-
-.journey-item:nth-child(even) .journey-dot{
-    left:-5px;
-}
-
-.journey-card{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:27px;
-}
-
-.journey-card .year{
-    color:var(--gold2);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-}
-
-.journey-card h3{
-    margin:10px 0;
-    font-family:"Playfair Display",serif;
-    font-size:27px;
-}
-
-.journey-card p{
-    color:#707070;
-    font-size:12px;
-    line-height:1.8;
-}
-
-/* =========================================================
-VALUES
-========================================================= */
-
-.values{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.value{
-    padding:35px;
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:22px;
-}
-
-.value-number{
-    color:#444;
-    font-size:12px;
-    margin-bottom:45px;
-}
-
-.value h3{
-    font-family:"Playfair Display",serif;
-    font-size:28px;
-}
-
-.value p{
-    color:#666;
-    font-size:12px;
-    line-height:1.8;
-    margin-top:12px;
-}
-
-/* =========================================================
-UPDATES
-========================================================= */
-
-.updates{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.update{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:22px;
-    padding:27px;
-}
-
-.update-top{
-    display:flex;
-    justify-content:space-between;
-    color:#666;
-    font-size:10px;
-}
-
-.update h3{
-    margin:18px 0 10px;
-    font-family:"Playfair Display",serif;
-    font-size:27px;
-}
-
-.update p{
-    color:#666;
-    font-size:12px;
-    line-height:1.8;
-}
-
-.update-link{
-    display:inline-block;
-    margin-top:20px;
-    color:var(--gold2);
-    font-size:10px;
-    letter-spacing:2px;
-}
-
-/* =========================================================
-SOCIAL HUB
-========================================================= */
-
-.social-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:12px;
-}
-
-.social{
-    min-height:150px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    padding:20px;
-
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:20px;
-
-    transition:.3s;
-}
-
-.social:hover{
-    transform:translateY(-5px);
-    border-color:rgba(215,180,106,.35);
-}
-
-.social-icon{
-    font-size:27px;
-}
-
-.social span{
-    color:#666;
-    font-size:10px;
-    letter-spacing:1px;
-}
-
-.social b{
-    font-size:13px;
-}
-
-/* =========================================================
-EMAIL
-========================================================= */
-
-.newsletter{
-    max-width:950px;
-    margin:auto;
-
-    padding:55px;
-
-    background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(215,180,106,.12),
-            transparent 30%
-        ),
-        #111;
-
-    border:1px solid var(--line);
-    border-radius:30px;
-}
-
-.newsletter h2{
-    font-family:"Playfair Display",serif;
-    font-size:48px;
-}
-
-.newsletter p{
-    color:#666;
-    font-size:12px;
-    line-height:1.8;
-    margin:12px 0 25px;
-}
-
-.email-form{
-    display:flex;
-    gap:8px;
-    max-width:650px;
-}
-
-.email-form input{
-    flex:1;
-    background:#080808;
-    border:1px solid var(--line);
-    color:white;
-    padding:15px 18px;
-    border-radius:30px;
-    outline:none;
-}
-
-.email-form input:focus{
-    border-color:var(--gold);
-}
-
-/* =========================================================
-SUPPORT
-========================================================= */
-
-.support{
-    display:grid;
-    grid-template-columns:1fr 380px;
-    gap:30px;
-    align-items:center;
-
-    padding:45px;
-
-    background:#111;
-
-    border:1px solid rgba(215,180,106,.2);
-    border-radius:28px;
-}
-
-.support h2{
-    font-family:"Playfair Display",serif;
-    font-size:50px;
-}
-
-.support p{
-    color:#6d6d6d;
-    font-size:13px;
-    line-height:1.8;
-    margin:15px 0 25px;
-}
-
-.mpesa-box{
-    background:#080808;
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:25px;
-}
-
-.mpesa-label{
-    color:#666;
-    font-size:9px;
-    letter-spacing:3px;
-}
-
-.mpesa-number{
-    color:#fff;
-    font-size:28px;
-    font-weight:900;
-    margin:10px 0 18px;
-    letter-spacing:1px;
-}
-
-.copy-button{
-    width:100%;
-    padding:13px;
-    border-radius:12px;
-    border:1px solid var(--line);
-    background:#151515;
-    color:white;
-}
-
-/* =========================================================
-FAQ
-========================================================= */
-
-.faq{
-    max-width:850px;
-    margin:auto;
-}
-
-.faq-item{
-    border-bottom:1px solid var(--line);
-}
-
-.faq-question{
-    width:100%;
-    background:transparent;
-    color:white;
-    border:0;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:22px 5px;
-
-    font-size:13px;
-    text-align:left;
-}
-
-.faq-answer{
-    max-height:0;
-    overflow:hidden;
-    transition:.35s;
-}
-
-.faq-answer p{
-    color:#666;
-    font-size:12px;
-    line-height:1.8;
-    padding:0 5px 22px;
-}
-
-.faq-item.open .faq-answer{
-    max-height:300px;
-}
-
-/* =========================================================
-CONTACT
-========================================================= */
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:20px;
-}
-
-.contact-info{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:24px;
-    padding:35px;
-}
-
-.contact-info h2{
-    font-family:"Playfair Display",serif;
-    font-size:42px;
-}
-
-.contact-info p{
-    color:#666;
-    font-size:12px;
-    line-height:1.8;
-    margin:15px 0 25px;
-}
-
-.contact-line{
-    padding:15px 0;
-    border-bottom:1px solid var(--line);
-}
-
-.contact-line small{
-    display:block;
-    color:#555;
-    font-size:9px;
-    letter-spacing:2px;
-    margin-bottom:5px;
-}
-
-.contact-line span{
-    font-size:12px;
-}
-
-.contact-form{
-    background:#111;
-    border:1px solid var(--line);
-    border-radius:24px;
-    padding:35px;
-}
-
-.form-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.form-group{
-    margin-bottom:14px;
-}
-
-.form-group label{
-    display:block;
-    color:#666;
-    font-size:9px;
-    letter-spacing:2px;
-    margin-bottom:7px;
-}
-
-.form-group input,
-.form-group textarea{
-    width:100%;
-    background:#080808;
-    color:white;
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:14px;
-    outline:none;
-}
-
-.form-group textarea{
-    min-height:150px;
-    resize:vertical;
-}
-
-/* =========================================================
-FOOTER
-========================================================= */
-
-footer{
-    padding:70px 6% 120px;
-
-    border-top:1px solid var(--line);
-
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:40px;
-}
-
-.footer-logo{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:5px;
-}
-
-.footer-about{
-    max-width:370px;
-    color:#555;
-    font-size:11px;
-    line-height:1.8;
-    margin-top:15px;
-}
-
-footer h4{
-    font-size:10px;
-    letter-spacing:2px;
-    margin-bottom:18px;
-}
-
-footer a{
-    display:block;
-    color:#666;
-    font-size:11px;
-    margin:11px 0;
-}
-
-footer a:hover{
-    color:white;
-}
-
-.copyright{
-    margin-top:30px;
-    color:#3f3f3f;
-    font-size:10px;
-}
-
-/* =========================================================
-BOTTOM BAR
-========================================================= */
-
-.bottom-bar{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-
-    height:68px;
-
-    z-index:4000;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:rgba(8,8,8,.94);
-    backdrop-filter:blur(18px);
-
-    border-top:1px solid var(--line);
-}
-
-.bottom-bar-content{
-    width:90%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.bottom-status{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    color:#777;
-    font-size:10px;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:var(--green);
-    box-shadow:0 0 10px var(--green);
-}
-
-.bottom-links{
-    display:flex;
-    gap:20px;
-}
-
-.bottom-links a{
-    color:#666;
-    font-size:10px;
-}
-
-.bottom-links a:hover{
-    color:white;
-}
-
-/* =========================================================
-SEARCH MODAL
-========================================================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-
-    z-index:10000;
-
-    background:rgba(0,0,0,.82);
-    backdrop-filter:blur(12px);
-
-    display:none;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-}
-
-.modal.open{
-    display:flex;
-}
-
-.modal-box{
-    width:520px;
-    max-width:100%;
-
-    background:#111;
-
-    border:1px solid #2b2b2b;
-    border-radius:24px;
-
-    padding:30px;
-}
-
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:20px;
-}
-
-.close{
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-    border:0;
-
-    background:#1b1b1b;
-    color:white;
-
-    font-size:20px;
-}
-
-.search-input{
-    width:100%;
-    padding:17px;
-
-    border-radius:14px;
-
-    border:1px solid var(--line);
-
-    background:#080808;
-    color:white;
-
-    outline:none;
-}
-
-.search-results{
-    margin-top:15px;
-}
-
-.result{
-    padding:14px 5px;
-    border-bottom:1px solid var(--line);
-    color:#aaa;
-    font-size:12px;
-    cursor:pointer;
-}
-
-.result:hover{
-    color:white;
-}
-
-/* =========================================================
-TOAST
-========================================================= */
-
-.toast{
-    position:fixed;
-    right:25px;
-    bottom:90px;
-
-    z-index:15000;
-
-    background:#191919;
-    border:1px solid #333;
-
-    padding:14px 18px;
-
-    border-radius:12px;
-
-    font-size:11px;
-
-    opacity:0;
-    transform:translateY(20px);
-
-    pointer-events:none;
-
-    transition:.3s;
-}
-
-.toast.show{
-    opacity:1;
-    transform:none;
-}
-
-/* =========================================================
-RESPONSIVE
-========================================================= */
-
-@media(max-width:1100px){
-
-nav{
-    display:none;
-}
-
-.menu-button{
-    display:block;
-}
-
-.hero-facts{
-    display:none;
-}
-
-.catalog{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.instrument-grid{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.social-grid{
-    grid-template-columns:repeat(3,1fr);
-}
-
-.creative-grid{
-    grid-template-columns:1fr 1fr;
-}
-
-.creative-card.large{
-    grid-column:span 2;
-}
-
-footer{
-    grid-template-columns:1fr 1fr;
-}
-
-}
-
-@media(max-width:800px){
-
-section{
-    padding:80px 5%;
-}
-
-.hero{
-    padding:130px 5% 90px;
-}
-
-.hero h1{
-    font-size:75px;
-    letter-spacing:-4px;
-}
-
-.identity,
-.updates,
-.contact-grid,
-.support{
-    grid-template-columns:1fr;
-}
-
-.values{
-    grid-template-columns:1fr;
-}
-
-.catalog{
-    grid-template-columns:1fr 1fr;
-}
-
-.journey-line{
-    left:7px;
-}
-
-.journey-item,
-.journey-item:nth-child(even){
-    width:100%;
-    margin-left:0;
-    padding-left:35px;
-    padding-right:0;
-}
-
-.journey-item:nth-child(odd) .journey-dot,
-.journey-item:nth-child(even) .journey-dot{
-    left:2px;
-    right:auto;
-}
-
-.social-grid{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.support h2{
-    font-size:42px;
-}
-
-}
-
-@media(max-width:550px){
-
-header{
-    height:72px;
-    padding:0 18px;
-}
-
-.logo{
-    font-size:20px;
-    letter-spacing:3px;
-}
-
-.header-btn{
-    display:none;
-}
-
-.mobile-menu{
-    top:72px;
-}
-
-.hero{
-    min-height:95vh;
-}
-
-.hero h1{
-    font-size:64px;
-}
-
-.hero-description{
-    font-size:13px;
-}
-
-.section-head{
-    display:block;
-}
-
-.view-link{
-    display:inline-block;
-    margin-top:15px;
-}
-
-.identity-side{
-    grid-template-columns:1fr;
-}
-
-.identity-main{
-    padding:28px;
-}
-
-.catalog{
-    grid-template-columns:1fr;
-}
-
-.creative-grid{
-    grid-template-columns:1fr;
-}
-
-.creative-card.large{
-    grid-column:auto;
-}
-
-.instrument-grid{
-    grid-template-columns:1fr;
-}
-
-.social-grid{
-    grid-template-columns:1fr 1fr;
-}
-
-.newsletter{
-    padding:30px 22px;
-}
-
-.newsletter h2{
-    font-size:38px;
-}
-
-.email-form{
-    flex-direction:column;
-}
-
-.email-form button{
-    width:100%;
-}
-
-.form-row{
-    grid-template-columns:1fr;
-}
-
-.contact-info h2{
-    font-size:36px;
-}
-
-footer{
-    grid-template-columns:1fr;
-}
-
-.bottom-links{
-    display:none;
-}
-
-.bottom-status{
-    margin:auto;
-}
-
-}
-
-/* =========================================================
-ACCESSIBILITY
-========================================================= */
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible{
-    outline:2px solid var(--gold);
-    outline-offset:3px;
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =======================================================
-PRELOADER
-======================================================= -->
-
-<div class="preloader" id="preloader">
-
-    <div class="loader">
-
-        <div class="loader-logo">
-            TEDDYZHU
-        </div>
-
-        <div class="loader-line">
-            <span></span>
-        </div>
-
-        <div style="
-            color:#555;
-            font-size:9px;
-            letter-spacing:3px;
-        ">
-            OFFICIAL WEBSITE
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
-HEADER
-======================================================= -->
-
-<header>
-
-    <a href="#home" class="logo">
-        TEDDY<span>ZHU</span>
-    </a>
-
-
-    <nav id="desktopNav">
-
-        <a href="#home" class="active">Home</a>
-
-        <a href="#about">About</a>
-
-        <a href="#music">Music</a>
-
-        <a href="#creative">Creative</a>
-
-        <a href="#journey">Journey</a>
-
-        <a href="#updates">Updates</a>
-
-        <a href="#contact">Contact</a>
-
-    </nav>
-
-
-    <div class="header-actions">
-
-        <button
-            class="icon-btn"
-            onclick="openSearch()"
-            aria-label="Search">
-            ⌕
-        </button>
-
-        <button
-            class="header-btn"
-            onclick="goTo('support')">
-            SUPPORT
-        </button>
-
-        <button
-            class="icon-btn menu-button"
-            onclick="toggleMenu()">
-            ☰
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =======================================================
-MOBILE MENU
-======================================================= -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <a href="#home" onclick="closeMenu()">Home</a>
-
-    <a href="#about" onclick="closeMenu()">About Teddyzhu</a>
-
-    <a href="#music" onclick="closeMenu()">Music</a>
-
-    <a href="#creative" onclick="closeMenu()">Creative World</a>
-
-    <a href="#journey" onclick="closeMenu()">Journey</a>
-
-    <a href="#updates" onclick="closeMenu()">Updates</a>
-
-    <a href="#fans" onclick="closeMenu()">Community</a>
-
-    <a href="#support" onclick="closeMenu()">Support</a>
-
-    <a href="#contact" onclick="closeMenu()">Contact</a>
-
-</div>
-
-
-<!-- =======================================================
-HERO
-======================================================= -->
-
-<section class="hero" id="home">
-
-    <div class="hero-orbit"></div>
-
-
-    <div class="hero-content">
-
-        <div class="eyebrow">
-            Official Website • Teddyzhu
-        </div>
-
-
-        <h1>
-            THIS IS<br>
-            <span>TEDDYZHU.</span>
-        </h1>
-
-
-        <p class="hero-description">
-
-            Teddyzhu is a Kenyan artist and creative building
-            a personal world through music, songwriting,
-            visual ideas and authentic storytelling.
-
-            This is the official space to discover who
-            Teddyzhu is, explore the journey and follow
-            what comes next.
-
-        </p>
-
-
-        <div class="hero-actions">
-
-            <button
-                class="gold-button"
-                onclick="goTo('about')">
-                DISCOVER TEDDYZHU
-            </button>
-
-
-            <button
-                class="outline-button"
-                onclick="goTo('music')">
-                EXPLORE MUSIC
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="hero-facts">
-
-        <div class="fact">
-            <b>2007</b>
-            <span>Born</span>
-        </div>
-
-        <div class="fact">
-            <b>Kenya</b>
-            <span>Origin</span>
-        </div>
-
-        <div class="fact">
-            <b>Music</b>
-            <span>Passion</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-WHO IS TEDDYZHU
-======================================================= -->
-
-<section id="about">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Who Is Teddyzhu?
-            </div>
-
-            <h2 class="section-title">
-                More Than A Name.
-            </h2>
-
-            <p class="section-subtitle">
-                A closer look at the person, the creative identity
-                and the reason behind the music.
-            </p>
-
-        </div>
-
-        <a
-            href="#journey"
-            class="view-link">
-            SEE THE JOURNEY →
-        </a>
-
-    </div>
-
-
-    <div class="identity">
-
-
-        <div class="identity-main">
-
-            <div class="section-kicker">
-                TEDDYZHU
-            </div>
-
-            <h3>
-                An Artist.
-                A Story.
-                A Journey.
-            </h3>
-
-
-            <p>
-
-                Teddyzhu is the artistic name of
-                Vincent Kaunda Ombasa, a Kenyan creative
-                whose journey is closely connected to music
-                and personal expression.
-
-            </p>
-
-
-            <p>
-
-                Born in 2007 and raised in Kenya,
-                Teddyzhu developed a strong interest in
-                singing and began taking music more seriously
-                as the years went on.
-
-            </p>
-
-
-            <p>
-
-                His creative direction moves across
-                different emotions and sounds, including
-                Bongo Flava, ballads and gospel influences.
-
-            </p>
-
-
-            <p>
-
-                The goal is simple:
-                create music and creative work that feels
-                honest, personal and memorable.
-
-            </p>
-
-        </div>
-
-
-        <div class="identity-side">
-
-
-            <div class="identity-box">
-
-                <div class="identity-icon">
-                    ✦
-                </div>
-
-                <h4>
-                    Artist Identity
-                </h4>
-
-                <p>
-                    Teddyzhu is the artist name and
-                    creative identity behind the project.
-                </p>
-
-            </div>
-
-
-            <div class="identity-box">
-
-                <div class="identity-icon">
-                    ♫
-                </div>
-
-                <h4>
-                    Music
-                </h4>
-
-                <p>
-                    A creative space influenced by
-                    Bongo Flava, ballads and gospel.
-                </p>
-
-            </div>
-
-
-            <div class="identity-box">
-
-                <div class="identity-icon">
-                    ✎
-                </div>
-
-                <h4>
-                    Storytelling
-                </h4>
-
-                <p>
-                    Personal experiences and emotions
-                    remain an important part of the work.
-                </p>
-
-            </div>
-
-
-            <div class="identity-box">
-
-                <div class="identity-icon">
-                    ◈
-                </div>
-
-                <h4>
-                    Creative Vision
-                </h4>
-
-                <p>
-                    Music, visual concepts, branding
-                    and digital creativity come together.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-STATEMENT
-======================================================= -->
-
-<section>
-
-    <div class="statement">
-
-        <div class="statement-mark">
-            “
-        </div>
-
-        <h2>
-            The journey is part of the music.
-        </h2>
-
-        <p>
-            Teddyzhu is not presented as a perfect story.
-            It is a growing creative journey — built from
-            experiences, ambition, music and the desire to
-            keep moving forward.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-MUSIC
-======================================================= -->
-
-<section id="music">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Discography
-            </div>
-
-            <h2 class="section-title">
-                The Music.
-            </h2>
-
-            <p class="section-subtitle">
-                A selection of songs associated with the
-                Teddyzhu creative catalogue.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="catalog">
-
-
-        <div class="track">
-
-            <div class="track-art">
-                <span style="
-                    position:absolute;
-                    z-index:3;
-                    font-size:11px;
-                    letter-spacing:4px;
-                    color:#aaa;
-                ">
-                    NUMBER ONE
-                </span>
-            </div>
-
-            <div class="track-content">
-
-                <small>SINGLE</small>
-
-                <h3>
-                    Number One
-                </h3>
-
-                <p>
-                    Teddyzhu
-                </p>
-
-            </div>
-
-            <button
-                class="track-button"
-                onclick="showInfo('Number One')">
-                +
-            </button>
-
-        </div>
-
-
-        <div class="track">
-
-            <div class="track-art">
-                <span style="
-                    position:absolute;
-                    z-index:3;
-                    font-size:11px;
-                    letter-spacing:4px;
-                    color:#aaa;
-                ">
-                    LOVE
-                </span>
-            </div>
-
-            <div class="track-content">
-
-                <small>SINGLE</small>
-
-                <h3>
-                    Love
-                </h3>
-
-                <p>
-                    Teddyzhu
-                </p>
-
-            </div>
-
-            <button
-                class="track-button"
-                onclick="showInfo('Love')">
-                +
-            </button>
-
-        </div>
-
-
-        <div class="track">
-
-            <div class="track-art">
-                <span style="
-                    position:absolute;
-                    z-index:3;
-                    font-size:11px;
-                    letter-spacing:4px;
-                    color:#aaa;
-                ">
-                    VUMILIA
-                </span>
-            </div>
-
-            <div class="track-content">
-
-                <small>SINGLE</small>
-
-                <h3>
-                    Vumilia
-                </h3>
-
-                <p>
-                    Teddyzhu
-                </p>
-
-            </div>
-
-            <button
-                class="track-button"
-                onclick="showInfo('Vumilia')">
-                +
-            </button>
-
-        </div>
-
-
-        <div class="track">
-
-            <div class="track-art">
-                <span style="
-                    position:absolute;
-                    z-index:3;
-                    font-size:11px;
-                    letter-spacing:4px;
-                    color:#aaa;
-                ">
-                    MY TIME
-                </span>
-            </div>
-
-            <div class="track-content">
-
-                <small>SINGLE</small>
-
-                <h3>
-                    My Time
-                </h3>
-
-                <p>
-                    Teddyzhu
-                </p>
-
-            </div>
-
-            <button
-                class="track-button"
-                onclick="showInfo('My Time')">
-                +
-            </button>
-
-        </div>
-
-
-        <div class="track">
-
-            <div class="track-art">
-                <span style="
-                    position:absolute;
-                    z-index:3;
-                    font-size:11px;
-                    letter-spacing:4px;
-                    color:#aaa;
-                ">
-                    PUMZIKA MAMA
-                </span>
-            </div>
-
-            <div class="track-content">
-
-                <small>TRIBUTE</small>
-
-                <h3>
-                    Pumzika Mama
-                </h3>
-
-                <p>
-                    Teddyzhu
-                </p>
-
-            </div>
-
-            <button
-                class="track-button"
-                onclick="showInfo('Pumzika Mama')">
-                +
-            </button>
-
-        </div>
-
-
-        <div class="track">
-
-            <div class="track-art">
-                <span style="
-                    position:absolute;
-                    z-index:3;
-                    font-size:11px;
-                    letter-spacing:3px;
-                    color:#aaa;
-                ">
-                    MORE
-                </span>
-            </div>
-
-            <div class="track-content">
-
-                <small>CATALOG</small>
-
-                <h3>
-                    More Music
-                </h3>
-
-                <p>
-                    Explore future releases
-                </p>
-
-            </div>
-
-            <button
-                class="track-button"
-                onclick="toast('More releases can be added here.')">
-                +
-            </button>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="no-audio">
-
-        <strong style="color:#aaa">
-            Website note:
-        </strong>
-
-        This website intentionally does not contain
-        audio files or video files. Use the website as
-        the official information, branding and discovery
-        hub for Teddyzhu.
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-CREATIVE WORLD
-======================================================= -->
-
-<section id="creative">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Creative World
-            </div>
-
-            <h2 class="section-title">
-                Built Around Sound.
-            </h2>
-
-            <p class="section-subtitle">
-                The Teddyzhu world extends beyond songs.
-                It includes ideas, instruments, recording,
-                design and visual direction.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="creative-grid">
-
-
-        <div class="creative-card large">
-
-            <div class="creative-number">
-                01 / SOUND
-            </div>
-
-            <div class="creative-symbol">
-                ♫
-            </div>
-
-            <div class="creative-content">
-
-                <h3>
-                    Music
-                </h3>
-
-                <p>
-                    Music remains at the center of the
-                    Teddyzhu identity — from songwriting
-                    and recording to releasing and sharing
-                    new ideas.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="creative-card">
-
-            <div class="creative-number">
-                02 / VISUAL
-            </div>
-
-            <div class="creative-symbol">
-                ◇
-            </div>
-
-            <div class="creative-content">
-
-                <h3>
-                    Visuals
-                </h3>
-
-                <p>
-                    Artwork, cover concepts, branding,
-                    photography direction and digital
-                    presentation are part of the wider
-                    creative world.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="creative-card">
-
-            <div class="creative-number">
-                03 / STORY
-            </div>
-
-            <div class="creative-symbol">
-                ✎
-            </div>
-
-            <div class="creative-content">
-
-                <h3>
-                    Story
-                </h3>
-
-                <p>
-                    Every creative project can carry
-                    an emotion, a memory or a message.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-INSTRUMENTS
-======================================================= -->
-
-<section>
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                The Sound Environment
-            </div>
-
-            <h2 class="section-title">
-                Instruments.
-            </h2>
-
-        </div>
-
-    </div>
-
-
-    <div class="instrument-grid">
-
-
-        <div class="instrument">
-
-            <div class="instrument-art">
-
-                <div class="guitar"></div>
-
-            </div>
-
-            <h3>
-                Guitar
-            </h3>
-
-            <p>
-                An instrument associated with melody,
-                emotion and songwriting.
-            </p>
-
-        </div>
-
-
-        <div class="instrument">
-
-            <div class="instrument-art">
-
-                <div class="mic"></div>
-
-            </div>
-
-            <h3>
-                Microphone
-            </h3>
-
-            <p>
-                The bridge between an idea,
-                a voice and a recording.
-            </p>
-
-        </div>
-
-
-        <div class="instrument">
-
-            <div class="instrument-art">
-
-                <div style="
-                    position:absolute;
-                    left:25px;
-                    top:20px;
-                    width:70px;
-                    height:45px;
-                    border:2px solid #777;
-                    border-radius:8px;
-                "></div>
-
-                <div style="
-                    position:absolute;
-                    left:40px;
-                    top:32px;
-                    width:8px;
-                    height:8px;
-                    background:var(--gold);
-                    border-radius:50%;
-                    box-shadow:
-                    18px 0 var(--gold),
-                    36px 0 #555,
-                    0 18px #555,
-                    18px 18px var(--gold),
-                    36px 18px #555;
-                "></div>
-
-            </div>
-
-            <h3>
-                Studio
-            </h3>
-
-            <p>
-                The creative environment where
-                ideas are shaped into records.
-            </p>
-
-        </div>
-
-
-        <div class="instrument">
-
-            <div class="instrument-art">
-
-                <div style="
-                    position:absolute;
-                    left:28px;
-                    top:15px;
-                    width:65px;
-                    height:50px;
-                    border:2px solid var(--gold);
-                    border-radius:50%;
-                    transform:rotate(-15deg);
-                "></div>
-
-                <div style="
-                    position:absolute;
-                    left:45px;
-                    top:39px;
-                    width:32px;
-                    height:2px;
-                    background:#777;
-                "></div>
-
-            </div>
-
-            <h3>
-                Rhythm
-            </h3>
-
-            <p>
-                Rhythm and movement give every
-                composition its own character.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-JOURNEY
-======================================================= -->
-
-<section id="journey">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                The Journey
-            </div>
-
-            <h2 class="section-title">
-                From Beginning To Becoming.
-            </h2>
-
-            <p class="section-subtitle">
-                The important chapters behind the Teddyzhu
-                creative journey.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="journey">
-
-
-        <div class="journey-line"></div>
-
-
-        <div class="journey-item">
-
-            <div class="journey-dot"></div>
-
-            <div class="journey-card">
-
-                <div class="year">
-                    2007
-                </div>
-
-                <h3>
-                    The Beginning
-                </h3>
-
-                <p>
-                    Vincent Kaunda Ombasa was born in
-                    Kenya. This is the beginning of the
-                    story behind the person who would
-                    later become known creatively as Teddyzhu.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="journey-item">
-
-            <div class="journey-dot"></div>
-
-            <div class="journey-card">
-
-                <div class="year">
-                    2014
-                </div>
-
-                <h3>
-                    The Spark
-                </h3>
-
-                <p>
-                    The interest in singing and music
-                    became part of the journey during
-                    the teenage years.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="journey-item">
-
-            <div class="journey-dot"></div>
-
-            <div class="journey-card">
-
-                <div class="year">
-                    2021
-                </div>
-
-                <h3>
-                    Recording Era
-                </h3>
-
-                <p>
-                    The journey moved into more serious
-                    recording and the development of
-                    original music.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="journey-item">
-
-            <div class="journey-dot"></div>
-
-            <div class="journey-card">
-
-                <div class="year">
-                    TODAY
-                </div>
-
-                <h3>
-                    Building Teddyzhu
-                </h3>
-
-                <p>
-                    The focus continues to be music,
-                    creativity, personal growth and
-                    building a recognizable artistic identity.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-VALUES
-======================================================= -->
-
-<section>
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Creative Principles
-            </div>
-
-            <h2 class="section-title">
-                What Matters.
-            </h2>
-
-        </div>
-
-    </div>
-
-
-    <div class="values">
-
-
-        <div class="value">
-
-            <div class="value-number">
-                01
-            </div>
-
-            <h3>
-                Authenticity
-            </h3>
-
-            <p>
-                Real experiences and honest creative
-                expression should remain at the center
-                of the work.
-            </p>
-
-        </div>
-
-
-        <div class="value">
-
-            <div class="value-number">
-                02
-            </div>
-
-            <h3>
-                Growth
-            </h3>
-
-            <p>
-                Every release, idea and project is part
-                of a bigger learning process.
-            </p>
-
-        </div>
-
-
-        <div class="value">
-
-            <div class="value-number">
-                03
-            </div>
-
-            <h3>
-                Connection
-            </h3>
-
-            <p>
-                Music becomes more meaningful when
-                it connects the artist with listeners.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-UPDATES
-======================================================= -->
-
-<section id="updates">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Latest
-            </div>
-
-            <h2 class="section-title">
-                Updates.
-            </h2>
-
-            <p class="section-subtitle">
-                A clean space for future announcements,
-                releases, projects and news.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="updates">
-
-
-        <article class="update">
-
-            <div class="update-top">
-
-                <span>
-                    WEBSITE
-                </span>
-
-                <span>
-                    2026
-                </span>
-
-            </div>
-
-            <h3>
-                Welcome To Teddyzhu
-            </h3>
-
-            <p>
-                The official Teddyzhu website is a central
-                place for the artist identity, music catalogue,
-                journey, creative work and future updates.
-            </p>
-
-            <a
-                href="#about"
-                class="update-link">
-                READ ABOUT TEDDYZHU →
-            </a>
-
-        </article>
-
-
-        <article class="update">
-
-            <div class="update-top">
-
-                <span>
-                    MUSIC
-                </span>
-
-                <span>
-                    2026
-                </span>
-
-            </div>
-
-            <h3>
-                More Music Ahead
-            </h3>
-
-            <p>
-                New music can be added to the official
-                catalogue as releases become available.
-            </p>
-
-            <a
-                href="#music"
-                class="update-link">
-                EXPLORE CATALOGUE →
-            </a>
-
-        </article>
-
-
-        <article class="update">
-
-            <div class="update-top">
-
-                <span>
-                    CREATIVE
-                </span>
-
-                <span>
-                    ONGOING
-                </span>
-
-            </div>
-
-            <h3>
-                Building The Vision
-            </h3>
-
-            <p>
-                The Teddyzhu identity continues to grow
-                through music, visual concepts and digital
-                creativity.
-            </p>
-
-            <a
-                href="#creative"
-                class="update-link">
-                EXPLORE CREATIVE WORLD →
-            </a>
-
-        </article>
-
-
-        <article class="update">
-
-            <div class="update-top">
-
-                <span>
-                    COMMUNITY
-                </span>
-
-                <span>
-                    OPEN
-                </span>
-
-            </div>
-
-            <h3>
-                Stay Connected
-            </h3>
-
-            <p>
-                Fans and listeners can follow Teddyzhu
-                through the official social platforms
-                and email updates.
-            </p>
-
-            <a
-                href="#fans"
-                class="update-link">
-                JOIN THE COMMUNITY →
-            </a>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-FANS
-======================================================= -->
-
-<section id="fans">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Community
-            </div>
-
-            <h2 class="section-title">
-                The Teddyzhu Family.
-            </h2>
-
-            <p class="section-subtitle">
-                Follow the journey, share the music and
-                stay connected as the story continues.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="social-grid">
-
-
-        <a
-            href="#"
-            onclick="socialMessage('Instagram')"
-            class="social">
-
-            <div class="social-icon">
-                ◎
-            </div>
-
-            <div>
-
-                <span>
-                    SOCIAL
-                </span>
-
-                <b>
-                    Instagram
-                </b>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#"
-            onclick="socialMessage('YouTube')"
-            class="social">
-
-            <div class="social-icon">
-                ▶
-            </div>
-
-            <div>
-
-                <span>
-                    VIDEO
-                </span>
-
-                <b>
-                    YouTube
-                </b>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#"
-            onclick="socialMessage('TikTok')"
-            class="social">
-
-            <div class="social-icon">
-                ♪
-            </div>
-
-            <div>
-
-                <span>
-                    SOCIAL
-                </span>
-
-                <b>
-                    TikTok
-                </b>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#"
-            onclick="socialMessage('Facebook')"
-            class="social">
-
-            <div class="social-icon">
-                f
-            </div>
-
-            <div>
-
-                <span>
-                    SOCIAL
-                </span>
-
-                <b>
-                    Facebook
-                </b>
-
-            </div>
-
-        </a>
-
-
-        <a
-            href="#"
-            onclick="socialMessage('X')"
-            class="social">
-
-            <div class="social-icon">
-                𝕏
-            </div>
-
-            <div>
-
-                <span>
-                    SOCIAL
-                </span>
-
-                <b>
-                    X
-                </b>
-
-            </div>
-
-        </a>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-NEWSLETTER
-======================================================= -->
-
-<section>
-
-    <div class="newsletter">
-
-        <div class="section-kicker">
-            Email Updates
-        </div>
-
-        <h2>
-            Stay In The Loop.
-        </h2>
-
-        <p>
-            Enter your email to join the Teddyzhu update list.
-            This frontend version does not send the information
-            to a server; it only demonstrates the interface.
-        </p>
-
-
-        <form
-            class="email-form"
-            onsubmit="subscribe(event)">
-
-            <input
-                id="emailInput"
-                type="email"
-                placeholder="Enter your email address"
-                required>
-
-            <button
-                class="gold-button"
-                type="submit">
-                SUBSCRIBE
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-SUPPORT
-======================================================= -->
-
-<section id="support">
-
-    <div class="support">
-
-
-        <div>
-
-            <div class="section-kicker">
-                Support Teddyzhu
-            </div>
-
-            <h2>
-                Support The Journey.
-            </h2>
-
-            <p>
-                If you would like to support the Teddyzhu
-                creative journey, you can use the M-Pesa
-                number provided below.
-            </p>
-
-            <button
-                class="gold-button"
-                onclick="copyMpesa()">
-                COPY M-PESA NUMBER
-            </button>
-
-        </div>
-
-
-        <div class="mpesa-box">
-
-            <div class="mpesa-label">
-                M-PESA NUMBER
-            </div>
-
-            <div class="mpesa-number">
-                0719157643
-            </div>
-
-            <button
-                class="copy-button"
-                onclick="copyMpesa()">
-                Copy 0719157643
-            </button>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-FAQ
-======================================================= -->
-
-<section>
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Questions
-            </div>
-
-            <h2 class="section-title">
-                FAQ.
-            </h2>
-
-        </div>
-
-    </div>
-
-
-    <div class="faq">
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question"
-                onclick="toggleFaq(this)">
-
-                <span>
-                    Who is Teddyzhu?
-                </span>
-
-                <span>
-                    +
-                </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    Teddyzhu is the artistic name of
-                    Vincent Kaunda Ombasa, a Kenyan artist
-                    and creative.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question"
-                onclick="toggleFaq(this)">
-
-                <span>
-                    What type of music does Teddyzhu make?
-                </span>
-
-                <span>
-                    +
-                </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    The Teddyzhu creative direction includes
-                    Bongo Flava, ballads and gospel influences.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question"
-                onclick="toggleFaq(this)">
-
-                <span>
-                    Does this website contain music files?
-                </span>
-
-                <span>
-                    +
-                </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    No. This version intentionally does not
-                    include audio or video files.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question"
-                onclick="toggleFaq(this)">
-
-                <span>
-                    Does this website require a backend?
-                </span>
-
-                <span>
-                    +
-                </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    No. This version is a frontend-only
-                    website. The interactive features shown
-                    here run directly in the browser.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item">
-
-            <button
-                class="faq-question"
-                onclick="toggleFaq(this)">
-
-                <span>
-                    How can I support Teddyzhu?
-                </span>
-
-                <span>
-                    +
-                </span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                <p>
-                    Support information is available in
-                    the Support section of this website.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-CONTACT
-======================================================= -->
-
-<section id="contact">
-
-    <div class="section-head">
-
-        <div>
-
-            <div class="section-kicker">
-                Get In Touch
-            </div>
-
-            <h2 class="section-title">
-                Contact.
-            </h2>
-
-            <p class="section-subtitle">
-                For professional communication, collaborations,
-                creative opportunities and general enquiries.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="contact-grid">
-
-
-        <div class="contact-info">
-
-            <h2>
-                Let's Connect.
-            </h2>
-
-            <p>
-                Use the form to prepare a message.
-                This frontend-only version does not send
-                the form to a server.
-            </p>
-
-
-            <div class="contact-line">
-
-                <small>
-                    ARTIST
-                </small>
-
-                <span>
-                    Teddyzhu
-                </span>
-
-            </div>
-
-
-            <div class="contact-line">
-
-                <small>
-                    NAME
-                </small>
-
-                <span>
-                    Vincent Kaunda Ombasa
-                </span>
-
-            </div>
-
-
-            <div class="contact-line">
-
-                <small>
-                    COUNTRY
-                </small>
-
-                <span>
-                    Kenya
-                </span>
-
-            </div>
-
-
-            <div class="contact-line">
-
-                <small>
-                    EMAIL
-                </small>
-
-                <span>
-                    Use your official email here
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="contact-form">
-
-            <form onsubmit="sendMessage(event)">
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label>
-                            YOUR NAME
-                        </label>
-
-                        <input
-                            type="text"
-                            id="contactName"
-                            placeholder="Your name"
-                            required>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>
-                            YOUR EMAIL
-                        </label>
-
-                        <input
-                            type="email"
-                            id="contactEmail"
-                            placeholder="you@example.com"
-                            required>
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        SUBJECT
-                    </label>
-
-                    <input
-                        type="text"
-                        id="contactSubject"
-                        placeholder="What would you like to discuss?"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        MESSAGE
-                    </label>
-
-                    <textarea
-                        id="contactMessage"
-                        placeholder="Write your message..."
-                        required></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="gold-button">
-                    PREPARE MESSAGE
-                </button>
-
-
-            </form>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-FOOTER
-======================================================= -->
-
-<footer>
-
-
-    <div>
-
-        <div class="footer-logo">
-            TEDDYZHU
-        </div>
-
-        <div class="footer-about">
-
-            Official digital home of Teddyzhu —
-            artist, songwriter and creative from Kenya.
-
-            Music, identity, story and creativity,
-            all in one place.
-
-        </div>
-
-        <div class="copyright">
-            © 2026 Teddyzhu. All rights reserved.
-        </div>
-
-    </div>
-
-
-    <div>
-
-        <h4>
-            EXPLORE
-        </h4>
-
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#about">
-            About
-        </a>
-
-        <a href="#music">
-            Music
-        </a>
-
-        <a href="#creative">
-            Creative
-        </a>
-
-    </div>
-
-
-    <div>
-
-        <h4>
-            JOURNEY
-        </h4>
-
-        <a href="#journey">
-            Story
-        </a>
-
-        <a href="#updates">
-            Updates
-        </a>
-
-        <a href="#fans">
-            Community
-        </a>
-
-        <a href="#support">
-            Support
-        </a>
-
-    </div>
-
-
-    <div>
-
-        <h4>
-            CONNECT
-        </h4>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-        <a href="#fans">
-            Socials
-        </a>
-
-        <a href="#music">
-            Discography
-        </a>
-
-        <a href="#home">
-            Back To Top ↑
-        </a>
-
-    </div>
-
-
-</footer>
-
-
-<!-- =======================================================
-BOTTOM BAR
-======================================================= -->
-
-<div class="bottom-bar">
-
-    <div class="bottom-bar-content">
-
-        <div class="bottom-status">
-
-            <span class="status-dot"></span>
-
-            TEDDYZHU OFFICIAL WEBSITE
-
-        </div>
-
-
-        <div class="bottom-links">
-
-            <a href="#music">
-                MUSIC
-            </a>
-
-            <a href="#journey">
-                STORY
-            </a>
-
-            <a href="#support">
-                SUPPORT
-            </a>
-
-            <a href="#contact">
-                CONTACT
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
-SEARCH MODAL
-======================================================= -->
-
-<div
-    class="modal"
-    id="searchModal">
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <div>
-
-                <div class="section-kicker">
-                    Search
-                </div>
-
-                <h2>
-                    Find Something.
-                </h2>
-
-            </div>
-
-            <button
-                class="close"
-                onclick="closeSearch()">
-                ×
-            </button>
-
-        </div>
-
-
-        <input
-            class="search-input"
-            id="searchInput"
-            type="search"
-            placeholder="Search Teddyzhu..."
-            oninput="searchWebsite()">
-
-
-        <div
-            class="search-results"
-            id="searchResults">
-
-            <div class="result">
-                Try searching for music, story, about,
-                creative, support or contact.
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
-TOAST
-======================================================= -->
-
-<div
-    class="toast"
-    id="toast">
-</div>
-
-
-<!-- =======================================================
-JAVASCRIPT
-======================================================= -->
-
-<script>
-
-/* =========================================================
-PRELOADER
-========================================================= */
-
-window.addEventListener("load",function(){
-
-    setTimeout(function(){
-
-        document
-            .getElementById("preloader")
-            .classList.add("hide");
-
-    },900);
-
-});
-
-
-/* =========================================================
-NAVIGATION
-========================================================= */
-
-function goTo(id){
-
-    const element=document.getElementById(id);
-
-    if(element){
-
-        element.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    }
-
-}
-
-
-function toggleMenu(){
-
-    document
-        .getElementById("mobileMenu")
-        .classList.toggle("open");
-
-}
-
-
-function closeMenu(){
-
-    document
-        .getElementById("mobileMenu")
-        .classList.remove("open");
-
-}
-
-
-/* =========================================================
-TOAST
-========================================================= */
-
-let toastTimer;
-
-function toast(message){
-
-    const box=
-        document.getElementById("toast");
-
-    box.innerText=message;
-
-    box.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer=setTimeout(function(){
-
-        box.classList.remove("show");
-
-    },2800);
-
-}
-
-
-/* =========================================================
-SEARCH
-========================================================= */
-
-function openSearch(){
-
-    document
-        .getElementById("searchModal")
-        .classList.add("open");
-
-    setTimeout(function(){
-
-        document
-            .getElementById("searchInput")
-            .focus();
-
-    },150);
-
-}
-
-
-function closeSearch(){
-
-    document
-        .getElementById("searchModal")
-        .classList.remove("open");
-
-}
-
-
-const searchableContent=[
-
-    {
-        title:"About Teddyzhu",
-        section:"about",
-        keywords:"artist vincent kenya identity"
-    },
-
-    {
-        title:"Music",
-        section:"music",
-        keywords:"songs discography number one love vumilia my time"
-    },
-
-    {
-        title:"Creative World",
-        section:"creative",
-        keywords:"creative visuals story music"
-    },
-
-    {
-        title:"Journey",
-        section:"journey",
-        keywords:"2007 2014 2021 story beginning"
-    },
-
-    {
-        title:"Community",
-        section:"fans",
-        keywords:"fans social instagram youtube tiktok"
-    },
-
-    {
-        title:"Support Teddyzhu",
-        section:"support",
-        keywords:"mpesa support 0719157643"
-    },
-
-    {
-        title:"Contact",
-        section:"contact",
-        keywords:"email contact collaboration"
-    }
-
-];
-
-
-function searchWebsite(){
-
-    const query=
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
-
-
-    const results=
-        document.getElementById("searchResults");
-
-
-    if(!query){
-
-        results.innerHTML=`
-            <div class="result">
-                Try searching for music, story,
-                about, creative, support or contact.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    const matches=
-        searchableContent.filter(item=>
-
-            (
-                item.title+
-                " "+
-                item.keywords
-            )
-            .toLowerCase()
-            .includes(query)
-
-        );
-
-
-    if(!matches.length){
-
-        results.innerHTML=`
-            <div class="result">
-                No matching section found.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    results.innerHTML=
-        matches.map(item=>`
-
-            <div
-                class="result"
-                onclick="selectSearch('${item.section}')">
-
-                ${item.title}
-
-            </div>
-
-        `).join("");
-
-}
-
-
-function selectSearch(section){
-
-    closeSearch();
-
-    goTo(section);
-
-}
-
-
-/* =========================================================
-M-PESA
-========================================================= */
-
-function copyMpesa(){
-
-    const number="0719157643";
-
-
-    if(navigator.clipboard){
-
-        navigator.clipboard
-            .writeText(number)
-            .then(function(){
-
-                toast(
-                    "M-Pesa number copied: "+number
-                );
-
-            });
-
-    }else{
-
-        toast(
-            "M-Pesa number: "+number
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-MUSIC INFO
-========================================================= */
-
-function showInfo(song){
-
-    toast(
-        song+
-        " — This website does not play audio."
-    );
-
-}
-
-
-/* =========================================================
-SOCIAL BUTTONS
-========================================================= */
-
-function socialMessage(platform){
-
-    event.preventDefault();
-
-    toast(
-        platform+
-        " link can be connected here."
-    );
-
-}
-
-
-/* =========================================================
-NEWSLETTER
-========================================================= */
-
-function subscribe(event){
-
-    event.preventDefault();
-
-    const email=
-        document
-        .getElementById("emailInput")
-        .value
-        .trim();
-
-
-    if(!email){
-
-        toast("Please enter your email.");
-
-        return;
-
-    }
-
-
-    toast(
-        "Email saved in this demo interface."
-    );
-
-
-    document
-        .getElementById("emailInput")
-        .value="";
-
-}
-
-
-/* =========================================================
-CONTACT FORM
-========================================================= */
-
-function sendMessage(event){
-
-    event.preventDefault();
-
-
-    const name=
-        document
-        .getElementById("contactName")
-        .value
-        .trim();
-
-
-    const email=
-        document
-        .getElementById("contactEmail")
-        .value
-        .trim();
-
-
-    const subject=
-        document
-        .getElementById("contactSubject")
-        .value
-        .trim();
-
-
-    const message=
-        document
-        .getElementById("contactMessage")
-        .value
-        .trim();
-
-
-    if(
-        !name ||
-        !email ||
-        !subject ||
-        !message
-    ){
-
-        toast(
-            "Please complete all fields."
-        );
-
-        return;
-
-    }
-
-
-    toast(
-        "Message prepared successfully."
-    );
-
-
-    document
-        .querySelector(".contact-form form")
-        .reset();
-
-}
-
-
-/* =========================================================
-FAQ
-========================================================= */
-
-function toggleFaq(button){
-
-    const item=
-        button.parentElement;
-
-
-    document
-        .querySelectorAll(".faq-item")
-        .forEach(function(other){
-
-            if(other!==item){
-
-                other.classList.remove("open");
-
-            }
-
-        });
-
-
-    item.classList.toggle("open");
-
-
-    const icon=
-        button.querySelector("span:last-child");
-
-
-    icon.innerText=
-        item.classList.contains("open")
-        ? "−"
-        : "+";
-
-}
-
-
-/* =========================================================
-SEARCH MODAL CLICK OUTSIDE
-========================================================= */
-
-document
-    .getElementById("searchModal")
-    .addEventListener(
-        "click",
-        function(event){
-
-            if(
-                event.target===
-                this
-            ){
-
-                closeSearch();
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-ESCAPE KEY
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key==="Escape"){
-
-            closeSearch();
-
-            closeMenu();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-ACTIVE NAVIGATION
-========================================================= */
-
-const sections=
-    document.querySelectorAll("section[id]");
-
-
-const navLinks=
-    document.querySelectorAll("nav a");
-
-
-window.addEventListener(
-    "scroll",
-    function(){
-
-        let current="home";
-
-
-        sections.forEach(function(section){
-
-            const top=
-                section.offsetTop-150;
-
-
-            if(
-                window.scrollY>=top
-            ){
-
-                current=
-                    section.getAttribute("id");
-
-            }
-
-        });
-
-
-        navLinks.forEach(function(link){
-
-            link.classList.remove("active");
-
-
-            if(
-                link.getAttribute("href")
-                ==="#"+current
-            ){
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    }
-);
-
-
-/* =========================================================
-INITIAL
-========================================================= */
-
-console.log(
-    "TEDDYZHU Official Website — Frontend Only"
-);
-
-console.log(
-    "No backend • No audio • No video files"
-);
-
-</script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Teddyzhu | Official Website</title>
-<meta name="description" content="Official website of Teddyzhu — music, biography, releases, career, creative world and official updates.">
-<meta name="author" content="Teddyzhu">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root{
-    --bg:#050507;
-    --bg2:#0b0b10;
-    --card:#101016;
-    --card2:#15151d;
-    --text:#ffffff;
-    --muted:#9696a4;
-    --line:rgba(255,255,255,.09);
-    --pink:#ff2f92;
-    --purple:#8b5cf6;
-    --cyan:#25d9ff;
-    --gold:#ffd166;
-    --green:#25d366;
-    --shadow:0 30px 80px rgba(0,0,0,.45);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Inter,Arial,sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:
-        radial-gradient(circle at 10% 10%,rgba(255,47,146,.10),transparent 25%),
-        radial-gradient(circle at 90% 20%,rgba(37,217,255,.08),transparent 25%),
-        var(--bg);
-    color:var(--text);
-    overflow-x:hidden;
-}
-
-body.light{
-    --bg:#f7f7fa;
-    --bg2:#ffffff;
-    --card:#ffffff;
-    --card2:#f0f0f5;
-    --text:#0b0b10;
-    --muted:#666673;
-    --line:rgba(0,0,0,.09);
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-track{
-    background:#050507;
-}
-
-::-webkit-scrollbar-thumb{
-    background:linear-gradient(var(--pink),var(--purple));
-    border-radius:20px;
-}
-
-/* ================= PRELOADER ================= */
-
-.loader{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    background:#050507;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:.7s;
-}
-
-.loader.hide{
-    opacity:0;
-    pointer-events:none;
-}
-
-.loader-box{
-    text-align:center;
-}
-
-.loader-logo{
-    font-size:46px;
-    font-weight:900;
-    letter-spacing:-3px;
-    background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.loader-line{
-    width:180px;
-    height:3px;
-    background:#222;
-    margin:20px auto;
-    overflow:hidden;
-}
-
-.loader-line span{
-    display:block;
-    width:40%;
-    height:100%;
-    background:linear-gradient(90deg,var(--pink),var(--cyan));
-    animation:load 1.3s infinite;
-}
-
-@keyframes load{
-    from{transform:translateX(-150%)}
-    to{transform:translateX(400%)}
-}
-
-/* ================= HEADER ================= */
-
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:5000;
-    padding:18px 5%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:rgba(5,5,7,.68);
-    backdrop-filter:blur(22px);
-    border-bottom:1px solid var(--line);
-}
-
-.logo{
-    font-size:27px;
-    font-weight:900;
-    letter-spacing:-1.5px;
-    background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.logo small{
-    display:block;
-    font-size:8px;
-    letter-spacing:4px;
-    color:var(--muted);
-    background:none;
-    -webkit-text-fill-color:var(--muted);
-    margin-top:1px;
-}
-
-.nav{
-    display:flex;
-    gap:28px;
-}
-
-.nav a{
-    color:var(--muted);
-    font-size:13px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.nav a:hover{
-    color:white;
-}
-
-.header-actions{
-    display:flex;
-    gap:10px;
-    align-items:center;
-}
-
-.icon-btn{
-    width:42px;
-    height:42px;
-    border:1px solid var(--line);
-    border-radius:50%;
-    background:rgba(255,255,255,.04);
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.icon-btn:hover{
-    transform:translateY(-3px);
-    border-color:var(--pink);
-}
-
-.menu-btn{
-    display:none;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:100vh;
-    padding:150px 6% 80px;
-    display:grid;
-    grid-template-columns:1.05fr .95fr;
-    align-items:center;
-    gap:70px;
-    position:relative;
-}
-
-.hero:before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:var(--pink);
-    filter:blur(180px);
-    opacity:.08;
-    top:10%;
-    left:-150px;
-}
-
-.hero-label{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    padding:9px 14px;
-    border:1px solid var(--line);
-    background:rgba(255,255,255,.03);
-    border-radius:30px;
-    color:#cfcfd8;
-    font-size:11px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.live-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:var(--pink);
-    box-shadow:0 0 15px var(--pink);
-}
-
-.hero h1{
-    font-size:clamp(65px,9vw,140px);
-    line-height:.82;
-    letter-spacing:-8px;
-    font-weight:900;
-    margin:30px 0;
-}
-
-.hero h1 .gradient{
-    background:linear-gradient(90deg,#fff 0%,#ff6ab5 38%,#9c7aff 70%,#42e7ff 100%);
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.hero-text{
-    max-width:650px;
-    color:var(--muted);
-    font-size:17px;
-    line-height:1.8;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:13px;
-    margin-top:32px;
-    flex-wrap:wrap;
+.heroButtons{
+display:flex;
+gap:12px;
+margin-top:32px;
+flex-wrap:wrap;
 }
 
 .btn{
-    border:none;
-    border-radius:13px;
-    padding:14px 22px;
-    cursor:pointer;
-    font-weight:800;
-    transition:.3s;
+padding:15px 22px;
+border-radius:13px;
+font-size:12px;
+font-weight:800;
+border:1px solid var(--line);
+cursor:pointer;
+transition:.25s;
 }
 
-.btn-primary{
-    color:#fff;
-    background:linear-gradient(100deg,var(--pink),var(--purple));
-    box-shadow:0 12px 35px rgba(255,47,146,.2);
+.btnGreen{
+background:var(--green);
+color:#001b0b;
+border-color:var(--green);
 }
 
-.btn-primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 18px 45px rgba(255,47,146,.3);
+.btnDark{
+background:#0c100e;
+color:white;
 }
 
-.btn-outline{
-    color:white;
-    background:transparent;
-    border:1px solid var(--line);
+.btn:hover{
+transform:translateY(-3px);
 }
 
-.btn-outline:hover{
-    border-color:var(--cyan);
-    transform:translateY(-4px);
+/* =========================
+3D ART CARD
+========================= */
+
+.visual{
+position:relative;
+height:520px;
+display:flex;
+align-items:center;
+justify-content:center;
+perspective:1200px;
 }
 
-/* ================= HERO VISUAL ================= */
-
-.hero-art{
-    position:relative;
-    min-height:570px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.disc{
+width:360px;
+height:360px;
+border-radius:50%;
+background:
+radial-gradient(circle at 35% 30%,#303a34 0 2%,transparent 3%),
+repeating-radial-gradient(circle,#080b09 0 2px,#141915 3px 5px);
+box-shadow:
+0 40px 80px rgba(0,0,0,.8),
+0 0 60px rgba(0,230,118,.08);
+animation:float 5s ease-in-out infinite;
+position:relative;
 }
 
-.art-ring{
-    position:absolute;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:50%;
+.disc:before{
+content:"";
+position:absolute;
+inset:45px;
+border-radius:50%;
+border:1px solid rgba(0,230,118,.35);
 }
 
-.ring1{
-    width:450px;
-    height:450px;
-    animation:spin 25s linear infinite;
+.disc:after{
+content:"TEDDYZHU";
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:29px;
+font-weight:900;
+letter-spacing:-1px;
+color:white;
 }
 
-.ring2{
-    width:350px;
-    height:350px;
-    animation:spinReverse 18s linear infinite;
+.discCenter{
+position:absolute;
+width:62px;
+height:62px;
+border-radius:50%;
+background:var(--green);
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+box-shadow:0 0 35px rgba(0,230,118,.4);
 }
 
-.ring3{
-    width:250px;
-    height:250px;
+@keyframes float{
+0%,100%{transform:rotateX(12deg) rotateY(-12deg) translateY(0)}
+50%{transform:rotateX(12deg) rotateY(12deg) translateY(-18px)}
 }
 
-@keyframes spin{
-    to{transform:rotate(360deg)}
+.floatingCard{
+position:absolute;
+padding:18px 20px;
+border-radius:17px;
+background:rgba(12,16,14,.9);
+border:1px solid var(--line);
+box-shadow:var(--shadow);
+backdrop-filter:blur(15px);
 }
 
-@keyframes spinReverse{
-    to{transform:rotate(-360deg)}
+.floatingCard strong{
+display:block;
+font-size:22px;
 }
 
-.mic{
-    width:130px;
-    height:270px;
-    position:relative;
-    z-index:3;
-    filter:drop-shadow(0 30px 35px rgba(0,0,0,.6));
+.floatingCard small{
+font-size:9px;
+color:#758079;
+letter-spacing:1px;
 }
 
-.mic-head{
-    width:105px;
-    height:145px;
-    margin:auto;
-    border-radius:55px;
-    border:7px solid #555;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            #222 0px,
-            #555 2px,
-            #181818 5px
-        );
-    box-shadow:
-        inset 0 0 20px #000,
-        0 0 50px rgba(255,47,146,.25);
+.f1{
+top:50px;
+right:20px;
 }
 
-.mic-body{
-    width:35px;
-    height:100px;
-    background:linear-gradient(90deg,#111,#888,#111);
-    margin:-5px auto 0;
-    border-radius:8px;
+.f2{
+bottom:50px;
+left:10px;
 }
 
-.mic-base{
-    width:105px;
-    height:14px;
-    background:#555;
-    margin:auto;
-    border-radius:50%;
+/* =========================
+SECTION
+========================= */
+
+section{
+padding:105px 7%;
+position:relative;
 }
 
-.guitar{
-    position:absolute;
-    width:250px;
-    height:420px;
-    right:0;
-    bottom:20px;
-    transform:rotate(22deg);
-    opacity:.7;
+.sectionTop{
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:20px;
+margin-bottom:38px;
 }
 
-.guitar-neck{
-    width:28px;
-    height:260px;
-    background:linear-gradient(90deg,#392315,#a56c3a,#30190d);
-    position:absolute;
-    top:0;
-    left:110px;
-    border-radius:10px;
+.kicker{
+color:var(--green);
+font-size:10px;
+font-weight:900;
+letter-spacing:3px;
+margin-bottom:10px;
 }
 
-.guitar-head{
-    width:60px;
-    height:75px;
-    background:#4a2816;
-    position:absolute;
-    top:-55px;
-    left:94px;
-    border-radius:20px 20px 8px 8px;
+.sectionTitle{
+font-size:clamp(34px,5vw,58px);
+letter-spacing:-3px;
+font-weight:900;
 }
 
-.guitar-body{
-    width:210px;
-    height:190px;
-    background:
-        radial-gradient(circle at 50% 50%,#111 0 8%,transparent 9%),
-        linear-gradient(135deg,#7b341f,#d98a48,#4c2015);
-    border-radius:48% 52% 45% 55%;
-    position:absolute;
-    bottom:0;
-    left:20px;
-    box-shadow:0 30px 50px rgba(0,0,0,.5);
+.sectionDescription{
+max-width:500px;
+color:#737e77;
+font-size:13px;
+line-height:1.8;
 }
 
-.string{
-    position:absolute;
-    height:2px;
-    background:#ddd;
-    top:0;
-    left:123px;
-    width:2px;
-    height:300px;
+/* =========================
+ABOUT
+========================= */
+
+.aboutGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px;
 }
 
-/* ================= SECTIONS ================= */
-
-.section{
-    padding:115px 6%;
-    position:relative;
+.aboutCard{
+background:linear-gradient(145deg,#111512,#090c0a);
+border:1px solid var(--line);
+border-radius:25px;
+padding:35px;
+min-height:280px;
+box-shadow:var(--shadow);
 }
 
-.section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:30px;
-    margin-bottom:45px;
+.aboutCard h3{
+font-size:25px;
+margin-bottom:20px;
 }
 
-.eyebrow{
-    color:var(--pink);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:12px;
+.aboutCard p{
+color:#87928b;
+font-size:14px;
+line-height:2;
 }
 
-.section-title{
-    font-size:clamp(38px,5vw,72px);
-    line-height:.95;
-    letter-spacing:-4px;
-    font-weight:900;
+.factGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
-.section-desc{
-    max-width:500px;
-    color:var(--muted);
-    line-height:1.8;
+.fact{
+background:#0b0f0d;
+border:1px solid var(--line);
+padding:20px;
+border-radius:17px;
 }
 
-/* ================= ABOUT ================= */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:30px;
+.fact b{
+display:block;
+font-size:22px;
+color:var(--green);
+margin-bottom:7px;
 }
 
-.about-card{
-    background:
-        linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
-    border:1px solid var(--line);
-    border-radius:28px;
-    padding:35px;
-    box-shadow:var(--shadow);
+.fact span{
+font-size:10px;
+color:#707a74;
+text-transform:uppercase;
+letter-spacing:1px;
 }
 
-.year-card{
-    min-height:430px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    background:
-        radial-gradient(circle at 80% 20%,rgba(255,47,146,.22),transparent 30%),
-        var(--card);
-}
-
-.big-year{
-    font-size:100px;
-    font-weight:900;
-    letter-spacing:-8px;
-    background:linear-gradient(90deg,var(--pink),var(--purple));
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.year-card h3{
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-.about-copy{
-    display:grid;
-    gap:20px;
-}
-
-.about-copy p{
-    color:var(--muted);
-    line-height:1.9;
-}
-
-.info-list{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    margin-top:20px;
-}
-
-.info{
-    padding:17px;
-    border-radius:15px;
-    background:rgba(255,255,255,.035);
-    border:1px solid var(--line);
-}
-
-.info span{
-    display:block;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-    color:#777784;
-    margin-bottom:6px;
-}
-
-.info b{
-    font-size:14px;
-}
-
-/* ================= TIMELINE ================= */
+/* =========================
+TIMELINE
+========================= */
 
 .timeline{
-    position:relative;
-    max-width:900px;
-    margin:auto;
+max-width:850px;
+margin:auto;
+position:relative;
 }
 
 .timeline:before{
-    content:"";
-    position:absolute;
-    left:22px;
-    top:0;
-    bottom:0;
-    width:1px;
-    background:linear-gradient(var(--pink),var(--purple),var(--cyan));
+content:"";
+position:absolute;
+left:13px;
+top:0;
+bottom:0;
+width:1px;
+background:rgba(0,230,118,.2);
 }
 
-.timeline-item{
-    position:relative;
-    padding-left:70px;
-    margin-bottom:45px;
+.timeItem{
+position:relative;
+padding-left:55px;
+margin-bottom:45px;
 }
 
-.timeline-dot{
-    position:absolute;
-    left:13px;
-    top:3px;
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:var(--bg);
-    border:4px solid var(--pink);
-    box-shadow:0 0 25px rgba(255,47,146,.5);
+.timeDot{
+position:absolute;
+left:6px;
+top:3px;
+width:15px;
+height:15px;
+border-radius:50%;
+background:var(--green);
+box-shadow:0 0 20px rgba(0,230,118,.5);
 }
 
-.timeline-year{
-    color:var(--pink);
-    font-weight:900;
-    font-size:14px;
-    margin-bottom:8px;
+.timeYear{
+color:var(--green);
+font-size:12px;
+font-weight:900;
+letter-spacing:2px;
 }
 
-.timeline-item h3{
-    font-size:25px;
-    margin-bottom:9px;
+.timeItem h3{
+font-size:22px;
+margin:9px 0;
 }
 
-.timeline-item p{
-    color:var(--muted);
-    line-height:1.8;
+.timeItem p{
+color:#7f8983;
+font-size:13px;
+line-height:1.8;
 }
 
-/* ================= MUSIC ================= */
+/* =========================
+MUSIC
+========================= */
 
-.release-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.musicGrid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
 }
 
-.release{
-    border:1px solid var(--line);
-    background:var(--card);
-    border-radius:25px;
-    overflow:hidden;
-    transition:.35s;
+.musicCard{
+background:#0b0e0c;
+border:1px solid var(--line);
+border-radius:22px;
+padding:25px;
+transition:.3s;
 }
 
-.release:hover{
-    transform:translateY(-10px);
-    border-color:rgba(255,47,146,.45);
+.musicCard:hover{
+transform:translateY(-8px);
+border-color:rgba(0,230,118,.35);
 }
 
-.cover{
-    aspect-ratio:1/1;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+.musicIcon{
+width:55px;
+height:55px;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:23px;
+background:rgba(0,230,118,.07);
+border:1px solid rgba(0,230,118,.15);
+margin-bottom:22px;
 }
 
-.cover.one{
-    background:
-        radial-gradient(circle at 30% 30%,#ff77bd,transparent 30%),
-        linear-gradient(135deg,#311126,#0d0b16);
+.musicCard h3{
+font-size:19px;
+margin-bottom:10px;
 }
 
-.cover.two{
-    background:
-        radial-gradient(circle at 70% 30%,#6d5cff,transparent 30%),
-        linear-gradient(135deg,#0e1730,#090b12);
+.musicCard p{
+color:#758079;
+font-size:12px;
+line-height:1.8;
 }
 
-.cover.three{
-    background:
-        radial-gradient(circle at 50% 50%,#ffc45c,transparent 25%),
-        linear-gradient(135deg,#261509,#0b0805);
+.tag{
+display:inline-block;
+margin-top:18px;
+padding:7px 10px;
+border-radius:8px;
+background:#121714;
+color:#8e9992;
+font-size:9px;
+font-weight:800;
 }
 
-.cover span{
-    font-size:38px;
-    font-weight:900;
-    text-align:center;
-    letter-spacing:-2px;
+/* =========================
+CAREER STATS
+========================= */
+
+.statsSection{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 }
 
-.release-info{
-    padding:23px;
+.statBox{
+padding:30px 20px;
+text-align:center;
+border-radius:20px;
+background:linear-gradient(145deg,#101411,#090c0a);
+border:1px solid var(--line);
 }
 
-.release-info h3{
-    font-size:22px;
+.statBox b{
+display:block;
+font-size:35px;
+color:var(--green);
+letter-spacing:-2px;
 }
 
-.release-info p{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:7px;
+.statBox span{
+font-size:9px;
+color:#707b74;
+letter-spacing:2px;
+text-transform:uppercase;
 }
 
-.release-meta{
-    display:flex;
-    justify-content:space-between;
-    margin-top:18px;
-    color:#777784;
-    font-size:11px;
-}
+/* =========================
+LINKS
+========================= */
 
-/* ================= NUMBERS ================= */
-
-.numbers{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    border:1px solid var(--line);
-    border-radius:25px;
-    overflow:hidden;
-}
-
-.number{
-    padding:38px 25px;
-    text-align:center;
-    background:rgba(255,255,255,.025);
-    border-right:1px solid var(--line);
-}
-
-.number:last-child{
-    border-right:none;
-}
-
-.number b{
-    display:block;
-    font-size:45px;
-    font-weight:900;
-    background:linear-gradient(90deg,var(--pink),var(--cyan));
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.number span{
-    color:var(--muted);
-    font-size:12px;
-}
-
-/* ================= VALUES ================= */
-
-.values{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.value{
-    min-height:230px;
-    padding:30px;
-    border-radius:24px;
-    border:1px solid var(--line);
-    background:var(--card);
-    transition:.3s;
-}
-
-.value:hover{
-    transform:translateY(-7px);
-}
-
-.value-icon{
-    font-size:28px;
-    margin-bottom:28px;
-}
-
-.value h3{
-    font-size:22px;
-    margin-bottom:10px;
-}
-
-.value p{
-    color:var(--muted);
-    line-height:1.7;
-    font-size:14px;
-}
-
-/* ================= FAN WALL ================= */
-
-.fan-section{
-    background:
-        linear-gradient(90deg,rgba(255,47,146,.04),rgba(37,217,255,.04));
-}
-
-.fan-wall{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.fan{
-    padding:25px;
-    border:1px solid var(--line);
-    border-radius:22px;
-    background:rgba(255,255,255,.025);
-}
-
-.fan-top{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    margin-bottom:18px;
-}
-
-.avatar{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--pink),var(--purple));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-}
-
-.fan p{
-    color:var(--muted);
-    line-height:1.7;
-    font-size:14px;
-}
-
-.stars{
-    color:var(--gold);
-    margin-top:13px;
-}
-
-/* ================= SUPPORT ================= */
-
-.support{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.mpesa-card{
-    border-radius:30px;
-    padding:45px;
-    background:
-        radial-gradient(circle at 90% 10%,rgba(37,211,102,.2),transparent 30%),
-        linear-gradient(145deg,#101814,#0a0c0d);
-    border:1px solid rgba(37,211,102,.2);
-}
-
-.mpesa-badge{
-    display:inline-block;
-    padding:8px 13px;
-    border-radius:20px;
-    background:rgba(37,211,102,.1);
-    color:#5dff98;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.mpesa-number{
-    font-size:42px;
-    font-weight:900;
-    margin:25px 0 10px;
-    letter-spacing:-2px;
-}
-
-.copy-number{
-    margin-top:20px;
-    background:#25d366;
-    color:#061108;
-}
-
-.contact-card{
-    padding:45px;
-    border-radius:30px;
-    border:1px solid var(--line);
-    background:var(--card);
-}
-
-.contact-card p{
-    color:var(--muted);
-    line-height:1.8;
-    margin:15px 0 25px;
-}
-
-.contact-form{
-    display:grid;
-    gap:12px;
-}
-
-.contact-form input,
-.contact-form textarea{
-    width:100%;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid var(--line);
-    background:rgba(255,255,255,.035);
-    color:white;
-    outline:none;
-}
-
-.contact-form textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-/* ================= SOCIALS ================= */
-
-.social-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:15px;
+.linksGrid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 }
 
 .social{
-    padding:25px 15px;
-    text-align:center;
-    border:1px solid var(--line);
-    border-radius:18px;
-    background:var(--card);
-    transition:.3s;
+padding:25px;
+border-radius:20px;
+background:#0b0e0c;
+border:1px solid var(--line);
+transition:.25s;
 }
 
 .social:hover{
-    transform:translateY(-7px);
-    border-color:var(--cyan);
-}
-
-.social strong{
-    display:block;
-    margin-top:10px;
-}
-
-.social small{
-    color:var(--muted);
-}
-
-/* ================= NEWSLETTER ================= */
-
-.newsletter{
-    padding:60px;
-    border-radius:35px;
-    background:
-        radial-gradient(circle at 20% 30%,rgba(255,47,146,.16),transparent 30%),
-        radial-gradient(circle at 80% 70%,rgba(37,217,255,.12),transparent 30%),
-        var(--card);
-    border:1px solid var(--line);
-    text-align:center;
-}
-
-.newsletter h2{
-    font-size:45px;
-    letter-spacing:-2px;
-}
-
-.newsletter p{
-    color:var(--muted);
-    margin:15px auto 25px;
-    max-width:600px;
-    line-height:1.7;
-}
-
-.news-form{
-    display:flex;
-    max-width:560px;
-    margin:auto;
-    gap:10px;
-}
-
-.news-form input{
-    flex:1;
-    padding:15px;
-    border-radius:12px;
-    background:#08080c;
-    border:1px solid var(--line);
-    color:white;
-    outline:none;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    padding:60px 6% 25px;
-    border-top:1px solid var(--line);
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:1.5fr repeat(3,1fr);
-    gap:50px;
-    padding-bottom:50px;
-}
-
-.footer-brand p{
-    color:var(--muted);
-    line-height:1.8;
-    max-width:330px;
-    margin-top:15px;
-}
-
-.footer-col h4{
-    margin-bottom:18px;
-}
-
-.footer-col a{
-    display:block;
-    color:var(--muted);
-    margin:10px 0;
-    font-size:13px;
-}
-
-.footer-col a:hover{
-    color:white;
-}
-
-.copyright{
-    border-top:1px solid var(--line);
-    padding-top:25px;
-    color:#666672;
-    font-size:12px;
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    z-index:10000;
-    background:rgba(0,0,0,.8);
-    backdrop-filter:blur(12px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:430px;
-    max-width:100%;
-    background:#111116;
-    border:1px solid var(--line);
-    border-radius:25px;
-    padding:35px;
-    position:relative;
-}
-
-.close{
-    position:absolute;
-    top:15px;
-    right:15px;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:1px solid var(--line);
-    background:none;
-    color:white;
-    cursor:pointer;
-}
-
-.modal-box h2{
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.modal-box p{
-    color:var(--muted);
-    line-height:1.6;
-    margin-bottom:20px;
-}
-
-.modal-input{
-    width:100%;
-    padding:14px;
-    background:#08080c;
-    color:white;
-    border:1px solid var(--line);
-    border-radius:12px;
-    margin-bottom:12px;
-    outline:none;
-}
-
-/* ================= TOAST ================= */
-
-.toast{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    z-index:20000;
-    padding:15px 20px;
-    background:#15151d;
-    border:1px solid var(--line);
-    border-radius:14px;
-    box-shadow:var(--shadow);
-    transform:translateY(120px);
-    opacity:0;
-    transition:.4s;
-}
-
-.toast.show{
-    transform:translateY(0);
-    opacity:1;
-}
-
-/* ================= REVEAL ================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
-}
-
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:1050px){
-
-    .nav{
-        gap:14px;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-    }
-
-    .hero-art{
-        min-height:500px;
-    }
-
-    .release-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .values,
-    .fan-wall{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .social-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-@media(max-width:760px){
-
-    .header{
-        padding:15px 5%;
-    }
-
-    .nav{
-        display:none;
-        position:absolute;
-        top:75px;
-        left:5%;
-        right:5%;
-        padding:20px;
-        flex-direction:column;
-        background:#111116;
-        border:1px solid var(--line);
-        border-radius:18px;
-    }
-
-    .nav.open{
-        display:flex;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .header-actions .icon-btn:first-child{
-        display:none;
-    }
-
-    .hero{
-        padding-top:125px;
-        gap:25px;
-    }
-
-    .hero h1{
-        font-size:65px;
-        letter-spacing:-5px;
-    }
-
-    .hero-art{
-        min-height:420px;
-        transform:scale(.82);
-    }
-
-    .about-grid,
-    .support{
-        grid-template-columns:1fr;
-    }
-
-    .numbers{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .number{
-        border-bottom:1px solid var(--line);
-    }
-
-    .release-grid,
-    .values,
-    .fan-wall{
-        grid-template-columns:1fr;
-    }
-
-    .social-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .newsletter{
-        padding:35px 20px;
-    }
-
-    .newsletter h2{
-        font-size:34px;
-    }
-
-    .news-form{
-        flex-direction:column;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-        gap:30px;
-    }
-
-    .copyright{
-        flex-direction:column;
-    }
-}
-
-@media(max-width:480px){
-
-    .hero h1{
-        font-size:52px;
-    }
-
-    .section{
-        padding:80px 5%;
-    }
-
-    .section-title{
-        letter-spacing:-2px;
-    }
-
-    .info-list{
-        grid-template-columns:1fr;
-    }
-
-    .numbers{
-        grid-template-columns:1fr;
-    }
-
-    .number{
-        border-right:none;
-    }
-
-    .social-grid{
-        grid-template-columns:1fr;
-    }
-
-    .mpesa-number{
-        font-size:31px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<!-- PRELOADER -->
-<div class="loader" id="loader">
-    <div class="loader-box">
-        <div class="loader-logo">TEDDYZHU</div>
-        <div class="loader-line"><span></span></div>
-        <small style="color:#666">OFFICIAL WEBSITE</small>
-    </div>
-</div>
-
-<!-- HEADER -->
-<header class="header">
-
-    <a href="#home" class="logo">
-        TEDDYZHU
-        <small>OFFICIAL WEBSITE</small>
-    </a>
-
-    <nav class="nav" id="nav">
-        <a href="#home">Home</a>
-        <a href="#about">Biography</a>
-        <a href="#journey">Journey</a>
-        <a href="#music">Music</a>
-        <a href="#story">Story</a>
-        <a href="#support">Support</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="header-actions">
-        <button class="icon-btn" onclick="toggleTheme()" title="Theme">◐</button>
-        <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
-    </div>
-
-</header>
-
-
-<!-- HERO -->
-<section class="hero" id="home">
-
-    <div class="hero-copy reveal">
-
-        <div class="hero-label">
-            <span class="live-dot"></span>
-            OFFICIAL ARTIST WEBSITE
-        </div>
-
-        <h1>
-            THIS IS<br>
-            <span class="gradient">TEDDYZHU.</span>
-        </h1>
-
-        <p class="hero-text">
-            Welcome to the official digital home of Teddyzhu —
-            an independent Kenyan artist whose journey is built around
-            music, emotion, creativity and determination.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#about" class="btn btn-primary">Discover My Story</a>
-            <a href="#music" class="btn btn-outline">Explore Music</a>
-        </div>
-
-    </div>
-
-
-    <div class="hero-art reveal">
-
-        <div class="art-ring ring1"></div>
-        <div class="art-ring ring2"></div>
-        <div class="art-ring ring3"></div>
-
-        <!-- MICROPHONE -->
-        <div class="mic">
-
-            <div class="mic-head"></div>
-            <div class="mic-body"></div>
-            <div class="mic-base"></div>
-
-        </div>
-
-        <!-- GUITAR VISUAL -->
-        <div class="guitar">
-
-            <div class="guitar-head"></div>
-            <div class="guitar-neck"></div>
-            <div class="guitar-body"></div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section class="section" id="about">
-
-    <div class="section-head reveal">
-        <div>
-            <div class="eyebrow">WHO IS TEDDYZHU?</div>
-            <h2 class="section-title">More Than<br>A Name.</h2>
-        </div>
-
-        <p class="section-desc">
-            Teddyzhu is an artist building his identity through music,
-            personal experiences and a commitment to creating a future
-            through creativity.
-        </p>
-    </div>
-
-
-    <div class="about-grid">
-
-        <div class="about-card year-card reveal">
-
-            <div>
-                <div class="eyebrow">BORN</div>
-                <div class="big-year">2007</div>
-            </div>
-
-            <div>
-                <h3>Kisii, Kenya</h3>
-                <p style="color:var(--muted);line-height:1.8">
-                    The beginning of the journey.
-                    From Kisii to a growing musical identity.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="about-card about-copy reveal">
-
-            <div class="eyebrow">BIOGRAPHY</div>
-
-            <h2 style="font-size:34px">
-                The story behind<br>Teddyzhu.
-            </h2>
-
-            <p>
-                Teddyzhu is a Kenyan artist born in Kisii in 2007.
-                His artistic journey developed from a love for music
-                into a serious pursuit of becoming a recognized
-                independent artist.
-            </p>
-
-            <p>
-                Teddyzhu officially began his music journey in
-                <strong style="color:white">2021</strong>.
-                Since then, music has become an important part of
-                his creative identity, allowing him to express
-                emotions, experiences, ideas and stories through
-                different sounds.
-            </p>
-
-            <p>
-                His work continues to grow around songs, visual
-                creativity, storytelling and building a direct
-                connection with listeners.
-            </p>
-
-            <div class="info-list">
-
-                <div class="info">
-                    <span>Artist Name</span>
-                    <b>Teddyzhu</b>
-                </div>
-
-                <div class="info">
-                    <span>Born</span>
-                    <b>2007</b>
-                </div>
-
-                <div class="info">
-                    <span>Birthplace</span>
-                    <b>Kisii, Kenya</b>
-                </div>
-
-                <div class="info">
-                    <span>Music Journey</span>
-                    <b>Started 2021</b>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- JOURNEY -->
-<section class="section" id="journey">
-
-    <div class="section-head reveal">
-
-        <div>
-            <div class="eyebrow">THE JOURNEY</div>
-            <h2 class="section-title">From Beginning<br>To Becoming.</h2>
-        </div>
-
-        <p class="section-desc">
-            Every artist has a beginning. This is the timeline
-            behind the Teddyzhu journey.
-        </p>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2007</div>
-            <h3>The Beginning</h3>
-            <p>
-                Teddyzhu was born in Kisii, Kenya,
-                beginning the story of an artist whose creative
-                journey would later grow through music.
-            </p>
-        </div>
-
-
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2021</div>
-            <h3>The Music Journey Begins</h3>
-            <p>
-                2021 marked the beginning of Teddyzhu's official
-                music journey and the point where music became a
-                serious creative path.
-            </p>
-        </div>
-
-
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">THE PRESENT</div>
-            <h3>Building The Name</h3>
-            <p>
-                Teddyzhu continues developing his music,
-                identity, visuals and digital presence while
-                connecting his work with listeners.
-            </p>
-        </div>
-
-
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">THE FUTURE</div>
-            <h3>Still Just The Beginning</h3>
-            <p>
-                The goal is simple: continue creating,
-                continue improving and take the Teddyzhu name
-                further through music and creativity.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MUSIC -->
-<section class="section" id="music">
-
-    <div class="section-head reveal">
-
-        <div>
-            <div class="eyebrow">MUSIC WORLD</div>
-            <h2 class="section-title">The Music<br>Of Teddyzhu.</h2>
-        </div>
-
-        <p class="section-desc">
-            A growing catalogue shaped by different emotions,
-            stories and creative directions.
-        </p>
-
-    </div>
-
-
-    <div class="release-grid">
-
-        <div class="release reveal">
-            <div class="cover one">
-                <span>LOVE</span>
-            </div>
-            <div class="release-info">
-                <h3>LOVE</h3>
-                <p>Teddyzhu ft Nimphil Paul & Muhzih</p>
-                <div class="release-meta">
-                    <span>RELEASE</span>
-                    <span>2026</span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="release reveal">
-            <div class="cover two">
-                <span>NUMBER<br>ONE</span>
-            </div>
-            <div class="release-info">
-                <h3>Number One</h3>
-                <p>Teddyzhu</p>
-                <div class="release-meta">
-                    <span>SONG</span>
-                    <span>OFFICIAL</span>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="release reveal">
-            <div class="cover three">
-                <span>PUMZIKA<br>MAMA</span>
-            </div>
-            <div class="release-info">
-                <h3>Pumzika Mama</h3>
-                <p>A tribute from the heart</p>
-                <div class="release-meta">
-                    <span>TRIBUTE</span>
-                    <span>TEDDYZHU</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- NUMBERS -->
-<section class="section">
-
-    <div class="numbers reveal">
-
-        <div class="number">
-            <b>2021</b>
-            <span>MUSIC JOURNEY STARTED</span>
-        </div>
-
-        <div class="number">
-            <b>2007</b>
-            <span>YEAR OF BIRTH</span>
-        </div>
-
-        <div class="number">
-            <b>KISII</b>
-            <span>PLACE OF BIRTH</span>
-        </div>
-
-        <div class="number">
-            <b>∞</b>
-            <span>ROOM TO GROW</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ARTIST IDENTITY -->
-<section class="section" id="story">
-
-    <div class="section-head reveal">
-
-        <div>
-            <div class="eyebrow">ARTIST IDENTITY</div>
-            <h2 class="section-title">What Teddyzhu<br>Represents.</h2>
-        </div>
-
-    </div>
-
-
-    <div class="values">
-
-        <div class="value reveal">
-            <div class="value-icon">✦</div>
-            <h3>Authenticity</h3>
-            <p>
-                Music should carry emotion and represent the
-                person behind the name.
-            </p>
-        </div>
-
-        <div class="value reveal">
-            <div class="value-icon">◈</div>
-            <h3>Creativity</h3>
-            <p>
-                From sound to visuals, creativity remains a
-                central part of the Teddyzhu identity.
-            </p>
-        </div>
-
-        <div class="value reveal">
-            <div class="value-icon">↗</div>
-            <h3>Growth</h3>
-            <p>
-                The journey started in 2021, but the vision is
-                bigger than one year or one release.
-            </p>
-        </div>
-
-        <div class="value reveal">
-            <div class="value-icon">♡</div>
-            <h3>Emotion</h3>
-            <p>
-                Stories, love, memories and real-life emotions
-                influence the creative direction.
-            </p>
-        </div>
-
-        <div class="value reveal">
-            <div class="value-icon">◎</div>
-            <h3>Connection</h3>
-            <p>
-                The audience is part of the journey, not simply
-                a number on a screen.
-            </p>
-        </div>
-
-        <div class="value reveal">
-            <div class="value-icon">∞</div>
-            <h3>Vision</h3>
-            <p>
-                Build a lasting identity and continue pushing
-                the Teddyzhu name forward.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FAN WALL -->
-<section class="section fan-section">
-
-    <div class="section-head reveal">
-
-        <div>
-            <div class="eyebrow">THE COMMUNITY</div>
-            <h2 class="section-title">The People<br>Behind The Journey.</h2>
-        </div>
-
-        <p class="section-desc">
-            Teddyzhu is not only about the artist.
-            It is also about everyone following the journey.
-        </p>
-
-    </div>
-
-
-    <div class="fan-wall">
-
-        <div class="fan reveal">
-            <div class="fan-top">
-                <div class="avatar">T</div>
-                <div>
-                    <strong>Teddyzhu Family</strong><br>
-                    <small style="color:#777">Supporter</small>
-                </div>
-            </div>
-            <p>
-                The journey is only beginning. Keep creating and
-                keep moving forward.
-            </p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-
-        <div class="fan reveal">
-            <div class="fan-top">
-                <div class="avatar">F</div>
-                <div>
-                    <strong>Music Family</strong><br>
-                    <small style="color:#777">Listener</small>
-                </div>
-            </div>
-            <p>
-                Every song is another chapter in the story.
-            </p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-
-        <div class="fan reveal">
-            <div class="fan-top">
-                <div class="avatar">♥</div>
-                <div>
-                    <strong>Teddyzhu Supporters</strong><br>
-                    <small style="color:#777">Community</small>
-                </div>
-            </div>
-            <p>
-                Thank you for being part of the journey.
-            </p>
-            <div class="stars">★★★★★</div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MPESA + CONTACT -->
-<section class="section" id="support">
-
-    <div class="section-head reveal">
-
-        <div>
-            <div class="eyebrow">SUPPORT TEDDYZHU</div>
-            <h2 class="section-title">Support The<br>Journey.</h2>
-        </div>
-
-    </div>
-
-
-    <div class="support">
-
-        <div class="mpesa-card reveal">
-
-            <span class="mpesa-badge">M-PESA SUPPORT</span>
-
-            <h2 style="font-size:34px;margin-top:20px">
-                Support Teddyzhu
-            </h2>
-
-            <p style="color:#9aa39c;line-height:1.8;margin-top:10px">
-                Your support helps the creative journey continue.
-                You can support directly through M-Pesa.
-            </p>
-
-            <div class="mpesa-number" id="mpesaNumber">
-                0719157643
-            </div>
-
-            <small style="color:#777">
-                M-Pesa Number
-            </small>
-
-            <br>
-
-            <button class="btn copy-number" onclick="copyMpesa()">
-                Copy M-Pesa Number
-            </button>
-
-        </div>
-
-
-        <div class="contact-card reveal" id="contact">
-
-            <div class="eyebrow">CONTACT</div>
-
-            <h2 style="font-size:35px">
-                Connect With Teddyzhu
-            </h2>
-
-            <p>
-                For bookings, collaborations, business enquiries
-                and official communication, use the form below.
-            </p>
-
-            <form class="contact-form" onsubmit="sendMessage(event)">
-
-                <input
-                    type="text"
-                    id="contactName"
-                    placeholder="Your Name"
-                    required
-                >
-
-                <input
-                    type="email"
-                    id="contactEmail"
-                    placeholder="Your Email"
-                    required
-                >
-
-                <textarea
-                    id="contactMessage"
-                    placeholder="Your Message"
-                    required
-                ></textarea>
-
-                <button class="btn btn-primary">
-                    Send Message
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SOCIAL -->
-<section class="section">
-
-    <div class="section-head reveal">
-
-        <div>
-            <div class="eyebrow">FOLLOW THE JOURNEY</div>
-            <h2 class="section-title">Teddyzhu<br>Online.</h2>
-        </div>
-
-    </div>
-
-
-    <div class="social-grid">
-
-        <a class="social reveal" href="#" target="_blank">
-            <div style="font-size:25px">▶</div>
-            <strong>YouTube</strong>
-            <small>Official Channel</small>
-        </a>
-
-        <a class="social reveal" href="#" target="_blank">
-            <div style="font-size:25px">◎</div>
-            <strong>Instagram</strong>
-            <small>Official Profile</small>
-        </a>
-
-        <a class="social reveal" href="#" target="_blank">
-            <div style="font-size:25px">f</div>
-            <strong>Facebook</strong>
-            <small>Official Page</small>
-        </a>
-
-        <a class="social reveal" href="#" target="_blank">
-            <div style="font-size:25px">♪</div>
-            <strong>TikTok</strong>
-            <small>Official Profile</small>
-        </a>
-
-        <a class="social reveal" href="#" target="_blank">
-            <div style="font-size:25px">𝕏</div>
-            <strong>X</strong>
-            <small>Official Profile</small>
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- NEWSLETTER -->
-<section class="section">
-
-    <div class="newsletter reveal">
-
-        <div class="eyebrow">TEDDYZHU UPDATES</div>
-
-        <h2>Stay In The Journey.</h2>
-
-        <p>
-            Join the Teddyzhu community and receive official
-            updates, new announcements and creative news.
-        </p>
-
-        <form class="news-form" onsubmit="subscribe(event)">
-
-            <input
-                type="email"
-                id="newsletterEmail"
-                placeholder="Enter your email address"
-                required
-            >
-
-            <button class="btn btn-primary">
-                Join Community
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-
-    <div class="footer-grid">
-
-        <div class="footer-brand">
-
-            <div class="logo">
-                TEDDYZHU
-                <small>OFFICIAL WEBSITE</small>
-            </div>
-
-            <p>
-                Official digital home of Teddyzhu —
-                music, story, creativity and the journey.
-            </p>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h4>Explore</h4>
-
-            <a href="#home">Home</a>
-            <a href="#about">Biography</a>
-            <a href="#journey">Journey</a>
-            <a href="#music">Music</a>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h4>Connect</h4>
-
-            <a href="#contact">Contact</a>
-            <a href="#support">Support</a>
-            <a href="#">YouTube</a>
-            <a href="#">Instagram</a>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h4>Official</h4>
-
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Official Updates</a>
-            <a href="#">M-Pesa Support</a>
-
-        </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        <span>
-            © 2026 Teddyzhu. All Rights Reserved.
-        </span>
-
-        <span>
-            Built for the Teddyzhu journey.
-        </span>
-
-    </div>
-
-</footer>
-
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-
-    <div class="modal-box">
-
-        <button class="close" onclick="closeModal()">×</button>
-
-        <h2 id="modalTitle">Teddyzhu</h2>
-
-        <p id="modalText">
-            Welcome to the official Teddyzhu website.
-        </p>
-
-        <button class="btn btn-primary" onclick="closeModal()">
-            Continue
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- TOAST -->
-<div class="toast" id="toast">
-    Done successfully.
-</div>
-
-
-<script>
-
-/* ================= LOADER ================= */
-
-window.addEventListener("load",function(){
-
-    setTimeout(function(){
-
-        document.getElementById("loader")
-        .classList.add("hide");
-
-    },900);
-
-});
-
-
-/* ================= MOBILE MENU ================= */
-
-function toggleMenu(){
-
-    document.getElementById("nav")
-    .classList.toggle("open");
-
-}
-
-
-/* ================= THEME ================= */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-}
-
-
-/* ================= COPY MPESA ================= */
-
-function copyMpesa(){
-
-    const number="0719157643";
-
-    navigator.clipboard.writeText(number)
-    .then(function(){
-
-        showToast("M-Pesa number copied.");
-
-    })
-    .catch(function(){
-
-        showToast("M-Pesa: 0719157643");
-
-    });
-
-}
-
-
-/* ================= TOAST ================= */
-
-function showToast(message){
-
-    const toast=document.getElementById("toast");
-
-    toast.innerText=message;
-
-    toast.classList.add("show");
-
-    setTimeout(function(){
-
-        toast.classList.remove("show");
-
-    },2800);
-
-}
-
-
-/* ================= CONTACT ================= */
-
-function sendMessage(event){
-
-    event.preventDefault();
-
-    const name=document.getElementById("contactName").value;
-
-    showToast("Thank you "+name+". Your message is ready.");
-
-    event.target.reset();
-
-}
-
-
-/* ================= NEWSLETTER ================= */
-
-function subscribe(event){
-
-    event.preventDefault();
-
-    showToast("Welcome to the Teddyzhu community.");
-
-    event.target.reset();
-
-}
-
-
-/* ================= REVEAL ================= */
-
-const observer=new IntersectionObserver(
-
-    function(entries){
-
-        entries.forEach(function(entry){
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("visible");
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold:.12
-    }
-
-);
-
-
-document.querySelectorAll(".reveal")
-.forEach(function(el){
-
-    observer.observe(el);
-
-});
-
-
-/* ================= MODAL ================= */
-
-function openModal(title,text){
-
-    document.getElementById("modalTitle").innerText=title;
-
-    document.getElementById("modalText").innerText=text;
-
-    document.getElementById("modal")
-    .classList.add("show");
-
-}
-
-
-function closeModal(){
-
-    document.getElementById("modal")
-    .classList.remove("show");
-
-}
-
-
-window.addEventListener("click",function(e){
-
-    const modal=document.getElementById("modal");
-
-    if(e.target===modal){
-
-        closeModal();
-
-    }
-
-});
-
-
-/* ================= NAV CLOSE ================= */
-
-document.querySelectorAll(".nav a")
-.forEach(function(link){
-
-    link.addEventListener("click",function(){
-
-        document.getElementById("nav")
-        .classList.remove("open");
-
-    });
-
-});
-
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="sw">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teddyzhu — Official Support</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-    --bg:#020403;
-    --green:#00e676;
-    --green2:#00c853;
-    --dark:#07110b;
-    --white:#fff;
-    --muted:#8c9891;
-    --glass:rgba(255,255,255,.055);
-    --border:rgba(255,255,255,.1);
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
-}
-
-body{
-    font-family:Inter,Arial,sans-serif;
-    background:
-        radial-gradient(circle at 50% -10%,rgba(0,230,118,.16),transparent 35%),
-        radial-gradient(circle at 10% 90%,rgba(0,200,83,.08),transparent 30%),
-        var(--bg);
-    color:var(--white);
-    overflow-x:hidden;
-}
-
-/* ================= LOADING ================= */
-
-#loader{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    background:#010201;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:opacity .8s,visibility .8s;
-}
-
-#loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-inner{
-    width:min(330px,80%);
-    text-align:center;
-}
-
-.loader-logo{
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:-3px;
-    color:#fff;
-}
-
-.loader-logo span{
-    color:var(--green);
-}
-
-.loader-sub{
-    margin-top:8px;
-    font-size:10px;
-    letter-spacing:4px;
-    color:#69736d;
-}
-
-.loader-track{
-    height:4px;
-    width:100%;
-    background:#18201b;
-    border-radius:20px;
-    margin-top:35px;
-    overflow:hidden;
-}
-
-.loader-bar{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,#00a844,#00ff83);
-    box-shadow:0 0 20px rgba(0,230,118,.7);
-}
-
-.loader-percent{
-    margin-top:15px;
-    font-size:12px;
-    color:var(--green);
-    font-weight:800;
-}
-
-/* ================= BACKGROUND ================= */
-
-.orb{
-    position:fixed;
-    border-radius:50%;
-    pointer-events:none;
-    filter:blur(80px);
-    opacity:.12;
-}
-
-.orb.one{
-    width:300px;
-    height:300px;
-    background:#00e676;
-    top:20%;
-    left:-150px;
-}
-
-.orb.two{
-    width:250px;
-    height:250px;
-    background:#00c853;
-    bottom:0;
-    right:-100px;
-}
-
-/* ================= TOP BAR ================= */
-
-.top{
-    position:relative;
-    z-index:10;
-    width:100%;
-    padding:22px 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border-bottom:1px solid var(--border);
-    background:rgba(2,4,3,.65);
-    backdrop-filter:blur(25px);
-}
-
-.brand{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:-1.5px;
-}
-
-.brand span{
-    color:var(--green);
-}
-
-.language{
-    position:relative;
-}
-
-.language select{
-    appearance:none;
-    background:var(--glass);
-    border:1px solid var(--border);
-    color:#fff;
-    padding:11px 35px 11px 15px;
-    border-radius:12px;
-    outline:none;
-    cursor:pointer;
-}
-
-.language:after{
-    content:"⌄";
-    position:absolute;
-    right:13px;
-    top:8px;
-    pointer-events:none;
-    color:#aaa;
-}
-
-/* ================= MAIN ================= */
-
-main{
-    min-height:calc(100vh - 75px);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:50px 18px;
-}
-
-.support-wrap{
-    width:min(760px,100%);
-    text-align:center;
-}
-
-.verified{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:9px 15px;
-    border:1px solid rgba(0,230,118,.22);
-    background:rgba(0,230,118,.06);
-    border-radius:50px;
-    color:#78ffb0;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:1.5px;
-}
-
-.check{
-    width:17px;
-    height:17px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:var(--green);
-    color:#001c0b;
-    font-size:10px;
-}
-
-h1{
-    margin-top:25px;
-    font-size:clamp(42px,8vw,78px);
-    line-height:.95;
-    letter-spacing:-5px;
-    font-weight:900;
-}
-
-h1 span{
-    color:var(--green);
-}
-
-.subtitle{
-    max-width:570px;
-    margin:22px auto 0;
-    color:var(--muted);
-    line-height:1.8;
-    font-size:15px;
-}
-
-/* ================= 3D CARD ================= */
-
-.card{
-    position:relative;
-    margin:42px auto 0;
-    width:min(570px,100%);
-    padding:35px;
-    border-radius:32px;
-    background:
-        linear-gradient(145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.025));
-    border:1px solid var(--border);
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.6),
-        inset 0 1px 0 rgba(255,255,255,.08);
-    transform-style:preserve-3d;
-}
-
-.card:before{
-    content:"";
-    position:absolute;
-    inset:-1px;
-    border-radius:32px;
-    padding:1px;
-    background:linear-gradient(
-        135deg,
-        rgba(0,230,118,.35),
-        transparent 35%,
-        transparent 65%,
-        rgba(0,200,83,.2)
-    );
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
-    pointer-events:none;
-}
-
-.mpesa-icon{
-    width:78px;
-    height:78px;
-    margin:0 auto 22px;
-    border-radius:24px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:35px;
-    font-weight:900;
-    color:#001b0b;
-    background:linear-gradient(145deg,#37ff9a,#00c853);
-    box-shadow:
-        0 20px 40px rgba(0,230,118,.2),
-        inset 0 2px 4px rgba(255,255,255,.5);
-    transform:translateZ(40px);
-}
-
-.card h2{
-    font-size:28px;
-    letter-spacing:-1px;
-}
-
-.number{
-    margin:10px 0 28px;
-    color:#8affb7;
-    font-size:13px;
-    letter-spacing:2px;
-    font-weight:700;
-}
-
-/* ================= AMOUNTS ================= */
-
-.label{
-    display:block;
-    text-align:left;
-    margin-bottom:12px;
-    color:#adb6b0;
-    font-size:12px;
-    font-weight:700;
+transform:translateY(-5px);
+border-color:rgba(0,230,118,.3);
+}
+
+.socialIcon{
+font-size:24px;
+margin-bottom:18px;
+}
+
+.social h3{
+font-size:14px;
+}
+
+.social p{
+font-size:10px;
+color:#68736c;
+margin-top:6px;
+}
+
+/* =========================
+SUPPORT
+========================= */
+
+.supportSection{
+background:
+radial-gradient(circle at 50% 0%,rgba(0,230,118,.09),transparent 35%);
+}
+
+.supportBox{
+max-width:900px;
+margin:auto;
+padding:50px;
+border-radius:32px;
+border:1px solid rgba(0,230,118,.15);
+background:
+linear-gradient(145deg,rgba(0,230,118,.055),rgba(255,255,255,.02));
+box-shadow:var(--shadow);
+text-align:center;
+}
+
+.mpesaLogo{
+width:70px;
+height:70px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 20px;
+background:linear-gradient(145deg,#46ffa3,#00c853);
+color:#00210e;
+font-weight:900;
+font-size:28px;
+box-shadow:0 15px 35px rgba(0,230,118,.2);
+}
+
+.supportBox h2{
+font-size:38px;
+letter-spacing:-2px;
+}
+
+.supportBox p{
+color:#7e8982;
+font-size:13px;
+line-height:1.8;
+margin:15px auto 25px;
+max-width:550px;
+}
+
+.mpesaNumber{
+display:inline-block;
+padding:13px 20px;
+border-radius:12px;
+background:#08110b;
+border:1px solid rgba(0,230,118,.18);
+color:#8affb5;
+font-size:13px;
+font-weight:800;
+letter-spacing:1px;
 }
 
 .amounts{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:9px;
+margin-top:25px;
 }
 
 .amount{
-    min-height:55px;
-    border-radius:15px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.035);
-    color:#fff;
-    font-weight:800;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.amount:hover{
-    border-color:rgba(0,230,118,.5);
-    transform:translateY(-3px);
+padding:12px 16px;
+border-radius:11px;
+border:1px solid var(--line);
+background:#0a0e0c;
+color:white;
+font-weight:800;
+font-size:11px;
+cursor:pointer;
 }
 
 .amount.active{
-    color:#001b0b;
-    background:linear-gradient(145deg,#52ffab,#00d866);
-    border-color:#52ffab;
-    box-shadow:0 10px 30px rgba(0,230,118,.2);
+background:var(--green);
+color:#001b0b;
+border-color:var(--green);
 }
 
-/* ================= CUSTOM ================= */
-
-.custom{
-    margin-top:12px;
-    display:flex;
-    align-items:center;
-    background:rgba(255,255,255,.035);
-    border:1px solid var(--border);
-    border-radius:15px;
-    overflow:hidden;
+.supportNote{
+margin-top:20px;
+font-size:9px!important;
+color:#59645d!important;
 }
 
-.custom span{
-    padding-left:17px;
-    color:var(--green);
-    font-weight:900;
+/* =========================
+FAQ
+========================= */
+
+.faq{
+max-width:850px;
+margin:auto;
 }
 
-.custom input{
-    width:100%;
-    padding:16px;
-    border:none;
-    outline:none;
-    background:transparent;
-    color:#fff;
-    font-size:15px;
-    font-weight:700;
+.faqItem{
+border-bottom:1px solid var(--line);
 }
 
-/* ================= PHONE ================= */
-
-.phone{
-    margin-top:22px;
-    text-align:left;
+.faqQuestion{
+width:100%;
+padding:23px 5px;
+background:none;
+border:none;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+font-size:13px;
+font-weight:700;
+text-align:left;
 }
 
-.phone input{
-    width:100%;
-    padding:17px;
-    border-radius:15px;
-    border:1px solid var(--border);
-    outline:none;
-    background:rgba(255,255,255,.035);
-    color:white;
-    font-size:15px;
+.faqAnswer{
+max-height:0;
+overflow:hidden;
+transition:.3s;
+color:#78827c;
+font-size:12px;
+line-height:1.8;
 }
 
-.phone input:focus,
-.custom:focus-within{
-    border-color:rgba(0,230,118,.6);
-    box-shadow:0 0 0 3px rgba(0,230,118,.06);
+.faqItem.open .faqAnswer{
+max-height:150px;
+padding:0 5px 20px;
 }
 
-/* ================= PAY BUTTON ================= */
-
-.pay{
-    width:100%;
-    margin-top:22px;
-    padding:18px;
-    border:none;
-    border-radius:16px;
-    cursor:pointer;
-    color:#001b0b;
-    background:linear-gradient(100deg,#00e676,#42ff9b);
-    font-size:15px;
-    font-weight:900;
-    letter-spacing:.2px;
-    box-shadow:0 18px 40px rgba(0,230,118,.18);
-    transition:.3s;
+.plus{
+color:var(--green);
+font-size:20px;
 }
 
-.pay:hover{
-    transform:translateY(-4px);
-    box-shadow:0 25px 55px rgba(0,230,118,.28);
+/* =========================
+FOOTER
+========================= */
+
+footer{
+padding:55px 7% 30px;
+border-top:1px solid var(--line);
+background:#030504;
 }
 
-.pay:active{
-    transform:translateY(0);
+.footerGrid{
+display:grid;
+grid-template-columns:1.5fr 1fr 1fr;
+gap:50px;
 }
 
-.secure{
-    margin-top:16px;
-    color:#69746d;
-    font-size:10px;
-    letter-spacing:1px;
+.footerBrand{
+font-size:25px;
+font-weight:900;
 }
 
-/* ================= STATUS ================= */
-
-.status{
-    display:none;
-    margin-top:25px;
-    padding:20px;
-    border-radius:18px;
-    background:rgba(0,230,118,.05);
-    border:1px solid rgba(0,230,118,.16);
+.footerBrand span{
+color:var(--green);
 }
 
-.status.show{
-    display:block;
+.footerText{
+margin-top:14px;
+color:#626c66;
+font-size:11px;
+line-height:1.8;
+max-width:350px;
 }
 
-.spinner{
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:3px solid rgba(255,255,255,.1);
-    border-top-color:var(--green);
-    animation:spin 1s linear infinite;
-    margin:0 auto 12px;
+.footer h4{
+font-size:11px;
+margin-bottom:15px;
+color:#adb5b0;
 }
 
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+.footer a{
+display:block;
+font-size:11px;
+color:#68726c;
+margin:9px 0;
 }
 
-.status-title{
-    font-weight:800;
+.copyright{
+margin-top:50px;
+padding-top:20px;
+border-top:1px solid var(--line);
+font-size:9px;
+color:#4e5752;
+text-align:center;
 }
 
-.status-text{
-    margin-top:7px;
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.6;
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:950px){
+
+nav{
+display:none;
 }
 
-/* ================= FOOTER ================= */
-
-.footer{
-    margin-top:45px;
-    color:#59615c;
-    font-size:10px;
-    letter-spacing:1px;
+.hero{
+grid-template-columns:1fr;
+padding-top:125px;
 }
 
-.footer strong{
-    color:#89948d;
+.visual{
+height:430px;
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:600px){
-
-    .top{
-        padding:17px 5%;
-    }
-
-    .brand{
-        font-size:21px;
-    }
-
-    main{
-        padding:35px 14px;
-        align-items:flex-start;
-    }
-
-    .support-wrap{
-        padding-top:20px;
-    }
-
-    h1{
-        font-size:48px;
-        letter-spacing:-3px;
-    }
-
-    .card{
-        padding:23px 17px;
-        border-radius:25px;
-    }
-
-    .card:before{
-        border-radius:25px;
-    }
-
-    .amounts{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .amount{
-        min-height:52px;
-    }
-
-    .mpesa-icon{
-        width:68px;
-        height:68px;
-        border-radius:20px;
-    }
-
-    .subtitle{
-        font-size:14px;
-    }
+.musicGrid{
+grid-template-columns:repeat(2,1fr);
 }
 
-@media(max-width:370px){
-
-    .amounts{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    h1{
-        font-size:42px;
-    }
+.linksGrid{
+grid-template-columns:repeat(2,1fr);
 }
+
+.statsSection{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:650px){
+
+header{
+height:68px;
+padding:0 5%;
+}
+
+.logo{
+font-size:21px;
+}
+
+.headerRight .supportBtn{
+display:none;
+}
+
+.lang{
+padding:8px;
+font-size:10px;
+}
+
+.hero{
+padding:115px 5% 60px;
+gap:20px;
+}
+
+.hero h1{
+font-size:57px;
+letter-spacing:-4px;
+}
+
+.heroText{
+font-size:13px;
+}
+
+.visual{
+height:350px;
+}
+
+.disc{
+width:270px;
+height:270px;
+}
+
+.disc:before{
+inset:35px;
+}
+
+.disc:after{
+font-size:21px;
+}
+
+.discCenter{
+width:45px;
+height:45px;
+}
+
+.floatingCard{
+padding:13px;
+}
+
+.f1{
+top:15px;
+right:0;
+}
+
+.f2{
+bottom:10px;
+left:0;
+}
+
+section{
+padding:75px 5%;
+}
+
+.sectionTop{
+display:block;
+}
+
+.sectionDescription{
+margin-top:15px;
+}
+
+.aboutGrid{
+grid-template-columns:1fr;
+}
+
+.musicGrid{
+grid-template-columns:1fr;
+}
+
+.linksGrid{
+grid-template-columns:1fr 1fr;
+}
+
+.statsSection{
+grid-template-columns:1fr 1fr;
+}
+
+.supportBox{
+padding:30px 18px;
+}
+
+.supportBox h2{
+font-size:30px;
+}
+
+.footerGrid{
+grid-template-columns:1fr;
+gap:30px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="gridBackground"></div>
+
+
 <!-- ================= LOADER ================= -->
 
-<div id="loader">
+<div class="loader" id="loader">
 
-    <div class="loader-inner">
+<div class="loaderBox">
 
-        <div class="loader-logo">
-            TEDDY<span>ZHU</span>
-        </div>
+<div class="loaderLogo">
+TEDDY<span>ZHU</span>
+</div>
 
-        <div class="loader-sub">
-            OFFICIAL SUPPORT
-        </div>
+<div class="loaderText">
+OFFICIAL WEBSITE
+</div>
 
-        <div class="loader-track">
-            <div class="loader-bar" id="loaderBar"></div>
-        </div>
+<div class="loaderLine">
+<div class="loaderProgress" id="loaderProgress"></div>
+</div>
 
-        <div class="loader-percent" id="loaderPercent">
-            0%
-        </div>
-
-    </div>
+<div class="loaderPercent" id="loaderPercent">
+0%
+</div>
 
 </div>
 
-
-<div class="orb one"></div>
-<div class="orb two"></div>
+</div>
 
 
 <!-- ================= HEADER ================= -->
 
-<header class="top">
+<header>
 
-    <div class="brand">
-        TEDDY<span>ZHU</span>
-    </div>
+<a href="#home" class="logo">
+TEDDY<span>ZHU</span>
+</a>
 
-    <div class="language">
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#journey">Journey</a>
+<a href="#music">Music</a>
+<a href="#support">Support</a>
+</nav>
 
-        <select id="language">
+<div class="headerRight">
 
-            <option value="sw">Swahili</option>
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-            <option value="de">Deutsch</option>
-            <option value="pt">Português</option>
-            <option value="it">Italiano</option>
-            <option value="ar">العربية</option>
-            <option value="hi">हिन्दी</option>
-            <option value="zh">中文</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="tr">Türkçe</option>
-            <option value="ru">Русский</option>
+<select class="lang" id="language">
 
-        </select>
+<option value="en">English</option>
+<option value="sw">Swahili</option>
+<option value="fr">Français</option>
+<option value="es">Español</option>
+<option value="de">Deutsch</option>
+<option value="pt">Português</option>
+<option value="it">Italiano</option>
+<option value="ar">العربية</option>
+<option value="hi">हिन्दी</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+<option value="ko">한국어</option>
+<option value="tr">Türkçe</option>
+<option value="ru">Русский</option>
 
-    </div>
+</select>
+
+<a href="#support" class="supportBtn">
+Support
+</a>
+
+</div>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
+<!-- ================= HERO ================= -->
 
-<main>
+<main id="home">
 
-<div class="support-wrap">
+<section class="hero">
 
-    <div class="verified">
-        <span class="check">✓</span>
-        OFFICIAL TEDDYZHU SUPPORT
-    </div>
+<div>
 
+<div class="heroSmall">
+<span class="dot"></span>
+OFFICIAL TEDDYZHU WEBSITE
+</div>
 
-    <h1>
-        SUPPORT<br>
-        <span>TEDDYZHU.</span>
-    </h1>
+<h1>
+THIS IS<br>
+<span>TEDDYZHU.</span>
+</h1>
 
+<p class="heroText">
+Welcome to the official home of Teddyzhu — an independent Kenyan artist
+building a journey through music, creativity, storytelling and determination.
+Discover the person behind the name, the journey that shaped the artist,
+and the vision for what comes next.
+</p>
 
-    <p class="subtitle">
-        Support the journey directly through M-Pesa.
-        Choose an amount below and send your support securely.
-    </p>
+<div class="heroButtons">
 
+<a href="#about" class="btn btnGreen">
+DISCOVER TEDDYZHU
+</a>
 
-    <!-- ================= CARD ================= -->
-
-    <div class="card" id="supportCard">
-
-        <div class="mpesa-icon">
-            M
-        </div>
-
-        <h2>
-            M-Pesa Support
-        </h2>
-
-        <div class="number">
-            +254 719 157 643
-        </div>
-
-
-        <!-- AMOUNTS -->
-
-        <span class="label">
-            CHOOSE AMOUNT
-        </span>
-
-        <div class="amounts">
-
-            <button class="amount" data-value="10">
-                KSh 10
-            </button>
-
-            <button class="amount" data-value="20">
-                KSh 20
-            </button>
-
-            <button class="amount" data-value="30">
-                KSh 30
-            </button>
-
-            <button class="amount" data-value="40">
-                KSh 40
-            </button>
-
-            <button class="amount" data-value="50">
-                KSh 50
-            </button>
-
-            <button class="amount" data-value="100">
-                KSh 100
-            </button>
-
-            <button class="amount" data-value="200">
-                KSh 200
-            </button>
-
-            <button class="amount" data-value="500">
-                KSh 500
-            </button>
-
-            <button class="amount" data-value="1000">
-                KSh 1000
-            </button>
-
-        </div>
-
-
-        <!-- CUSTOM -->
-
-        <div class="custom">
-
-            <span>KSh</span>
-
-            <input
-                type="number"
-                id="customAmount"
-                min="10"
-                max="1000"
-                placeholder="Custom amount — 10 to 1000"
-            >
-
-        </div>
-
-
-        <!-- PHONE -->
-
-        <div class="phone">
-
-            <span class="label">
-                M-PESA PHONE NUMBER
-            </span>
-
-            <input
-                type="tel"
-                id="phone"
-                placeholder="07XXXXXXXX"
-                maxlength="13"
-            >
-
-        </div>
-
-
-        <!-- PAY -->
-
-        <button class="pay" onclick="startPayment()">
-            SUPPORT TEDDYZHU
-        </button>
-
-
-        <div class="secure">
-            🔒 SECURE M-PESA PAYMENT • YOU ENTER YOUR PIN ON YOUR PHONE
-        </div>
-
-
-        <!-- STATUS -->
-
-        <div class="status" id="status">
-
-            <div class="spinner"></div>
-
-            <div class="status-title" id="statusTitle">
-                Preparing payment...
-            </div>
-
-            <div class="status-text" id="statusText">
-                Your M-Pesa request is being prepared.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer">
-        © 2026 <strong>Teddyzhu</strong> • Official Support
-    </div>
+<a href="#music" class="btn btnDark">
+EXPLORE MUSIC
+</a>
 
 </div>
+
+</div>
+
+
+<div class="visual">
+
+<div class="disc">
+
+<div class="discCenter"></div>
+
+</div>
+
+<div class="floatingCard f1">
+
+<strong>2021</strong>
+<small>MUSIC JOURNEY</small>
+
+</div>
+
+<div class="floatingCard f2">
+
+<strong>KISII</strong>
+<small>KENYA • ORIGIN</small>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+<div class="sectionTop">
+
+<div>
+
+<div class="kicker">
+ABOUT THE ARTIST
+</div>
+
+<h2 class="sectionTitle">
+Who is <span style="color:var(--green)">Teddyzhu?</span>
+</h2>
+
+</div>
+
+<p class="sectionDescription">
+A story built from beginnings, ambition and a commitment to keep creating.
+</p>
+
+</div>
+
+
+<div class="aboutGrid">
+
+<div class="aboutCard">
+
+<h3>
+The Artist
+</h3>
+
+<p>
+Teddyzhu is the artist name of a Kenyan musician born in Kisii, Kenya.
+His musical journey officially began in 2021, marking the beginning of a
+serious chapter in his pursuit of music and creative expression.
+
+His identity as an artist is connected to his experiences, emotions,
+relationships, challenges and dreams. Through music, Teddyzhu continues
+to create his own path and develop a sound and identity that represents him.
+</p>
+
+</div>
+
+
+<div class="aboutCard">
+
+<h3>
+The Identity
+</h3>
+
+<div class="factGrid">
+
+<div class="fact">
+<b>2007</b>
+<span>Born</span>
+</div>
+
+<div class="fact">
+<b>Kisii</b>
+<span>Born In</span>
+</div>
+
+<div class="fact">
+<b>Kenya</b>
+<span>Country</span>
+</div>
+
+<div class="fact">
+<b>2021</b>
+<span>Music Began</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= JOURNEY ================= -->
+
+<section id="journey">
+
+<div class="sectionTop">
+
+<div>
+
+<div class="kicker">
+THE JOURNEY
+</div>
+
+<h2 class="sectionTitle">
+From <span style="color:var(--green)">2021</span> Forward
+</h2>
+
+</div>
+
+<p class="sectionDescription">
+Every artist has a beginning. This is part of the timeline behind Teddyzhu.
+</p>
+
+</div>
+
+
+<div class="timeline">
+
+<div class="timeItem">
+
+<div class="timeDot"></div>
+
+<div class="timeYear">
+2007
+</div>
+
+<h3>
+The Beginning
+</h3>
+
+<p>
+Teddyzhu was born in Kisii, Kenya, beginning a story that would eventually
+lead toward music and creative work.
+</p>
+
+</div>
+
+
+<div class="timeItem">
+
+<div class="timeDot"></div>
+
+<div class="timeYear">
+2021
+</div>
+
+<h3>
+The Music Journey Begins
+</h3>
+
+<p>
+2021 became the official starting point of Teddyzhu's music journey,
+opening a new chapter focused on songwriting, recording and developing
+an identity as an artist.
+</p>
+
+</div>
+
+
+<div class="timeItem">
+
+<div class="timeDot"></div>
+
+<div class="timeYear">
+THE NEXT CHAPTER
+</div>
+
+<h3>
+Building the Vision
+</h3>
+
+<p>
+The journey continues through new music, creative projects, visual ideas,
+collaborations and a long-term ambition to reach listeners beyond Kenya.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MUSIC ================= -->
+
+<section id="music">
+
+<div class="sectionTop">
+
+<div>
+
+<div class="kicker">
+MUSIC WORLD
+</div>
+
+<h2 class="sectionTitle">
+The <span style="color:var(--green)">Music</span>
+</h2>
+
+</div>
+
+<p class="sectionDescription">
+A growing catalogue representing different emotions, stories and moments.
+</p>
+
+</div>
+
+
+<div class="musicGrid">
+
+<div class="musicCard">
+
+<div class="musicIcon">
+♫
+</div>
+
+<h3>
+Singles
+</h3>
+
+<p>
+Explore Teddyzhu's individual releases and discover songs from different
+chapters of the artist's journey.
+</p>
+
+<div class="tag">
+OFFICIAL RELEASES
+</div>
+
+</div>
+
+
+<div class="musicCard">
+
+<div class="musicIcon">
+◎
+</div>
+
+<h3>
+Love & Emotion
+</h3>
+
+<p>
+Songs inspired by love, relationships, memories, emotions and the moments
+that shape everyday life.
+</p>
+
+<div class="tag">
+EMOTIONAL SIDE
+</div>
+
+</div>
+
+
+<div class="musicCard">
+
+<div class="musicIcon">
+✦
+</div>
+
+<h3>
+Creative Projects
+</h3>
+
+<p>
+A space for future releases, collaborations, special projects and new
+creative directions from Teddyzhu.
+</p>
+
+<div class="tag">
+COMING NEXT
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section>
+
+<div class="sectionTop">
+
+<div>
+
+<div class="kicker">
+ARTIST PROFILE
+</div>
+
+<h2 class="sectionTitle">
+Teddyzhu <span style="color:var(--green)">Facts</span>
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="statsSection">
+
+<div class="statBox">
+<b>2007</b>
+<span>Birth Year</span>
+</div>
+
+<div class="statBox">
+<b>2021</b>
+<span>Music Started</span>
+</div>
+
+<div class="statBox">
+<b>Kisii</b>
+<span>Birthplace</span>
+</div>
+
+<div class="statBox">
+<b>Kenya</b>
+<span>Origin</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= OFFICIAL LINKS ================= -->
+
+<section>
+
+<div class="sectionTop">
+
+<div>
+
+<div class="kicker">
+DIGITAL PRESENCE
+</div>
+
+<h2 class="sectionTitle">
+Connect With <span style="color:var(--green)">Teddyzhu</span>
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="linksGrid">
+
+<a class="social" href="#" onclick="comingSoon(event)">
+
+<div class="socialIcon">
+▶
+</div>
+
+<h3>YouTube</h3>
+
+<p>Official video channel</p>
+
+</a>
+
+
+<a class="social" href="#" onclick="comingSoon(event)">
+
+<div class="socialIcon">
+f
+</div>
+
+<h3>Facebook</h3>
+
+<p>Official social presence</p>
+
+</a>
+
+
+<a class="social" href="#" onclick="comingSoon(event)">
+
+<div class="socialIcon">
+◎
+</div>
+
+<h3>Instagram</h3>
+
+<p>Photos & updates</p>
+
+</a>
+
+
+<a class="social" href="#" onclick="comingSoon(event)">
+
+<div class="socialIcon">
+♪ 
+</div>
+
+<h3>TikTok</h3>
+
+<p>Short-form content</p>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ================= SUPPORT ================= -->
+
+<section id="support" class="supportSection">
+
+<div class="supportBox">
+
+<div class="mpesaLogo">
+M
+</div>
+
+<div class="kicker">
+OFFICIAL SUPPORT
+</div>
+
+<h2>
+Support Teddyzhu
+</h2>
+
+<p>
+If you want to support the journey, you can use M-Pesa.
+Choose an amount below. For a real STK Push, this page must be connected
+to a secure M-Pesa backend.
+</p>
+
+<div class="mpesaNumber">
++254 719 157 643
+</div>
+
+
+<div class="amounts">
+
+<button class="amount" onclick="selectAmount(this,10)">
+KSh 10
+</button>
+
+<button class="amount" onclick="selectAmount(this,20)">
+KSh 20
+</button>
+
+<button class="amount" onclick="selectAmount(this,30)">
+KSh 30
+</button>
+
+<button class="amount" onclick="selectAmount(this,40)">
+KSh 40
+</button>
+
+<button class="amount" onclick="selectAmount(this,50)">
+KSh 50
+</button>
+
+<button class="amount" onclick="selectAmount(this,100)">
+KSh 100
+</button>
+
+<button class="amount" onclick="selectAmount(this,200)">
+KSh 200
+</button>
+
+<button class="amount" onclick="selectAmount(this,500)">
+KSh 500
+</button>
+
+<button class="amount" onclick="selectAmount(this,1000)">
+KSh 1000
+</button>
+
+</div>
+
+
+<div id="selectedAmount"
+style="
+margin-top:22px;
+font-size:12px;
+font-weight:800;
+color:#8affb5;
+">
+Select an amount
+</div>
+
+
+<button
+class="btn btnGreen"
+style="margin-top:18px"
+onclick="startSupport()"
+>
+CONTINUE
+</button>
+
+
+<p class="supportNote">
+M-Pesa PIN is entered by the customer on their phone.
+Never enter or share an M-Pesa PIN on this website.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section>
+
+<div class="sectionTop">
+
+<div>
+
+<div class="kicker">
+QUESTIONS
+</div>
+
+<h2 class="sectionTitle">
+Frequently Asked
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<div class="faqItem">
+
+<button class="faqQuestion">
+Who is Teddyzhu?
+<span class="plus">+</span>
+</button>
+
+<div class="faqAnswer">
+Teddyzhu is the artist name of a Kenyan musician born in Kisii, Kenya,
+whose music journey officially began in 2021.
+</div>
+
+</div>
+
+
+<div class="faqItem">
+
+<button class="faqQuestion">
+When did Teddyzhu start music?
+<span class="plus">+</span>
+</button>
+
+<div class="faqAnswer">
+Teddyzhu officially began his music journey in 2021.
+</div>
+
+</div>
+
+
+<div class="faqItem">
+
+<button class="faqQuestion">
+Where was Teddyzhu born?
+<span class="plus">+</span>
+</button>
+
+<div class="faqAnswer">
+Teddyzhu was born in Kisii, Kenya.
+</div>
+
+</div>
+
+
+<div class="faqItem">
+
+<button class="faqQuestion">
+How can I support Teddyzhu?
+<span class="plus">+</span>
+</button>
+
+<div class="faqAnswer">
+You can support the artist through the official M-Pesa support section
+on this website.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 
 </main>
 
 
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footerGrid">
+
+<div>
+
+<div class="footerBrand">
+TEDDY<span>ZHU</span>
+</div>
+
+<p class="footerText">
+Official website of Teddyzhu — artist, creator and independent voice
+building a musical journey from Kisii, Kenya to a wider world.
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+EXPLORE
+</h4>
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#journey">Journey</a>
+<a href="#music">Music</a>
+
+</div>
+
+
+<div>
+
+<h4>
+OFFICIAL
+</h4>
+
+<a href="#support">Support</a>
+<a href="#about">Biography</a>
+<a href="#support">M-Pesa</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+© 2026 Teddyzhu. All rights reserved. • Official Website
+</div>
+
+</footer>
+
+
 <script>
 
-/* =========================================================
-   LOADING 0 → 100
-========================================================= */
+/* =========================
+FAST LOADER
+========================= */
 
-let progress = 0;
+let load=0;
 
-const loaderBar = document.getElementById("loaderBar");
-const loaderPercent = document.getElementById("loaderPercent");
-const loader = document.getElementById("loader");
+const progressBar=document.getElementById("loaderProgress");
+const percent=document.getElementById("loaderPercent");
+const loader=document.getElementById("loader");
 
-const loading = setInterval(() => {
+const loaderTimer=setInterval(()=>{
 
-    progress += Math.floor(Math.random() * 5) + 1;
+load+=10;
 
-    if(progress >= 100){
+if(load>=100){
 
-        progress = 100;
+load=100;
 
-        clearInterval(loading);
+clearInterval(loaderTimer);
 
-        setTimeout(() => {
+setTimeout(()=>{
 
-            loader.classList.add("hide");
+loader.classList.add("done");
 
-        },500);
+},120);
 
-    }
+}
 
-    loaderBar.style.width = progress + "%";
-    loaderPercent.innerText = progress + "%";
+progressBar.style.width=load+"%";
+percent.innerText=load+"%";
 
-},55);
+},28);
 
 
-/* =========================================================
-   AMOUNT SELECTOR
-========================================================= */
+/* =========================
+LANGUAGE
+========================= */
 
-let selectedAmount = null;
+const language=document.getElementById("language");
 
-const amountButtons = document.querySelectorAll(".amount");
+const langData={
 
-amountButtons.forEach(button => {
+en:{
+home:"Home",
+about:"About",
+journey:"Journey",
+music:"Music",
+support:"Support"
+},
 
-    button.addEventListener("click", () => {
+sw:{
+home:"Nyumbani",
+about:"Kuhusu",
+journey:"Safari",
+music:"Muziki",
+support:"Support"
+},
 
-        amountButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
+fr:{
+home:"Accueil",
+about:"À propos",
+journey:"Parcours",
+music:"Musique",
+support:"Soutenir"
+},
 
-        button.classList.add("active");
+es:{
+home:"Inicio",
+about:"Acerca",
+journey:"Historia",
+music:"Música",
+support:"Apoyar"
+},
 
-        selectedAmount = Number(button.dataset.value);
+de:{
+home:"Start",
+about:"Über mich",
+journey:"Reise",
+music:"Musik",
+support:"Unterstützen"
+},
 
-        document.getElementById("customAmount").value = "";
+pt:{
+home:"Início",
+about:"Sobre",
+journey:"Jornada",
+music:"Música",
+support:"Apoiar"
+},
 
-    });
+it:{
+home:"Home",
+about:"Chi sono",
+journey:"Percorso",
+music:"Musica",
+support:"Supporto"
+},
+
+ar:{
+home:"الرئيسية",
+about:"حول",
+journey:"المسيرة",
+music:"الموسيقى",
+support:"دعم"
+},
+
+hi:{
+home:"होम",
+about:"परिचय",
+journey:"यात्रा",
+music:"संगीत",
+support:"समर्थन"
+},
+
+zh:{
+home:"首页",
+about:"关于",
+journey:"历程",
+music:"音乐",
+support:"支持"
+},
+
+ja:{
+home:"ホーム",
+about:"プロフィール",
+journey:"旅",
+music:"音楽",
+support:"サポート"
+},
+
+ko:{
+home:"홈",
+about:"소개",
+journey:"여정",
+music:"음악",
+support:"후원"
+},
+
+tr:{
+home:"Ana Sayfa",
+about:"Hakkında",
+journey:"Yolculuk",
+music:"Müzik",
+support:"Destek"
+},
+
+ru:{
+home:"Главная",
+about:"О нём",
+journey:"Путь",
+music:"Музыка",
+support:"Поддержать"
+}
+
+};
+
+language.addEventListener("change",function(){
+
+const data=langData[this.value];
+
+if(!data)return;
+
+const links=document.querySelectorAll("nav a");
+
+links[0].innerText=data.home;
+links[1].innerText=data.about;
+links[2].innerText=data.journey;
+links[3].innerText=data.music;
+links[4].innerText=data.support;
 
 });
 
 
-/* =========================================================
-   CUSTOM AMOUNT
-========================================================= */
+/* =========================
+SUPPORT AMOUNT
+========================= */
 
-document.getElementById("customAmount")
-.addEventListener("input", function(){
+let selected=null;
 
-    amountButtons.forEach(btn => {
-        btn.classList.remove("active");
-    });
+function selectAmount(button,value){
 
-    let value = Number(this.value);
+document.querySelectorAll(".amount")
+.forEach(x=>x.classList.remove("active"));
 
-    if(value >= 10 && value <= 1000){
+button.classList.add("active");
 
-        selectedAmount = value;
+selected=value;
 
-    }else{
-
-        selectedAmount = null;
-
-    }
-
-});
-
-
-/* =========================================================
-   PHONE FORMAT
-========================================================= */
-
-document.getElementById("phone")
-.addEventListener("input",function(){
-
-    this.value = this.value.replace(/[^0-9+]/g,"");
-
-});
-
-
-/* =========================================================
-   PAYMENT
-========================================================= */
-
-function startPayment(){
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const custom =
-        Number(document.getElementById("customAmount").value);
-
-    if(custom >= 10 && custom <= 1000){
-
-        selectedAmount = custom;
-
-    }
-
-    if(!selectedAmount){
-
-        alert("Please choose an amount between KSh 10 and KSh 1,000.");
-
-        return;
-
-    }
-
-    if(!phone){
-
-        alert("Please enter your M-Pesa phone number.");
-
-        return;
-
-    }
-
-    if(phone.length < 10){
-
-        alert("Please enter a valid M-Pesa phone number.");
-
-        return;
-
-    }
-
-
-    const status =
-        document.getElementById("status");
-
-    const statusTitle =
-        document.getElementById("statusTitle");
-
-    const statusText =
-        document.getElementById("statusText");
-
-
-    status.classList.add("show");
-
-    statusTitle.innerText =
-        "Payment request ready";
-
-    statusText.innerText =
-        "KSh " + selectedAmount +
-        " will be requested from " +
-        phone +
-        ". Connect this button to your secure M-Pesa backend to send the real STK Push.";
-
-
-    /*
-       ======================================================
-       REAL M-PESA CONNECTION POINT
-       ======================================================
-
-       DO NOT put Daraja Consumer Secret,
-       Passkey or other private credentials here.
-
-       Your backend should receive:
-
-       {
-          phone: phone,
-          amount: selectedAmount,
-          receiver: "0719157643"
-       }
-
-       Then the backend creates the Daraja STK Push.
-
-       Example frontend request:
-
-       fetch("/api/mpesa/stkpush", {
-           method:"POST",
-           headers:{
-               "Content-Type":"application/json"
-           },
-           body:JSON.stringify({
-               phone:phone,
-               amount:selectedAmount
-           })
-       });
-
-       The backend should then return the transaction status.
-
-       IMPORTANT:
-       The customer enters the M-Pesa PIN
-       directly on their phone.
-    */
+document.getElementById("selectedAmount")
+.innerText="Selected: KSh "+value;
 
 }
 
 
-/* =========================================================
-   LANGUAGE SYSTEM
-========================================================= */
+/* =========================
+SUPPORT
+========================= */
 
-const translations = {
+function startSupport(){
 
-    sw:{
-        title:"SUPPORT",
-        sub:"Teddyzhu",
-        description:
-        "Support safari hii moja kwa moja kupitia M-Pesa. Chagua kiasi hapa chini na utume support yako kwa usalama.",
-        card:"M-Pesa Support",
-        choose:"CHAGUA KIASI",
-        phone:"NAMBA YA M-PESA",
-        button:"SUPPORT TEDDYZHU"
-    },
+if(!selected){
 
-    en:{
-        title:"SUPPORT",
-        sub:"TEDDYZHU",
-        description:
-        "Support the journey directly through M-Pesa. Choose an amount below and send your support securely.",
-        card:"M-Pesa Support",
-        choose:"CHOOSE AMOUNT",
-        phone:"M-PESA PHONE NUMBER",
-        button:"SUPPORT TEDDYZHU"
-    },
+alert("Please select a support amount first.");
 
-    fr:{
-        title:"SOUTENIR",
-        sub:"TEDDYZHU",
-        description:
-        "Soutenez le parcours directement via M-Pesa. Choisissez un montant ci-dessous.",
-        card:"Assistance M-Pesa",
-        choose:"CHOISIR LE MONTANT",
-        phone:"NUMÉRO M-PESA",
-        button:"SOUTENIR TEDDYZHU"
-    },
+return;
 
-    es:{
-        title:"APOYAR",
-        sub:"TEDDYZHU",
-        description:
-        "Apoya el viaje directamente mediante M-Pesa. Elige una cantidad y realiza tu apoyo.",
-        card:"Soporte M-Pesa",
-        choose:"ELEGIR CANTIDAD",
-        phone:"NÚMERO M-PESA",
-        button:"APOYAR A TEDDYZHU"
-    },
+}
 
-    de:{
-        title:"UNTERSTÜTZEN",
-        sub:"TEDDYZHU",
-        description:
-        "Unterstütze die Reise direkt über M-Pesa. Wähle einen Betrag.",
-        card:"M-Pesa Unterstützung",
-        choose:"BETRAG AUSWÄHLEN",
-        phone:"M-PESA NUMMER",
-        button:"TEDDYZHU UNTERSTÜTZEN"
-    },
+/*
+REAL STK PUSH CONNECTION POINT.
 
-    pt:{
-        title:"APOIAR",
-        sub:"TEDDYZHU",
-        description:
-        "Apoie esta jornada diretamente pelo M-Pesa. Escolha um valor.",
-        card:"Suporte M-Pesa",
-        choose:"ESCOLHER VALOR",
-        phone:"NÚMERO M-PESA",
-        button:"APOIAR TEDDYZHU"
-    },
+A secure backend should receive:
 
-    ar:{
-        title:"ادعم",
-        sub:"TEDDYZHU",
-        description:
-        "ادعم رحلة Teddyzhu مباشرة عبر M-Pesa. اختر المبلغ.",
-        card:"دعم M-Pesa",
-        choose:"اختر المبلغ",
-        phone:"رقم M-Pesa",
-        button:"ادعم TEDDYZHU"
-    },
+amount: selected
+receiver: 0719157643
+customerPhone: customer's M-Pesa number
 
-    hi:{
-        title:"समर्थन",
-        sub:"TEDDYZHU",
-        description:
-        "M-Pesa के माध्यम से इस यात्रा का समर्थन करें। राशि चुनें।",
-        card:"M-Pesa समर्थन",
-        choose:"राशि चुनें",
-        phone:"M-Pesa नंबर",
-        button:"TEDDYZHU को समर्थन दें"
-    },
+The backend then communicates with
+Safaricom Daraja.
 
-    zh:{
-        title:"支持",
-        sub:"TEDDYZHU",
-        description:
-        "通过 M-Pesa 直接支持这段旅程。请选择金额。",
-        card:"M-Pesa 支持",
-        choose:"选择金额",
-        phone:"M-Pesa 手机号码",
-        button:"支持 TEDDYZHU"
-    },
+Do not put Daraja credentials in this HTML.
+*/
 
-    ja:{
-        title:"サポート",
-        sub:"TEDDYZHU",
-        description:
-        "M-Pesaを通じてTeddyzhuの活動を直接サポートできます。",
-        card:"M-Pesa サポート",
-        choose:"金額を選択",
-        phone:"M-Pesa 電話番号",
-        button:"TEDDYZHUをサポート"
-    },
+alert(
+"Selected support: KSh "+selected+
+"\n\nFor a real STK Push, connect this button to your secure M-Pesa backend."
+);
 
-    ko:{
-        title:"후원",
-        sub:"TEDDYZHU",
-        description:
-        "M-Pesa를 통해 Teddyzhu의 여정을 직접 후원하세요.",
-        card:"M-Pesa 후원",
-        choose:"금액 선택",
-        phone:"M-Pesa 전화번호",
-        button:"TEDDYZHU 후원"
-    },
-
-    tr:{
-        title:"DESTEK",
-        sub:"TEDDYZHU",
-        description:
-        "M-Pesa üzerinden Teddyzhu'nun yolculuğunu doğrudan destekleyin.",
-        card:"M-Pesa Desteği",
-        choose:"TUTAR SEÇ",
-        phone:"M-PESA NUMARASI",
-        button:"TEDDYZHU'YU DESTEKLE"
-    },
-
-    ru:{
-        title:"ПОДДЕРЖАТЬ",
-        sub:"TEDDYZHU",
-        description:
-        "Поддержите путь Teddyzhu напрямую через M-Pesa.",
-        card:"Поддержка M-Pesa",
-        choose:"ВЫБЕРИТЕ СУММУ",
-        phone:"НОМЕР M-PESA",
-        button:"ПОДДЕРЖАТЬ TEDDYZHU"
-    }
-
-};
+}
 
 
-/* =========================================================
-   LANGUAGE CHANGE
-========================================================= */
+/* =========================
+FAQ
+========================= */
 
-document.getElementById("language")
-.addEventListener("change",function(){
+document.querySelectorAll(".faqQuestion")
+.forEach(button=>{
 
-    const lang = this.value;
+button.addEventListener("click",()=>{
 
-    const t = translations[lang];
+const item=button.parentElement;
 
-    if(!t) return;
+item.classList.toggle("open");
 
-    document.querySelector("h1").innerHTML =
-        t.title + "<br><span>" + t.sub + ".</span>";
+const symbol=button.querySelector(".plus");
 
-    document.querySelector(".subtitle")
-        .innerText = t.description;
+symbol.innerText=
+item.classList.contains("open") ? "−" : "+";
 
-    document.querySelector(".card h2")
-        .innerText = t.card;
-
-    document.querySelectorAll(".label")[0]
-        .innerText = t.choose;
-
-    document.querySelectorAll(".label")[1]
-        .innerText = t.phone;
-
-    document.querySelector(".pay")
-        .innerText = t.button;
+});
 
 });
 
 
-/* =========================================================
-   3D CARD EFFECT
-========================================================= */
+/* =========================
+SOCIAL PLACEHOLDERS
+========================= */
 
-const card = document.getElementById("supportCard");
+function comingSoon(event){
 
-if(window.innerWidth > 700){
+event.preventDefault();
 
-    card.addEventListener("mousemove",function(e){
+alert("Official link can be added here.");
 
-        const rect = card.getBoundingClientRect();
-
-        const x =
-            e.clientX - rect.left;
-
-        const y =
-            e.clientY - rect.top;
-
-        const rotateY =
-            ((x / rect.width) - .5) * 8;
-
-        const rotateX =
-            ((y / rect.height) - .5) * -8;
-
-        card.style.transform =
-            "perspective(1000px) rotateX(" +
-            rotateX +
-            "deg) rotateY(" +
-            rotateY +
-            "deg)";
-
-    });
+}
 
 
-    card.addEventListener("mouseleave",function(){
+/* =========================
+3D INTERACTION
+========================= */
 
-        card.style.transform =
-            "perspective(1000px) rotateX(0) rotateY(0)";
+const disc=document.querySelector(".disc");
 
-    });
+if(window.innerWidth>700){
+
+document.addEventListener("mousemove",(e)=>{
+
+const x=(e.clientX/window.innerWidth-.5)*10;
+const y=(e.clientY/window.innerHeight-.5)*10;
+
+disc.style.transform=
+`rotateX(${12-y}deg) rotateY(${-12+x}deg)`;
+
+});
 
 }
 
@@ -8018,32 +2101,3 @@ if(window.innerWidth > 700){
 
 </body>
 </html>
-<script>
-let progress = 0;
-
-const loaderBar = document.getElementById("loaderBar");
-const loaderPercent = document.getElementById("loaderPercent");
-const loader = document.getElementById("loader");
-
-const loading = setInterval(() => {
-
-    progress += 10;
-
-    if (progress >= 100) {
-        progress = 100;
-        clearInterval(loading);
-
-        loaderBar.style.width = "100%";
-        loaderPercent.innerText = "100%";
-
-        setTimeout(() => {
-            loader.classList.add("hide");
-            document.body.style.overflow = "auto";
-        }, 150);
-    }
-
-    loaderBar.style.width = progress + "%";
-    loaderPercent.innerText = progress + "%";
-
-}, 30);
-</script>
