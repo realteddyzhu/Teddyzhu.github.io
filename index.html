@@ -6784,3 +6784,1237 @@ document.querySelectorAll(".nav a")
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teddyzhu — Official Support</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#020403;
+    --green:#00e676;
+    --green2:#00c853;
+    --dark:#07110b;
+    --white:#fff;
+    --muted:#8c9891;
+    --glass:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.1);
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 50% -10%,rgba(0,230,118,.16),transparent 35%),
+        radial-gradient(circle at 10% 90%,rgba(0,200,83,.08),transparent 30%),
+        var(--bg);
+    color:var(--white);
+    overflow-x:hidden;
+}
+
+/* ================= LOADING ================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:#010201;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s,visibility .8s;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    width:min(330px,80%);
+    text-align:center;
+}
+
+.loader-logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:-3px;
+    color:#fff;
+}
+
+.loader-logo span{
+    color:var(--green);
+}
+
+.loader-sub{
+    margin-top:8px;
+    font-size:10px;
+    letter-spacing:4px;
+    color:#69736d;
+}
+
+.loader-track{
+    height:4px;
+    width:100%;
+    background:#18201b;
+    border-radius:20px;
+    margin-top:35px;
+    overflow:hidden;
+}
+
+.loader-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00a844,#00ff83);
+    box-shadow:0 0 20px rgba(0,230,118,.7);
+}
+
+.loader-percent{
+    margin-top:15px;
+    font-size:12px;
+    color:var(--green);
+    font-weight:800;
+}
+
+/* ================= BACKGROUND ================= */
+
+.orb{
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(80px);
+    opacity:.12;
+}
+
+.orb.one{
+    width:300px;
+    height:300px;
+    background:#00e676;
+    top:20%;
+    left:-150px;
+}
+
+.orb.two{
+    width:250px;
+    height:250px;
+    background:#00c853;
+    bottom:0;
+    right:-100px;
+}
+
+/* ================= TOP BAR ================= */
+
+.top{
+    position:relative;
+    z-index:10;
+    width:100%;
+    padding:22px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--border);
+    background:rgba(2,4,3,.65);
+    backdrop-filter:blur(25px);
+}
+
+.brand{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+}
+
+.brand span{
+    color:var(--green);
+}
+
+.language{
+    position:relative;
+}
+
+.language select{
+    appearance:none;
+    background:var(--glass);
+    border:1px solid var(--border);
+    color:#fff;
+    padding:11px 35px 11px 15px;
+    border-radius:12px;
+    outline:none;
+    cursor:pointer;
+}
+
+.language:after{
+    content:"⌄";
+    position:absolute;
+    right:13px;
+    top:8px;
+    pointer-events:none;
+    color:#aaa;
+}
+
+/* ================= MAIN ================= */
+
+main{
+    min-height:calc(100vh - 75px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 18px;
+}
+
+.support-wrap{
+    width:min(760px,100%);
+    text-align:center;
+}
+
+.verified{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 15px;
+    border:1px solid rgba(0,230,118,.22);
+    background:rgba(0,230,118,.06);
+    border-radius:50px;
+    color:#78ffb0;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.check{
+    width:17px;
+    height:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--green);
+    color:#001c0b;
+    font-size:10px;
+}
+
+h1{
+    margin-top:25px;
+    font-size:clamp(42px,8vw,78px);
+    line-height:.95;
+    letter-spacing:-5px;
+    font-weight:900;
+}
+
+h1 span{
+    color:var(--green);
+}
+
+.subtitle{
+    max-width:570px;
+    margin:22px auto 0;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:15px;
+}
+
+/* ================= 3D CARD ================= */
+
+.card{
+    position:relative;
+    margin:42px auto 0;
+    width:min(570px,100%);
+    padding:35px;
+    border-radius:32px;
+    background:
+        linear-gradient(145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.025));
+    border:1px solid var(--border);
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.6),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    transform-style:preserve-3d;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:32px;
+    padding:1px;
+    background:linear-gradient(
+        135deg,
+        rgba(0,230,118,.35),
+        transparent 35%,
+        transparent 65%,
+        rgba(0,200,83,.2)
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
+}
+
+.mpesa-icon{
+    width:78px;
+    height:78px;
+    margin:0 auto 22px;
+    border-radius:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    font-weight:900;
+    color:#001b0b;
+    background:linear-gradient(145deg,#37ff9a,#00c853);
+    box-shadow:
+        0 20px 40px rgba(0,230,118,.2),
+        inset 0 2px 4px rgba(255,255,255,.5);
+    transform:translateZ(40px);
+}
+
+.card h2{
+    font-size:28px;
+    letter-spacing:-1px;
+}
+
+.number{
+    margin:10px 0 28px;
+    color:#8affb7;
+    font-size:13px;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+/* ================= AMOUNTS ================= */
+
+.label{
+    display:block;
+    text-align:left;
+    margin-bottom:12px;
+    color:#adb6b0;
+    font-size:12px;
+    font-weight:700;
+}
+
+.amounts{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.amount{
+    min-height:55px;
+    border-radius:15px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.amount:hover{
+    border-color:rgba(0,230,118,.5);
+    transform:translateY(-3px);
+}
+
+.amount.active{
+    color:#001b0b;
+    background:linear-gradient(145deg,#52ffab,#00d866);
+    border-color:#52ffab;
+    box-shadow:0 10px 30px rgba(0,230,118,.2);
+}
+
+/* ================= CUSTOM ================= */
+
+.custom{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.custom span{
+    padding-left:17px;
+    color:var(--green);
+    font-weight:900;
+}
+
+.custom input{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+}
+
+/* ================= PHONE ================= */
+
+.phone{
+    margin-top:22px;
+    text-align:left;
+}
+
+.phone input{
+    width:100%;
+    padding:17px;
+    border-radius:15px;
+    border:1px solid var(--border);
+    outline:none;
+    background:rgba(255,255,255,.035);
+    color:white;
+    font-size:15px;
+}
+
+.phone input:focus,
+.custom:focus-within{
+    border-color:rgba(0,230,118,.6);
+    box-shadow:0 0 0 3px rgba(0,230,118,.06);
+}
+
+/* ================= PAY BUTTON ================= */
+
+.pay{
+    width:100%;
+    margin-top:22px;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+    color:#001b0b;
+    background:linear-gradient(100deg,#00e676,#42ff9b);
+    font-size:15px;
+    font-weight:900;
+    letter-spacing:.2px;
+    box-shadow:0 18px 40px rgba(0,230,118,.18);
+    transition:.3s;
+}
+
+.pay:hover{
+    transform:translateY(-4px);
+    box-shadow:0 25px 55px rgba(0,230,118,.28);
+}
+
+.pay:active{
+    transform:translateY(0);
+}
+
+.secure{
+    margin-top:16px;
+    color:#69746d;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+/* ================= STATUS ================= */
+
+.status{
+    display:none;
+    margin-top:25px;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(0,230,118,.05);
+    border:1px solid rgba(0,230,118,.16);
+}
+
+.status.show{
+    display:block;
+}
+
+.spinner{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    border:3px solid rgba(255,255,255,.1);
+    border-top-color:var(--green);
+    animation:spin 1s linear infinite;
+    margin:0 auto 12px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.status-title{
+    font-weight:800;
+}
+
+.status-text{
+    margin-top:7px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    margin-top:45px;
+    color:#59615c;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.footer strong{
+    color:#89948d;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:600px){
+
+    .top{
+        padding:17px 5%;
+    }
+
+    .brand{
+        font-size:21px;
+    }
+
+    main{
+        padding:35px 14px;
+        align-items:flex-start;
+    }
+
+    .support-wrap{
+        padding-top:20px;
+    }
+
+    h1{
+        font-size:48px;
+        letter-spacing:-3px;
+    }
+
+    .card{
+        padding:23px 17px;
+        border-radius:25px;
+    }
+
+    .card:before{
+        border-radius:25px;
+    }
+
+    .amounts{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .amount{
+        min-height:52px;
+    }
+
+    .mpesa-icon{
+        width:68px;
+        height:68px;
+        border-radius:20px;
+    }
+
+    .subtitle{
+        font-size:14px;
+    }
+}
+
+@media(max-width:370px){
+
+    .amounts{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    h1{
+        font-size:42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOADER ================= -->
+
+<div id="loader">
+
+    <div class="loader-inner">
+
+        <div class="loader-logo">
+            TEDDY<span>ZHU</span>
+        </div>
+
+        <div class="loader-sub">
+            OFFICIAL SUPPORT
+        </div>
+
+        <div class="loader-track">
+            <div class="loader-bar" id="loaderBar"></div>
+        </div>
+
+        <div class="loader-percent" id="loaderPercent">
+            0%
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="top">
+
+    <div class="brand">
+        TEDDY<span>ZHU</span>
+    </div>
+
+    <div class="language">
+
+        <select id="language">
+
+            <option value="sw">Swahili</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="pt">Português</option>
+            <option value="it">Italiano</option>
+            <option value="ar">العربية</option>
+            <option value="hi">हिन्दी</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="tr">Türkçe</option>
+            <option value="ru">Русский</option>
+
+        </select>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<div class="support-wrap">
+
+    <div class="verified">
+        <span class="check">✓</span>
+        OFFICIAL TEDDYZHU SUPPORT
+    </div>
+
+
+    <h1>
+        SUPPORT<br>
+        <span>TEDDYZHU.</span>
+    </h1>
+
+
+    <p class="subtitle">
+        Support the journey directly through M-Pesa.
+        Choose an amount below and send your support securely.
+    </p>
+
+
+    <!-- ================= CARD ================= -->
+
+    <div class="card" id="supportCard">
+
+        <div class="mpesa-icon">
+            M
+        </div>
+
+        <h2>
+            M-Pesa Support
+        </h2>
+
+        <div class="number">
+            +254 719 157 643
+        </div>
+
+
+        <!-- AMOUNTS -->
+
+        <span class="label">
+            CHOOSE AMOUNT
+        </span>
+
+        <div class="amounts">
+
+            <button class="amount" data-value="10">
+                KSh 10
+            </button>
+
+            <button class="amount" data-value="20">
+                KSh 20
+            </button>
+
+            <button class="amount" data-value="30">
+                KSh 30
+            </button>
+
+            <button class="amount" data-value="40">
+                KSh 40
+            </button>
+
+            <button class="amount" data-value="50">
+                KSh 50
+            </button>
+
+            <button class="amount" data-value="100">
+                KSh 100
+            </button>
+
+            <button class="amount" data-value="200">
+                KSh 200
+            </button>
+
+            <button class="amount" data-value="500">
+                KSh 500
+            </button>
+
+            <button class="amount" data-value="1000">
+                KSh 1000
+            </button>
+
+        </div>
+
+
+        <!-- CUSTOM -->
+
+        <div class="custom">
+
+            <span>KSh</span>
+
+            <input
+                type="number"
+                id="customAmount"
+                min="10"
+                max="1000"
+                placeholder="Custom amount — 10 to 1000"
+            >
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="phone">
+
+            <span class="label">
+                M-PESA PHONE NUMBER
+            </span>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="07XXXXXXXX"
+                maxlength="13"
+            >
+
+        </div>
+
+
+        <!-- PAY -->
+
+        <button class="pay" onclick="startPayment()">
+            SUPPORT TEDDYZHU
+        </button>
+
+
+        <div class="secure">
+            🔒 SECURE M-PESA PAYMENT • YOU ENTER YOUR PIN ON YOUR PHONE
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="status" id="status">
+
+            <div class="spinner"></div>
+
+            <div class="status-title" id="statusTitle">
+                Preparing payment...
+            </div>
+
+            <div class="status-text" id="statusText">
+                Your M-Pesa request is being prepared.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        © 2026 <strong>Teddyzhu</strong> • Official Support
+    </div>
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   LOADING 0 → 100
+========================================================= */
+
+let progress = 0;
+
+const loaderBar = document.getElementById("loaderBar");
+const loaderPercent = document.getElementById("loaderPercent");
+const loader = document.getElementById("loader");
+
+const loading = setInterval(() => {
+
+    progress += Math.floor(Math.random() * 5) + 1;
+
+    if(progress >= 100){
+
+        progress = 100;
+
+        clearInterval(loading);
+
+        setTimeout(() => {
+
+            loader.classList.add("hide");
+
+        },500);
+
+    }
+
+    loaderBar.style.width = progress + "%";
+    loaderPercent.innerText = progress + "%";
+
+},55);
+
+
+/* =========================================================
+   AMOUNT SELECTOR
+========================================================= */
+
+let selectedAmount = null;
+
+const amountButtons = document.querySelectorAll(".amount");
+
+amountButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        amountButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        selectedAmount = Number(button.dataset.value);
+
+        document.getElementById("customAmount").value = "";
+
+    });
+
+});
+
+
+/* =========================================================
+   CUSTOM AMOUNT
+========================================================= */
+
+document.getElementById("customAmount")
+.addEventListener("input", function(){
+
+    amountButtons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    let value = Number(this.value);
+
+    if(value >= 10 && value <= 1000){
+
+        selectedAmount = value;
+
+    }else{
+
+        selectedAmount = null;
+
+    }
+
+});
+
+
+/* =========================================================
+   PHONE FORMAT
+========================================================= */
+
+document.getElementById("phone")
+.addEventListener("input",function(){
+
+    this.value = this.value.replace(/[^0-9+]/g,"");
+
+});
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+function startPayment(){
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const custom =
+        Number(document.getElementById("customAmount").value);
+
+    if(custom >= 10 && custom <= 1000){
+
+        selectedAmount = custom;
+
+    }
+
+    if(!selectedAmount){
+
+        alert("Please choose an amount between KSh 10 and KSh 1,000.");
+
+        return;
+
+    }
+
+    if(!phone){
+
+        alert("Please enter your M-Pesa phone number.");
+
+        return;
+
+    }
+
+    if(phone.length < 10){
+
+        alert("Please enter a valid M-Pesa phone number.");
+
+        return;
+
+    }
+
+
+    const status =
+        document.getElementById("status");
+
+    const statusTitle =
+        document.getElementById("statusTitle");
+
+    const statusText =
+        document.getElementById("statusText");
+
+
+    status.classList.add("show");
+
+    statusTitle.innerText =
+        "Payment request ready";
+
+    statusText.innerText =
+        "KSh " + selectedAmount +
+        " will be requested from " +
+        phone +
+        ". Connect this button to your secure M-Pesa backend to send the real STK Push.";
+
+
+    /*
+       ======================================================
+       REAL M-PESA CONNECTION POINT
+       ======================================================
+
+       DO NOT put Daraja Consumer Secret,
+       Passkey or other private credentials here.
+
+       Your backend should receive:
+
+       {
+          phone: phone,
+          amount: selectedAmount,
+          receiver: "0719157643"
+       }
+
+       Then the backend creates the Daraja STK Push.
+
+       Example frontend request:
+
+       fetch("/api/mpesa/stkpush", {
+           method:"POST",
+           headers:{
+               "Content-Type":"application/json"
+           },
+           body:JSON.stringify({
+               phone:phone,
+               amount:selectedAmount
+           })
+       });
+
+       The backend should then return the transaction status.
+
+       IMPORTANT:
+       The customer enters the M-Pesa PIN
+       directly on their phone.
+    */
+
+}
+
+
+/* =========================================================
+   LANGUAGE SYSTEM
+========================================================= */
+
+const translations = {
+
+    sw:{
+        title:"SUPPORT",
+        sub:"Teddyzhu",
+        description:
+        "Support safari hii moja kwa moja kupitia M-Pesa. Chagua kiasi hapa chini na utume support yako kwa usalama.",
+        card:"M-Pesa Support",
+        choose:"CHAGUA KIASI",
+        phone:"NAMBA YA M-PESA",
+        button:"SUPPORT TEDDYZHU"
+    },
+
+    en:{
+        title:"SUPPORT",
+        sub:"TEDDYZHU",
+        description:
+        "Support the journey directly through M-Pesa. Choose an amount below and send your support securely.",
+        card:"M-Pesa Support",
+        choose:"CHOOSE AMOUNT",
+        phone:"M-PESA PHONE NUMBER",
+        button:"SUPPORT TEDDYZHU"
+    },
+
+    fr:{
+        title:"SOUTENIR",
+        sub:"TEDDYZHU",
+        description:
+        "Soutenez le parcours directement via M-Pesa. Choisissez un montant ci-dessous.",
+        card:"Assistance M-Pesa",
+        choose:"CHOISIR LE MONTANT",
+        phone:"NUMÉRO M-PESA",
+        button:"SOUTENIR TEDDYZHU"
+    },
+
+    es:{
+        title:"APOYAR",
+        sub:"TEDDYZHU",
+        description:
+        "Apoya el viaje directamente mediante M-Pesa. Elige una cantidad y realiza tu apoyo.",
+        card:"Soporte M-Pesa",
+        choose:"ELEGIR CANTIDAD",
+        phone:"NÚMERO M-PESA",
+        button:"APOYAR A TEDDYZHU"
+    },
+
+    de:{
+        title:"UNTERSTÜTZEN",
+        sub:"TEDDYZHU",
+        description:
+        "Unterstütze die Reise direkt über M-Pesa. Wähle einen Betrag.",
+        card:"M-Pesa Unterstützung",
+        choose:"BETRAG AUSWÄHLEN",
+        phone:"M-PESA NUMMER",
+        button:"TEDDYZHU UNTERSTÜTZEN"
+    },
+
+    pt:{
+        title:"APOIAR",
+        sub:"TEDDYZHU",
+        description:
+        "Apoie esta jornada diretamente pelo M-Pesa. Escolha um valor.",
+        card:"Suporte M-Pesa",
+        choose:"ESCOLHER VALOR",
+        phone:"NÚMERO M-PESA",
+        button:"APOIAR TEDDYZHU"
+    },
+
+    ar:{
+        title:"ادعم",
+        sub:"TEDDYZHU",
+        description:
+        "ادعم رحلة Teddyzhu مباشرة عبر M-Pesa. اختر المبلغ.",
+        card:"دعم M-Pesa",
+        choose:"اختر المبلغ",
+        phone:"رقم M-Pesa",
+        button:"ادعم TEDDYZHU"
+    },
+
+    hi:{
+        title:"समर्थन",
+        sub:"TEDDYZHU",
+        description:
+        "M-Pesa के माध्यम से इस यात्रा का समर्थन करें। राशि चुनें।",
+        card:"M-Pesa समर्थन",
+        choose:"राशि चुनें",
+        phone:"M-Pesa नंबर",
+        button:"TEDDYZHU को समर्थन दें"
+    },
+
+    zh:{
+        title:"支持",
+        sub:"TEDDYZHU",
+        description:
+        "通过 M-Pesa 直接支持这段旅程。请选择金额。",
+        card:"M-Pesa 支持",
+        choose:"选择金额",
+        phone:"M-Pesa 手机号码",
+        button:"支持 TEDDYZHU"
+    },
+
+    ja:{
+        title:"サポート",
+        sub:"TEDDYZHU",
+        description:
+        "M-Pesaを通じてTeddyzhuの活動を直接サポートできます。",
+        card:"M-Pesa サポート",
+        choose:"金額を選択",
+        phone:"M-Pesa 電話番号",
+        button:"TEDDYZHUをサポート"
+    },
+
+    ko:{
+        title:"후원",
+        sub:"TEDDYZHU",
+        description:
+        "M-Pesa를 통해 Teddyzhu의 여정을 직접 후원하세요.",
+        card:"M-Pesa 후원",
+        choose:"금액 선택",
+        phone:"M-Pesa 전화번호",
+        button:"TEDDYZHU 후원"
+    },
+
+    tr:{
+        title:"DESTEK",
+        sub:"TEDDYZHU",
+        description:
+        "M-Pesa üzerinden Teddyzhu'nun yolculuğunu doğrudan destekleyin.",
+        card:"M-Pesa Desteği",
+        choose:"TUTAR SEÇ",
+        phone:"M-PESA NUMARASI",
+        button:"TEDDYZHU'YU DESTEKLE"
+    },
+
+    ru:{
+        title:"ПОДДЕРЖАТЬ",
+        sub:"TEDDYZHU",
+        description:
+        "Поддержите путь Teddyzhu напрямую через M-Pesa.",
+        card:"Поддержка M-Pesa",
+        choose:"ВЫБЕРИТЕ СУММУ",
+        phone:"НОМЕР M-PESA",
+        button:"ПОДДЕРЖАТЬ TEDDYZHU"
+    }
+
+};
+
+
+/* =========================================================
+   LANGUAGE CHANGE
+========================================================= */
+
+document.getElementById("language")
+.addEventListener("change",function(){
+
+    const lang = this.value;
+
+    const t = translations[lang];
+
+    if(!t) return;
+
+    document.querySelector("h1").innerHTML =
+        t.title + "<br><span>" + t.sub + ".</span>";
+
+    document.querySelector(".subtitle")
+        .innerText = t.description;
+
+    document.querySelector(".card h2")
+        .innerText = t.card;
+
+    document.querySelectorAll(".label")[0]
+        .innerText = t.choose;
+
+    document.querySelectorAll(".label")[1]
+        .innerText = t.phone;
+
+    document.querySelector(".pay")
+        .innerText = t.button;
+
+});
+
+
+/* =========================================================
+   3D CARD EFFECT
+========================================================= */
+
+const card = document.getElementById("supportCard");
+
+if(window.innerWidth > 700){
+
+    card.addEventListener("mousemove",function(e){
+
+        const rect = card.getBoundingClientRect();
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+        const rotateY =
+            ((x / rect.width) - .5) * 8;
+
+        const rotateX =
+            ((y / rect.height) - .5) * -8;
+
+        card.style.transform =
+            "perspective(1000px) rotateX(" +
+            rotateX +
+            "deg) rotateY(" +
+            rotateY +
+            "deg)";
+
+    });
+
+
+    card.addEventListener("mouseleave",function(){
+
+        card.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0)";
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
