@@ -1,1874 +1,999 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-
-<title>Teddyzhu Hub — V17 PRO</title>
+<title>Teddyzhu Crash — V1 PRO</title>
 
 <style>
-
-*{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
- --bg:#070707;
- --panel:#101010;
- --panel2:#151515;
- --panel3:#1b1b1b;
+ --bg:#080b12;
+ --panel:#111722;
+ --panel2:#171e2b;
+ --line:#293241;
  --text:#fff;
- --muted:#8f8f8f;
- --line:#272727;
+ --muted:#8792a5;
  --pink:#ff2d75;
- --pink2:#ff5c99;
- --green:#25d366;
- --blue:#4285f4;
- --gold:#f5c542;
+ --green:#24d36b;
+ --red:#ff3f5f;
+ --gold:#ffc857;
 }
 
 body{
  font-family:Inter,Arial,sans-serif;
- background:var(--bg);
- color:white;
+ background:radial-gradient(circle at top,#18202f,#07090e 60%);
+ color:var(--text);
  min-height:100vh;
 }
 
-button,
-input,
-select{
- font-family:inherit;
-}
-
-button{
- cursor:pointer;
-}
-
-a{
- color:inherit;
- text-decoration:none;
-}
-
-/* APP */
-
-.app{
+.header{
+ height:70px;
+ border-bottom:1px solid var(--line);
+ background:rgba(8,11,18,.92);
+ backdrop-filter:blur(15px);
  display:flex;
- min-height:100vh;
-}
-
-/* SIDEBAR */
-
-.sidebar{
- width:250px;
- position:fixed;
- left:0;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 25px;
+ position:sticky;
  top:0;
- bottom:0;
- background:#090909;
- border-right:1px solid var(--line);
- padding:22px 15px;
- z-index:100;
- overflow-y:auto;
+ z-index:20;
 }
 
 .logo{
- font-size:24px;
+ font-size:22px;
  font-weight:900;
  letter-spacing:-1px;
- padding:10px 13px 25px;
 }
 
-.logo span{
- color:var(--pink);
-}
+.logo span{color:var(--pink)}
 
-.nav-title{
- color:#555;
- font-size:10px;
- font-weight:800;
- letter-spacing:2px;
- padding:17px 13px 7px;
-}
-
-.nav-item{
+.header-right{
  display:flex;
  align-items:center;
- gap:13px;
- padding:11px 13px;
- margin:3px 0;
- border-radius:11px;
- color:#999;
- font-size:13px;
- font-weight:600;
- transition:.2s;
-}
-
-.nav-item:hover,
-.nav-item.active{
- background:#171717;
- color:#fff;
-}
-
-.nav-item.active{
- border-left:3px solid var(--pink);
-}
-
-.icon{
- width:21px;
- text-align:center;
-}
-
-/* MAIN */
-
-.main{
- margin-left:250px;
- width:calc(100% - 250px);
-}
-
-/* TOP */
-
-.topbar{
- position:sticky;
- top:0;
- height:70px;
- background:rgba(7,7,7,.88);
- backdrop-filter:blur(18px);
- border-bottom:1px solid var(--line);
- z-index:80;
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 28px;
-}
-
-.search{
- width:380px;
- background:#121212;
- border:1px solid var(--line);
- border-radius:30px;
- display:flex;
- align-items:center;
- padding:0 17px;
-}
-
-.search input{
- width:100%;
- height:42px;
- background:none;
- border:0;
- outline:0;
- color:white;
-}
-
-.top-actions{
- display:flex;
  gap:10px;
- align-items:center;
-}
-
-.top-btn{
- width:40px;
- height:40px;
- border:1px solid var(--line);
- background:#111;
- color:#fff;
- border-radius:50%;
-}
-
-.avatar{
- width:39px;
- height:39px;
- border-radius:50%;
- background:linear-gradient(135deg,#ff2d75,#5a102d);
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:900;
-}
-
-/* PAGE */
-
-.page{
- padding:30px;
- max-width:1500px;
- margin:auto;
-}
-
-.view{
- display:none;
-}
-
-.view.active{
- display:block;
-}
-
-/* HERO */
-
-.hero{
- min-height:390px;
- border-radius:28px;
- padding:55px;
- display:flex;
- align-items:center;
- background:
- radial-gradient(circle at 75% 30%,rgba(255,45,117,.32),transparent 32%),
- linear-gradient(130deg,#151515,#090909);
- border:1px solid var(--line);
- overflow:hidden;
- position:relative;
-}
-
-.hero h1{
- font-size:clamp(45px,7vw,90px);
- line-height:.9;
- letter-spacing:-5px;
- max-width:700px;
-}
-
-.hero h1 span{
- color:var(--pink);
-}
-
-.hero p{
- color:#999;
- max-width:580px;
- margin:25px 0;
-}
-
-.actions{
- display:flex;
- flex-wrap:wrap;
- gap:10px;
-}
-
-.btn{
- border:0;
- border-radius:10px;
- padding:12px 20px;
- font-weight:800;
- background:#fff;
- color:#000;
-}
-
-.btn.dark{
- background:#181818;
- color:white;
- border:1px solid var(--line);
-}
-
-.btn.pink{
- background:var(--pink);
- color:white;
-}
-
-.btn.green{
- background:var(--green);
- color:#000;
-}
-
-/* SECTION */
-
-.section{
- margin-top:45px;
-}
-
-.section-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:18px;
-}
-
-.section-head h2{
- font-size:25px;
-}
-
-.muted{
- color:var(--muted);
-}
-
-/* CARDS */
-
-.grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
-}
-
-.card{
- background:var(--panel);
- border:1px solid var(--line);
- border-radius:18px;
- overflow:hidden;
-}
-
-.card-body{
- padding:15px;
-}
-
-.art{
- aspect-ratio:1;
- background:
- radial-gradient(circle at 50% 35%,#ff5a98,#581129 45%,#090909 75%);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:34px;
- font-weight:900;
-}
-
-.card h3{
- font-size:14px;
- margin-bottom:4px;
-}
-
-.card p{
- font-size:11px;
- color:#777;
-}
-
-/* MUSIC */
-
-.music-row{
- display:grid;
- grid-template-columns:55px 1fr auto auto;
- align-items:center;
- gap:15px;
- background:var(--panel);
- padding:10px;
- border:1px solid var(--line);
- border-radius:12px;
- margin-bottom:8px;
-}
-
-.music-cover{
- width:48px;
- height:48px;
- border-radius:9px;
- background:linear-gradient(135deg,#ff2d75,#330914);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:12px;
- font-weight:900;
-}
-
-.play{
- width:38px;
- height:38px;
- border-radius:50%;
- border:0;
- background:#fff;
- color:#000;
-}
-
-/* DASHBOARD */
-
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
-}
-
-.stat{
- background:var(--panel);
- border:1px solid var(--line);
- padding:22px;
- border-radius:18px;
-}
-
-.stat strong{
- display:block;
- font-size:28px;
- margin-top:8px;
-}
-
-.stat span{
- color:#777;
- font-size:12px;
-}
-
-/* WALLET */
-
-.wallet{
- background:
- radial-gradient(circle at 90% 10%,rgba(255,45,117,.35),transparent 35%),
- linear-gradient(135deg,#191919,#090909);
- border:1px solid var(--line);
- border-radius:25px;
- padding:30px;
- max-width:700px;
-}
-
-.wallet small{
- color:#888;
 }
 
 .balance{
- font-size:48px;
- font-weight:900;
- margin:12px 0 25px;
-}
-
-.wallet-actions{
- display:flex;
- gap:10px;
- flex-wrap:wrap;
-}
-
-.form{
- background:var(--panel);
+ background:#151c28;
  border:1px solid var(--line);
- border-radius:18px;
- padding:22px;
- margin-top:20px;
- max-width:600px;
-}
-
-.form input,
-.form select{
- width:100%;
- height:45px;
- background:#090909;
- border:1px solid var(--line);
- border-radius:9px;
- color:white;
- padding:0 12px;
- margin:7px 0 15px;
- outline:none;
-}
-
-/* SHOP */
-
-.product-grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
-}
-
-.product-image{
- aspect-ratio:1;
- background:linear-gradient(135deg,#191919,#080808);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:45px;
-}
-
-.price{
- color:var(--pink2);
- font-weight:900;
- margin-top:7px;
-}
-
-.buy{
- width:100%;
- margin-top:12px;
- padding:10px;
- border:0;
- border-radius:9px;
- background:white;
- color:black;
+ padding:10px 16px;
+ border-radius:10px;
+ color:#fff;
  font-weight:800;
 }
 
-/* GAMES */
+.demo{
+ color:var(--gold);
+ font-size:11px;
+ font-weight:800;
+}
+
+.page{
+ width:min(1200px,94%);
+ margin:auto;
+ padding:22px 0 50px;
+}
+
+/* HISTORY */
+
+.history{
+ display:flex;
+ gap:8px;
+ overflow:auto;
+ padding-bottom:14px;
+}
+
+.mult{
+ padding:7px 11px;
+ border-radius:8px;
+ background:#151c28;
+ color:#aaa;
+ font-size:12px;
+ font-weight:800;
+ white-space:nowrap;
+}
+
+.mult.hot{color:#ffcb5a}
+.mult.red{color:#ff5470}
+.mult.green{color:#45e582}
+
+/* GAME */
 
 .game{
- position:relative;
- min-height:220px;
- padding:22px;
- display:flex;
- flex-direction:column;
- justify-content:end;
- background:
- linear-gradient(180deg,transparent 30%,#050505 100%),
- linear-gradient(135deg,#24111a,#0a0a0a);
- border-radius:18px;
+ height:520px;
  border:1px solid var(--line);
+ border-radius:18px;
+ overflow:hidden;
+ position:relative;
+ background:
+ radial-gradient(circle at 50% 80%,rgba(45,78,130,.22),transparent 35%),
+ linear-gradient(180deg,#101827,#070a10);
+ box-shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
-.game h3{
- font-size:20px;
+.grid{
+ position:absolute;
+ inset:0;
+ opacity:.18;
+ background-image:
+ linear-gradient(#65728a 1px,transparent 1px),
+ linear-gradient(90deg,#65728a 1px,transparent 1px);
+ background-size:55px 55px;
+ transform:perspective(500px) rotateX(55deg) scale(1.4);
+ transform-origin:center bottom;
 }
 
-.game p{
- color:#888;
+.stars{
+ position:absolute;
+ inset:0;
+ background:
+ radial-gradient(circle at 15% 25%,#fff 1px,transparent 2px),
+ radial-gradient(circle at 35% 15%,#fff 1px,transparent 2px),
+ radial-gradient(circle at 75% 28%,#fff 1px,transparent 2px),
+ radial-gradient(circle at 85% 55%,#fff 1px,transparent 2px),
+ radial-gradient(circle at 55% 42%,#fff 1px,transparent 2px);
+ opacity:.25;
+}
+
+.multiplier{
+ position:absolute;
+ left:50%;
+ top:45%;
+ transform:translate(-50%,-50%);
+ font-size:clamp(65px,11vw,120px);
+ font-weight:950;
+ letter-spacing:-6px;
+ text-shadow:0 0 35px rgba(255,45,117,.25);
+ z-index:3;
+}
+
+.status{
+ position:absolute;
+ top:22px;
+ left:50%;
+ transform:translateX(-50%);
+ color:#8f9bad;
  font-size:12px;
+ font-weight:800;
+ letter-spacing:1px;
+ z-index:4;
 }
 
-.game button{
- margin-top:12px;
- width:max-content;
+.status.live{color:var(--green)}
+.status.crashed{color:var(--red)}
+
+.plane{
+ position:absolute;
+ left:9%;
+ bottom:13%;
+ font-size:58px;
+ filter:drop-shadow(0 0 15px rgba(255,45,117,.8));
+ transform:rotate(-12deg);
+ z-index:4;
+ transition:left .1s linear,bottom .1s linear;
 }
 
-/* SOCIAL */
+.trail{
+ position:absolute;
+ height:4px;
+ left:7%;
+ bottom:15%;
+ width:0;
+ background:linear-gradient(90deg,transparent,var(--pink));
+ box-shadow:0 0 18px var(--pink);
+ transform-origin:left;
+ transform:rotate(-13deg);
+ z-index:2;
+}
 
-.post{
+/* CONTROLS */
+
+.controls{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
+ margin-top:15px;
+}
+
+.panel{
  background:var(--panel);
  border:1px solid var(--line);
- border-radius:18px;
+ border-radius:15px;
  padding:18px;
- margin-bottom:15px;
- max-width:800px;
 }
 
-.post-head{
- display:flex;
- gap:12px;
- align-items:center;
+.panel h3{
+ font-size:14px;
+ margin-bottom:14px;
 }
 
-.post-avatar{
- width:42px;
- height:42px;
- border-radius:50%;
- background:linear-gradient(135deg,#ff2d75,#24101a);
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:900;
-}
-
-.post-text{
- margin:18px 0;
- color:#ccc;
-}
-
-.post-actions{
+.row{
  display:flex;
  gap:8px;
 }
 
-.post-actions button{
- background:#171717;
+.amount{
+ flex:1;
+ background:#0b0f16;
  border:1px solid var(--line);
+ color:white;
+ height:44px;
+ border-radius:9px;
+ padding:0 12px;
+ outline:none;
+ font-weight:800;
+}
+
+.quick{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:6px;
+ margin-top:8px;
+}
+
+.quick button{
+ background:#1a222f;
  color:#aaa;
- padding:8px 12px;
- border-radius:8px;
+ border:0;
+ border-radius:7px;
+ padding:8px;
+ font-size:11px;
+ font-weight:800;
 }
 
-/* PROFILE */
-
-.profile{
- background:var(--panel);
- border:1px solid var(--line);
- border-radius:22px;
- overflow:hidden;
+.bet{
+ width:100%;
+ margin-top:12px;
+ height:47px;
+ border:0;
+ border-radius:9px;
+ background:var(--pink);
+ color:#fff;
+ font-size:14px;
+ font-weight:900;
 }
 
-.cover-photo{
- height:200px;
- background:
- radial-gradient(circle at 60% 20%,#ff3d82,transparent 30%),
- linear-gradient(120deg,#111,#300b1b);
+.bet.stop{
+ background:var(--green);
+ color:#06130b;
 }
 
-.profile-info{
- padding:0 25px 25px;
- position:relative;
-}
-
-.profile-avatar{
- width:100px;
- height:100px;
- margin-top:-50px;
- border:5px solid var(--panel);
- border-radius:50%;
- background:linear-gradient(135deg,#ff2d75,#410b21);
+.auto{
  display:flex;
  align-items:center;
- justify-content:center;
- font-size:30px;
- font-weight:900;
+ justify-content:space-between;
+ margin-top:13px;
+ color:#8d98a9;
+ font-size:12px;
 }
 
-.profile-info h2{
- margin-top:10px;
-}
-
-.badge{
- display:inline-block;
- background:var(--pink);
- padding:3px 7px;
- border-radius:5px;
- font-size:9px;
- font-weight:900;
-}
-
-/* NOTIFICATION */
-
-.notification{
- background:var(--panel);
+.auto input{
+ width:80px;
+ background:#0b0f16;
  border:1px solid var(--line);
- padding:15px;
- border-radius:13px;
- margin-bottom:8px;
-}
-
-.notification b{
- font-size:13px;
-}
-
-.notification small{
- color:#777;
- display:block;
+ color:white;
+ border-radius:7px;
+ padding:7px;
+ text-align:center;
 }
 
 /* TABLE */
 
+.table-panel{
+ margin-top:15px;
+}
+
 .table{
  width:100%;
  border-collapse:collapse;
- background:var(--panel);
- border-radius:15px;
- overflow:hidden;
 }
 
 .table th,
 .table td{
- padding:14px;
+ padding:13px;
  border-bottom:1px solid var(--line);
  text-align:left;
  font-size:12px;
 }
 
-.table th{
- color:#777;
-}
+.table th{color:#667286}
+.win{color:var(--green)}
+.loss{color:var(--red)}
 
-/* MODAL */
-
-.modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.75);
- backdrop-filter:blur(10px);
- display:none;
- align-items:center;
- justify-content:center;
- z-index:500;
- padding:20px;
-}
-
-.modal.show{
- display:flex;
-}
-
-.modal-box{
- width:min(500px,100%);
- background:#121212;
- border:1px solid #333;
- border-radius:20px;
- padding:25px;
-}
-
-.modal-head{
- display:flex;
- justify-content:space-between;
- margin-bottom:20px;
-}
-
-.close{
- background:none;
- color:#aaa;
- border:0;
- font-size:22px;
+.notice{
+ margin-top:15px;
+ padding:14px;
+ border:1px solid #473d20;
+ background:#18150b;
+ color:#c8b878;
+ border-radius:10px;
+ font-size:11px;
+ line-height:1.5;
 }
 
 /* MOBILE */
 
-.mobile-menu{
- display:none;
-}
+@media(max-width:700px){
 
-@media(max-width:1100px){
-
- .grid,
- .product-grid{
-  grid-template-columns:repeat(3,1fr);
+ .header{
+  padding:0 14px;
  }
 
-}
-
-@media(max-width:850px){
-
- .sidebar{
-  transform:translateX(-100%);
-  transition:.3s;
- }
-
- .sidebar.open{
-  transform:translateX(0);
- }
-
- .main{
-  margin-left:0;
-  width:100%;
- }
-
- .mobile-menu{
-  display:block;
- }
-
- .search{
-  width:45%;
- }
-
- .stats{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .grid,
- .product-grid{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .hero{
-  padding:35px;
- }
-
-}
-
-@media(max-width:550px){
-
- .page{
-  padding:15px;
- }
-
- .topbar{
-  padding:0 15px;
- }
-
- .search{
+ .demo{
   display:none;
  }
 
- .hero{
-  min-height:470px;
-  padding:27px;
+ .balance{
+  padding:8px 10px;
+  font-size:12px;
  }
 
- .hero h1{
-  font-size:52px;
+ .game{
+  height:440px;
  }
 
- .grid,
- .product-grid,
- .stats{
-  grid-template-columns:1fr 1fr;
+ .controls{
+  grid-template-columns:1fr;
  }
 
- .music-row{
-  grid-template-columns:45px 1fr auto;
+ .multiplier{
+  font-size:70px;
  }
 
- .music-row .time{
-  display:none;
+ .plane{
+  font-size:45px;
  }
 
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-<!-- SIDEBAR -->
-
-<aside class="sidebar" id="sidebar">
+<header class="header">
 
 <div class="logo">
- TEDDY<span>ZHU</span>
+TEDDY<span>ZHU</span> CRASH
 </div>
 
-<div class="nav-title">MAIN</div>
+<div class="header-right">
 
-<a class="nav-item active" onclick="show('home')">
- <span class="icon">⌂</span> Home
-</a>
-
-<a class="nav-item" onclick="show('music')">
- <span class="icon">♫</span> Music
-</a>
-
-<a class="nav-item" onclick="show('watch')">
- <span class="icon">▶</span> Watch
-</a>
-
-<a class="nav-item" onclick="show('social')">
- <span class="icon">◎</span> Social
-</a>
-
-<div class="nav-title">DISCOVER</div>
-
-<a class="nav-item" onclick="show('games')">
- <span class="icon">🎮</span> Games
-</a>
-
-<a class="nav-item" onclick="show('shop')">
- <span class="icon">🛍</span> Marketplace
-</a>
-
-<a class="nav-item" onclick="show('events')">
- <span class="icon">◷</span> Events
-</a>
-
-<div class="nav-title">CREATOR</div>
-
-<a class="nav-item" onclick="show('creator')">
- <span class="icon">◆</span> Creator Studio
-</a>
-
-<a class="nav-item" onclick="show('earnings')">
- <span class="icon">▣</span> Earnings
-</a>
-
-<a class="nav-item" onclick="show('members')">
- <span class="icon">♙</span> Memberships
-</a>
-
-<div class="nav-title">FINANCE</div>
-
-<a class="nav-item" onclick="show('wallet')">
- <span class="icon">₿</span> Wallet
-</a>
-
-<a class="nav-item" onclick="show('transactions')">
- <span class="icon">↕</span> Transactions
-</a>
-
-<div class="nav-title">ACCOUNT</div>
-
-<a class="nav-item" onclick="show('profile')">
- <span class="icon">●</span> Profile
-</a>
-
-<a class="nav-item" onclick="show('notifications')">
- <span class="icon">♢</span> Notifications
-</a>
-
-<a class="nav-item" onclick="show('settings')">
- <span class="icon">⚙</span> Settings
-</a>
-
-</aside>
-
-
-<!-- MAIN -->
-
-<main class="main">
-
-<header class="topbar">
-
-<button class="top-btn mobile-menu"
-onclick="toggleSidebar()">☰</button>
-
-<div class="search">
- 🔎
- <input placeholder="Search music, games, products...">
+<div class="demo">
+FREE PLAY
 </div>
 
-<div class="top-actions">
-
-<button class="top-btn"
-onclick="show('notifications')">♢</button>
-
-<button class="top-btn"
-onclick="show('wallet')">₿</button>
-
-<div class="avatar"
-onclick="show('profile')">TZ</div>
+<div class="balance">
+Demo KSh <span id="balance">10,000</span>
+</div>
 
 </div>
 
 </header>
 
 
-<div class="page">
+<main class="page">
 
 
-<!-- HOME -->
+<!-- HISTORY -->
 
-<section class="view active" id="home">
+<div class="history" id="history">
 
-<div class="hero">
+<span class="mult red">1.24x</span>
+<span class="mult green">3.81x</span>
+<span class="mult">1.08x</span>
+<span class="mult hot">12.40x</span>
+<span class="mult green">2.77x</span>
+<span class="mult red">1.13x</span>
+<span class="mult hot">7.25x</span>
 
-<div>
+</div>
 
-<p class="muted">TEDDYZHU HUB • V17 PRO</p>
 
-<h1>
-One world.<br>
-<span>Everything.</span>
-</h1>
+<!-- GAME -->
 
-<p>
-Music, entertainment, creators, business, gaming,
-community and digital commerce — built into one
-modern platform.
-</p>
+<section class="game">
 
-<div class="actions">
+<div class="grid"></div>
+<div class="stars"></div>
 
-<button class="btn pink"
-onclick="show('music')">
-Explore Music
+<div class="status" id="status">
+NEXT ROUND
+</div>
+
+<div class="multiplier" id="multiplier">
+1.00x
+</div>
+
+<div class="trail" id="trail"></div>
+
+<div class="plane" id="plane">
+✈
+</div>
+
+</section>
+
+
+<!-- CONTROLS -->
+
+<section class="controls">
+
+
+<!-- BET ONE -->
+
+<div class="panel">
+
+<h3>BET 1</h3>
+
+<div class="row">
+
+<input
+id="amount1"
+class="amount"
+type="number"
+value="100"
+min="1">
+
+</div>
+
+<div class="quick">
+
+<button onclick="setAmount('amount1',10)">10</button>
+<button onclick="setAmount('amount1',50)">50</button>
+<button onclick="setAmount('amount1',100)">100</button>
+<button onclick="setAmount('amount1',500)">500</button>
+
+</div>
+
+<div class="auto">
+
+<span>Auto Cash Out</span>
+
+<input
+id="auto1"
+type="number"
+value="2.00"
+min="1.01"
+step=".01">
+
+</div>
+
+<button
+id="bet1"
+class="bet"
+onclick="placeBet(1)">
+PLACE BET
 </button>
 
-<button class="btn dark"
-onclick="show('shop')">
-Open Marketplace
+</div>
+
+
+<!-- BET TWO -->
+
+<div class="panel">
+
+<h3>BET 2</h3>
+
+<div class="row">
+
+<input
+id="amount2"
+class="amount"
+type="number"
+value="200"
+min="1">
+
+</div>
+
+<div class="quick">
+
+<button onclick="setAmount('amount2',10)">10</button>
+<button onclick="setAmount('amount2',50)">50</button>
+<button onclick="setAmount('amount2',200)">200</button>
+<button onclick="setAmount('amount2',1000)">1000</button>
+
+</div>
+
+<div class="auto">
+
+<span>Auto Cash Out</span>
+
+<input
+id="auto2"
+type="number"
+value="3.00"
+min="1.01"
+step=".01">
+
+</div>
+
+<button
+id="bet2"
+class="bet"
+onclick="placeBet(2)">
+PLACE BET
 </button>
-
-<button class="btn dark"
-onclick="show('games')">
-Game Hub
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-<div class="section-head">
-<h2>Quick Access</h2>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<div class="card-body">
-<h3>Music</h3>
-<p>Discover songs and releases.</p>
-<br>
-<button class="btn pink"
-onclick="show('music')">Open</button>
-</div>
-</div>
-
-<div class="card">
-<div class="card-body">
-<h3>Marketplace</h3>
-<p>Products and digital goods.</p>
-<br>
-<button class="btn"
-onclick="show('shop')">Shop</button>
-</div>
-</div>
-
-<div class="card">
-<div class="card-body">
-<h3>Games</h3>
-<p>Explore the game hub.</p>
-<br>
-<button class="btn"
-onclick="show('games')">Play</button>
-</div>
-</div>
-
-<div class="card">
-<div class="card-body">
-<h3>Wallet</h3>
-<p>Manage your digital balance.</p>
-<br>
-<button class="btn"
-onclick="show('wallet')">Wallet</button>
-</div>
-</div>
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- MUSIC -->
+<!-- HISTORY TABLE -->
 
-<section class="view" id="music">
+<section class="panel table-panel">
 
-<div class="section-head">
-<div>
-<h2>Music</h2>
-<p class="muted">Songs • Albums • Playlists</p>
-</div>
-
-<button class="btn pink">
-+ Upload
-</button>
-</div>
-
-<div class="music-row">
-<div class="music-cover">TZ</div>
-<div>
-<b>Number One</b>
-<p class="muted">Teddyzhu • Single</p>
-</div>
-<span class="time muted">03:20</span>
-<button class="play">▶</button>
-</div>
-
-<div class="music-row">
-<div class="music-cover">TZ</div>
-<div>
-<b>MY TIME</b>
-<p class="muted">Teddyzhu • Single</p>
-</div>
-<span class="time muted">03:30</span>
-<button class="play">▶</button>
-</div>
-
-<div class="music-row">
-<div class="music-cover">TZ</div>
-<div>
-<b>Vumilia</b>
-<p class="muted">Teddyzhu • Single</p>
-</div>
-<span class="time muted">03:15</span>
-<button class="play">▶</button>
-</div>
-
-<div class="music-row">
-<div class="music-cover">TZ</div>
-<div>
-<b>Pumzika Mama</b>
-<p class="muted">Teddyzhu • Tribute</p>
-</div>
-<span class="time muted">03:40</span>
-<button class="play">▶</button>
-</div>
-
-</section>
-
-
-<!-- WATCH -->
-
-<section class="view" id="watch">
-
-<div class="section-head">
-<h2>Watch</h2>
-<p class="muted">Videos • Shorts • Live</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<div class="art">▶</div>
-<div class="card-body">
-<h3>Number One</h3>
-<p>Official Animated Music Video</p>
-</div>
-</div>
-
-<div class="card">
-<div class="art">▶</div>
-<div class="card-body">
-<h3>Visual Stories</h3>
-<p>Official visuals</p>
-</div>
-</div>
-
-<div class="card">
-<div class="art">LIVE</div>
-<div class="card-body">
-<h3>Live Sessions</h3>
-<p>Watch live performances</p>
-</div>
-</div>
-
-<div class="card">
-<div class="art">TZ</div>
-<div class="card-body">
-<h3>Shorts</h3>
-<p>Quick entertainment</p>
-</div>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SOCIAL -->
-
-<section class="view" id="social">
-
-<div class="section-head">
-<div>
-<h2>Community</h2>
-<p class="muted">Connect with the Teddyzhu community.</p>
-</div>
-
-<button class="btn pink">
-Create Post
-</button>
-</div>
-
-
-<div class="post">
-
-<div class="post-head">
-<div class="post-avatar">TZ</div>
-<div>
-<b>Teddyzhu</b>
-<br>
-<span class="muted">Official Artist • 2h</span>
-</div>
-</div>
-
-<div class="post-text">
-New music is coming. Thank you for supporting the journey.
-❤️
-</div>
-
-<div class="post-actions">
-<button>♡ Like</button>
-<button>◯ Comment</button>
-<button>↗ Share</button>
-</div>
-
-</div>
-
-
-<div class="post">
-
-<div class="post-head">
-<div class="post-avatar">F</div>
-<div>
-<b>Fan Community</b>
-<br>
-<span class="muted">Today</span>
-</div>
-</div>
-
-<div class="post-text">
-What is your favorite Teddyzhu song?
-</div>
-
-<div class="post-actions">
-<button>♡ Like</button>
-<button>◯ Comment</button>
-<button>↗ Share</button>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- GAMES -->
-
-<section class="view" id="games">
-
-<div class="section-head">
-<div>
-<h2>Game Hub</h2>
-<p class="muted">
-Discover games, purchases and digital gaming content.
-</p>
-</div>
-
-<button class="btn pink">
-My Games
-</button>
-</div>
-
-<div class="grid">
-
-<div class="game">
-<h3>Neon Runner</h3>
-<p>Arcade • Action</p>
-<button class="btn pink">Play</button>
-</div>
-
-<div class="game">
-<h3>Street Legends</h3>
-<p>Racing • Multiplayer</p>
-<button class="btn pink">Play</button>
-</div>
-
-<div class="game">
-<h3>Kingdom Quest</h3>
-<p>Adventure • RPG</p>
-<button class="btn pink">Play</button>
-</div>
-
-<div class="game">
-<h3>Pixel Arena</h3>
-<p>Strategy • Multiplayer</p>
-<button class="btn pink">Play</button>
-</div>
-
-</div>
-
-
-<div class="section">
-
-<h2>Game Wallet</h2>
-
-<div class="wallet">
-
-<small>Available gaming balance</small>
-
-<div class="balance">
-KSh 0.00
-</div>
-
-<div class="wallet-actions">
-
-<button class="btn pink"
-onclick="openDeposit()">
-Deposit
-</button>
-
-<button class="btn dark">
-Transaction History
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MARKETPLACE -->
-
-<section class="view" id="shop">
-
-<div class="section-head">
-<div>
-<h2>Marketplace</h2>
-<p class="muted">
-Physical products • Digital products • Merchandise
-</p>
-</div>
-
-<button class="btn pink">Seller Center</button>
-</div>
-
-
-<div class="product-grid">
-
-<div class="card">
-<div class="product-image">👕</div>
-<div class="card-body">
-<h3>Teddyzhu Official Tee</h3>
-<p>Official merchandise</p>
-<div class="price">KSh 2,500</div>
-<button class="buy">Add to Cart</button>
-</div>
-</div>
-
-<div class="card">
-<div class="product-image">🎧</div>
-<div class="card-body">
-<h3>Digital Music Pack</h3>
-<p>Digital download</p>
-<div class="price">KSh 500</div>
-<button class="buy">Buy</button>
-</div>
-</div>
-
-<div class="card">
-<div class="product-image">💿</div>
-<div class="card-body">
-<h3>Album Collection</h3>
-<p>Digital album</p>
-<div class="price">KSh 800</div>
-<button class="buy">Buy</button>
-</div>
-</div>
-
-<div class="card">
-<div class="product-image">🎟</div>
-<div class="card-body">
-<h3>Event Pass</h3>
-<p>Digital ticket</p>
-<div class="price">KSh 1,000</div>
-<button class="buy">Get Ticket</button>
-</div>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- EVENTS -->
-
-<section class="view" id="events">
-
-<div class="section-head">
-<h2>Events</h2>
-<p class="muted">Shows • Concerts • Meetups</p>
-</div>
-
-<div class="card">
-<div class="card-body">
-
-<h3>Teddyzhu Live Experience</h3>
-
-<p class="muted">
-Official event • Coming soon
-</p>
-
-<br>
-
-<button class="btn pink">
-Get Tickets
-</button>
-
-</div>
-</div>
-
-</section>
-
-
-<!-- CREATOR -->
-
-<section class="view" id="creator">
-
-<div class="section-head">
-<div>
-<h2>Creator Studio</h2>
-<p class="muted">Manage your content and audience.</p>
-</div>
-
-<button class="btn pink">
-Upload Content
-</button>
-</div>
-
-
-<div class="stats">
-
-<div class="stat">
-<span>Views</span>
-<strong>0</strong>
-</div>
-
-<div class="stat">
-<span>Followers</span>
-<strong>0</strong>
-</div>
-
-<div class="stat">
-<span>Content</span>
-<strong>0</strong>
-</div>
-
-<div class="stat">
-<span>Revenue</span>
-<strong>KSh 0</strong>
-</div>
-
-</div>
-
-
-<div class="section">
-
-<div class="form">
-
-<h3>Upload New Content</h3>
-
-<label>Title</label>
-<input placeholder="Content title">
-
-<label>Content type</label>
-
-<select>
-<option>Music</option>
-<option>Video</option>
-<option>Short</option>
-<option>Podcast</option>
-<option>Digital Product</option>
-</select>
-
-<button class="btn pink">
-Choose File
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- EARNINGS -->
-
-<section class="view" id="earnings">
-
-<h2>Earnings</h2>
-
-<div class="section">
-
-<div class="stats">
-
-<div class="stat">
-<span>Total earnings</span>
-<strong>KSh 0</strong>
-</div>
-
-<div class="stat">
-<span>This month</span>
-<strong>KSh 0</strong>
-</div>
-
-<div class="stat">
-<span>Pending</span>
-<strong>KSh 0</strong>
-</div>
-
-<div class="stat">
-<span>Paid out</span>
-<strong>KSh 0</strong>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MEMBERS -->
-
-<section class="view" id="members">
-
-<h2>Memberships</h2>
-
-<div class="section">
-
-<div class="grid">
-
-<div class="card">
-<div class="card-body">
-<h3>FREE</h3>
-<p>Community access</p>
-<br>
-<button class="btn dark">Join</button>
-</div>
-</div>
-
-<div class="card">
-<div class="card-body">
-<h3>FAN</h3>
-<p>Exclusive content</p>
-<br>
-<button class="btn pink">Join</button>
-</div>
-</div>
-
-<div class="card">
-<div class="card-body">
-<h3>VIP</h3>
-<p>Premium experiences</p>
-<br>
-<button class="btn pink">Join</button>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- WALLET -->
-
-<section class="view" id="wallet">
-
-<h2>Wallet</h2>
-
-<div class="section">
-
-<div class="wallet">
-
-<small>Total available balance</small>
-
-<div class="balance">
-KSh 0.00
-</div>
-
-<div class="wallet-actions">
-
-<button class="btn pink"
-onclick="openDeposit()">
-Deposit
-</button>
-
-<button class="btn dark">
-Withdraw
-</button>
-
-<button class="btn dark"
-onclick="show('transactions')">
-Transactions
-</button>
-
-</div>
-
-</div>
-
-
-<div class="form">
-
-<h3>Payment Methods</h3>
-
-<p class="muted">
-Connect a supported payment method through the secure backend.
-</p>
-
-<br>
-
-<button class="btn green">
-+ Add M-Pesa
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- TRANSACTIONS -->
-
-<section class="view" id="transactions">
-
-<h2>Transactions</h2>
-
-<div class="section">
+<h3>ROUND HISTORY</h3>
 
 <table class="table">
 
+<thead>
+
 <tr>
-<th>Date</th>
-<th>Type</th>
-<th>Status</th>
-<th>Amount</th>
+<th>ROUND</th>
+<th>CRASH</th>
+<th>TIME</th>
+<th>RESULT</th>
+</tr>
+
+</thead>
+
+<tbody id="rounds">
+
+<tr>
+<td>#0007</td>
+<td class="green">7.25x</td>
+<td>Now</td>
+<td>Completed</td>
 </tr>
 
 <tr>
-<td>—</td>
-<td>No transactions</td>
-<td>—</td>
-<td>KSh 0</td>
+<td>#0006</td>
+<td class="red">1.13x</td>
+<td>1m ago</td>
+<td>Completed</td>
 </tr>
+
+</tbody>
 
 </table>
 
-</div>
-
 </section>
 
 
-<!-- PROFILE -->
-
-<section class="view" id="profile">
-
-<div class="profile">
-
-<div class="cover-photo"></div>
-
-<div class="profile-info">
-
-<div class="profile-avatar">
-TZ
-</div>
-
-<h2>
-Teddyzhu
-<span class="badge">OFFICIAL</span>
-</h2>
-
-<p class="muted">
-Artist • Creator • Entrepreneur
-</p>
-
-<p class="muted">
-Official Teddyzhu Hub profile.
-</p>
-
-<br>
-
-<button class="btn pink">
-Edit Profile
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-
-<section class="view" id="notifications">
-
-<h2>Notifications</h2>
-
-<div class="section">
-
-<div class="notification">
-<b>Welcome to Teddyzhu Hub</b>
-<small>Your account dashboard is ready.</small>
-</div>
-
-<div class="notification">
-<b>New release</b>
-<small>Number One is available on digital platforms.</small>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SETTINGS -->
-
-<section class="view" id="settings">
-
-<h2>Settings</h2>
-
-<div class="section">
-
-<div class="form">
-
-<h3>Account Settings</h3>
-
-<label>Username</label>
-<input value="teddyzhu">
-
-<label>Email</label>
-<input placeholder="your@email.com">
-
-<label>Language</label>
-
-<select>
-<option>English</option>
-<option>Swahili</option>
-</select>
-
-<button class="btn pink">
-Save Changes
-</button>
-
-</div>
-
-
-<div class="form">
-
-<h3>Security</h3>
-
-<button class="btn dark">
-Change Password
-</button>
-
-<br><br>
-
-<button class="btn dark">
-Enable 2FA
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
+<div class="notice">
+<strong>DEMO MODE:</strong>
+This game uses virtual demo credits only.
+No real money, deposits, withdrawals, gambling,
+or payment processing are connected to this version.
 </div>
 
 </main>
 
-</div>
-
-
-<!-- DEPOSIT MODAL -->
-
-<div class="modal" id="depositModal">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2>Deposit</h2>
-
-<button class="close"
-onclick="closeDeposit()">×</button>
-
-</div>
-
-<p class="muted">
-Select an amount to continue.
-</p>
-
-<div class="form">
-
-<label>Amount (KSh)</label>
-
-<input
-id="depositAmount"
-type="number"
-min="10"
-placeholder="Enter amount">
-
-<label>Payment Method</label>
-
-<select>
-<option>M-Pesa</option>
-<option>Card</option>
-<option>Bank</option>
-</select>
-
-<button
-class="btn pink"
-onclick="startDeposit()">
-Continue
-</button>
-
-</div>
-
-<p
-id="depositMessage"
-class="muted"
-style="margin-top:15px">
-</p>
-
-</div>
-
-</div>
-
 
 <script>
 
-/* NAVIGATION */
+/*
+ TEDDYZHU CRASH
+ FREE-PLAY DEMO ENGINE
 
-function show(id){
+ This intentionally uses virtual credits only.
+ No real-money payment system is connected.
+*/
 
- document.querySelectorAll(".view")
- .forEach(v=>v.classList.remove("active"));
 
- const target=document.getElementById(id);
+let balance = 10000;
 
- if(target){
-  target.classList.add("active");
- }
+let round = 8;
 
- document.querySelectorAll(".nav-item")
- .forEach(n=>n.classList.remove("active"));
+let multiplier = 1;
 
- if(window.innerWidth<850){
-  document.getElementById("sidebar")
-  .classList.remove("open");
- }
+let running = false;
 
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
+let crashPoint = 0;
+
+let bets = {
+  1:null,
+  2:null
+};
+
+let interval;
+
+
+/* ELEMENTS */
+
+const balanceEl =
+document.getElementById("balance");
+
+const multiplierEl =
+document.getElementById("multiplier");
+
+const statusEl =
+document.getElementById("status");
+
+const plane =
+document.getElementById("plane");
+
+const trail =
+document.getElementById("trail");
+
+
+/* BALANCE */
+
+function updateBalance(){
+
+ balanceEl.textContent =
+ balance.toLocaleString("en-US",{
+  minimumFractionDigits:0
  });
-}
-
-
-/* SIDEBAR */
-
-function toggleSidebar(){
-
- document.getElementById("sidebar")
- .classList.toggle("open");
 
 }
 
 
-/* DEPOSIT */
+/* AMOUNT */
 
-function openDeposit(){
+function setAmount(id,value){
 
- document.getElementById("depositModal")
- .classList.add("show");
-
-}
-
-function closeDeposit(){
-
- document.getElementById("depositModal")
- .classList.remove("show");
+ document.getElementById(id).value=value;
 
 }
 
-function startDeposit(){
 
- const amount=
- document.getElementById("depositAmount").value;
+/* BET */
 
- const message=
- document.getElementById("depositMessage");
+function placeBet(slot){
 
- if(!amount || Number(amount)<10){
+ if(running){
 
-  message.textContent=
-  "Enter a valid amount of at least KSh 10.";
+  cashOut(slot);
 
+  return;
+
+ }
+
+ const input =
+ document.getElementById(
+  "amount"+slot
+ );
+
+ const amount =
+ Number(input.value);
+
+ if(!amount || amount<=0){
+  alert("Enter a valid demo amount.");
   return;
  }
 
- /*
- IMPORTANT:
+ if(amount>balance){
+  alert("Not enough demo credits.");
+  return;
+ }
 
- This is only the frontend.
+ bets[slot]={
+  amount:amount,
+  active:true,
+  cashed:false
+ };
 
- A real M-Pesa deposit must call your
- backend Daraja/API integration.
+ balance-=amount;
 
- Never put M-Pesa consumer secrets,
- passkeys or credentials inside HTML.
- */
+ updateBalance();
 
- message.textContent=
- "Payment request ready. Connect your secure backend payment API to process this deposit.";
+ document.getElementById("bet"+slot)
+ .textContent="CASH OUT";
+
+ document.getElementById("bet"+slot)
+ .classList.add("stop");
 
 }
 
 
-/* DEMO SEARCH */
+/* CASH OUT */
 
-document.querySelector(".search input")
-.addEventListener("keydown",function(e){
+function cashOut(slot){
 
- if(e.key==="Enter"){
+ const bet=bets[slot];
 
-  const query=this.value.trim();
+ if(!bet || !bet.active || bet.cashed){
+  return;
+ }
 
-  if(query){
+ if(!running){
+  return;
+ }
 
-   alert(
-    "Search backend required for: "+query
-   );
+ const payout =
+ bet.amount * multiplier;
+
+ balance += payout;
+
+ bet.cashed=true;
+ bet.active=false;
+
+ updateBalance();
+
+ document.getElementById("bet"+slot)
+ .textContent="CASHED "+multiplier.toFixed(2)+"x";
+
+ document.getElementById("bet"+slot)
+ .classList.remove("stop");
+
+}
+
+
+/* NEW ROUND */
+
+function startRound(){
+
+ running=false;
+
+ multiplier=1;
+
+ multiplierEl.textContent="1.00x";
+
+ statusEl.textContent="NEXT ROUND";
+ statusEl.className="status";
+
+ plane.style.left="9%";
+ plane.style.bottom="13%";
+
+ trail.style.width="0";
+
+ setTimeout(()=>{
+
+  beginFlight();
+
+ },2500);
+
+}
+
+
+/* FLIGHT */
+
+function beginFlight(){
+
+ running=true;
+
+ crashPoint =
+ generateCrash();
+
+ statusEl.textContent="FLYING";
+ statusEl.className="status live";
+
+ multiplier=1;
+
+ clearInterval(interval);
+
+ interval=setInterval(()=>{
+
+  multiplier +=
+  0.01 + (multiplier*0.002);
+
+  multiplierEl.textContent =
+  multiplier.toFixed(2)+"x";
+
+  const progress =
+  Math.min(
+   1,
+   (multiplier-1)/
+   Math.max(1,crashPoint-1)
+  );
+
+  const left =
+   9+(progress*78);
+
+  const bottom =
+   13+(progress*55);
+
+  plane.style.left=left+"%";
+  plane.style.bottom=bottom+"%";
+
+  trail.style.width=
+   (progress*75)+"%";
+
+
+  /* AUTO CASHOUT */
+
+  [1,2].forEach(slot=>{
+
+   const bet=bets[slot];
+
+   if(!bet || !bet.active || bet.cashed)
+    return;
+
+   const auto =
+    Number(
+     document.getElementById(
+      "auto"+slot
+     ).value
+    );
+
+   if(auto>1 && multiplier>=auto){
+
+    cashOut(slot);
+
+   }
+
+  });
+
+
+  if(multiplier>=crashPoint){
+
+   crash();
 
   }
 
+ },70);
+
+}
+
+
+/* CRASH */
+
+function crash(){
+
+ clearInterval(interval);
+
+ running=false;
+
+ multiplierEl.textContent =
+ crashPoint.toFixed(2)+"x";
+
+ statusEl.textContent=
+ "CRASHED";
+
+ statusEl.className=
+ "status crashed";
+
+ plane.style.opacity=".25";
+
+ setTimeout(()=>{
+  plane.style.opacity="1";
+ },900);
+
+
+ [1,2].forEach(slot=>{
+
+  const bet=bets[slot];
+
+  if(bet && bet.active && !bet.cashed){
+
+   bet.active=false;
+
+   const btn=
+    document.getElementById(
+     "bet"+slot
+    );
+
+   btn.textContent="LOST";
+   btn.classList.remove("stop");
+
+  }
+
+ });
+
+
+ addHistory(crashPoint);
+
+ bets={
+  1:null,
+  2:null
+ };
+
+ setTimeout(startRound,2500);
+
+}
+
+
+/* CRASH GENERATOR */
+
+function generateCrash(){
+
+ /*
+ Demo randomness only.
+ This is not a certified gambling RNG.
+ */
+
+ const r=Math.random();
+
+ if(r<.35)
+  return 1.05 + Math.random()*.55;
+
+ if(r<.75)
+  return 1.5 + Math.random()*2.5;
+
+ if(r<.94)
+  return 4 + Math.random()*6;
+
+ return 10 + Math.random()*25;
+
+}
+
+
+/* HISTORY */
+
+function addHistory(value){
+
+ const history =
+ document.getElementById("history");
+
+ const item =
+ document.createElement("span");
+
+ item.className="mult";
+
+ if(value<1.5)
+  item.classList.add("red");
+ else if(value>=5)
+  item.classList.add("hot");
+ else
+  item.classList.add("green");
+
+ item.textContent=
+ value.toFixed(2)+"x";
+
+ history.prepend(item);
+
+ while(history.children.length>10){
+  history.removeChild(
+   history.lastChild
+  );
  }
 
-});
+
+ const table =
+ document.getElementById("rounds");
+
+ const row =
+ document.createElement("tr");
+
+ const now =
+ new Date().toLocaleTimeString([],{
+  hour:"2-digit",
+  minute:"2-digit"
+ });
+
+ row.innerHTML=`
+
+ <td>#${String(round).padStart(4,"0")}</td>
+
+ <td class="${
+  value<1.5?"red":
+  value>=5?"":"green"
+ }">
+ ${value.toFixed(2)}x
+ </td>
+
+ <td>${now}</td>
+
+ <td>Completed</td>
+
+ `;
+
+ table.prepend(row);
+
+ round++;
+
+ while(table.children.length>8){
+  table.removeChild(
+   table.lastChild
+  );
+ }
+
+}
+
+
+/* START */
+
+updateBalance();
+
+startRound();
 
 </script>
 
 </body>
 </html>
+```
