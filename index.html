@@ -1,109 +1,2059 @@
-<!-- PRIVATE VIDEOS -->
-<section class="private-videos">
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<title>Teddyzhu Black Private — V1 PRO</title>
 
-  <div class="section-title">
-    <span>PRIVATE COLLECTION</span>
-    <h2>Exclusive Videos</h2>
-    <p>Premium visual content for members.</p>
-  </div>
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-  <div class="video-grid">
+:root{
+  --bg:#050505;
+  --panel:#0d0d0d;
+  --panel2:#141414;
+  --panel3:#1c1c1c;
+  --line:#292929;
+  --text:#fff;
+  --muted:#8c8c8c;
+  --gold:#d7b46a;
+  --red:#ff315f;
+  --green:#32df86;
+}
 
-    <a href="YOUR_VIDEO_LINK_1"
-       target="_blank"
-       class="video-card">
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% -10%,#252525,transparent 35%),
+    #050505;
+  color:white;
+  min-height:100vh;
+}
 
-      <div class="video-image">
-        <img
-          src="https://images.unsplash.com/photo-1733736075345-55db261a8ac0?auto=format&fit=crop&fm=jpg&q=80"
-          alt="Luxury fashion portrait">
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
+}
 
-        <div class="video-overlay"></div>
+button{
+  cursor:pointer;
+}
 
-        <div class="play-button">▶</div>
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-        <div class="lock">🔒 VIP</div>
-      </div>
+/* =========================
+   SIDEBAR
+========================= */
 
-      <div class="video-info">
-        <h3>After Dark</h3>
-        <span>Private Collection • 04:28</span>
-      </div>
+.sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:250px;
+  background:rgba(7,7,7,.96);
+  border-right:1px solid var(--line);
+  padding:25px 15px;
+  z-index:100;
+  overflow:auto;
+}
 
-    </a>
+.logo{
+  font-size:23px;
+  font-weight:950;
+  letter-spacing:-1.5px;
+  padding:5px 12px 25px;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-label{
+  color:#555;
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:900;
+  padding:17px 12px 7px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:11px 12px;
+  border-radius:10px;
+  color:#888;
+  font-size:13px;
+  font-weight:700;
+  margin:3px 0;
+  transition:.25s;
+  cursor:pointer;
+}
+
+.nav:hover,
+.nav.active{
+  background:#181818;
+  color:white;
+}
+
+.nav.active{
+  box-shadow:inset 3px 0 var(--gold);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+  margin-left:250px;
+  min-height:100vh;
+}
+
+/* TOPBAR */
+
+.topbar{
+  height:72px;
+  position:sticky;
+  top:0;
+  z-index:80;
+  background:rgba(5,5,5,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+}
+
+.search{
+  width:390px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 14px;
+  background:#101010;
+  border:1px solid var(--line);
+  border-radius:30px;
+}
+
+.search input{
+  width:100%;
+  background:none;
+  border:0;
+  outline:0;
+  color:white;
+}
+
+.top-right{
+  display:flex;
+  gap:9px;
+  align-items:center;
+}
+
+.top-btn{
+  width:39px;
+  height:39px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:#111;
+  color:white;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:
+    linear-gradient(145deg,#444,#111);
+  border:1px solid #555;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+
+/* PAGE */
+
+.page{
+  width:min(1400px,94%);
+  margin:auto;
+  padding:28px 0 80px;
+}
+
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:440px;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  align-items:end;
+  padding:45px;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 20%,
+      rgba(0,0,0,.95)
+    ),
+    url("YOUR_COVER_IMAGE.jpg") center/cover,
+    #161616;
+  border:1px solid var(--line);
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.65),
+    inset 0 0 100px rgba(0,0,0,.5);
+}
+
+.hero-content{
+  max-width:700px;
+}
+
+.verified{
+  display:inline-flex;
+  gap:7px;
+  align-items:center;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.hero h1{
+  font-size:clamp(48px,7vw,88px);
+  letter-spacing:-5px;
+  line-height:.9;
+  margin:13px 0;
+}
+
+.hero p{
+  color:#bbb;
+  max-width:570px;
+  font-size:14px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+/* BUTTON */
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 19px;
+  background:white;
+  color:black;
+  font-weight:900;
+}
+
+.btn.dark{
+  background:#171717;
+  color:white;
+  border:1px solid var(--line);
+}
+
+.btn.gold{
+  background:var(--gold);
+  color:#090909;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+  margin-top:45px;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.section-head h2{
+  font-size:27px;
+}
+
+.section-head p{
+  color:#777;
+  font-size:12px;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+  columns:4 220px;
+  column-gap:15px;
+}
+
+.photo{
+  break-inside:avoid;
+  position:relative;
+  margin-bottom:15px;
+  border-radius:17px;
+  overflow:hidden;
+  background:#111;
+  border:1px solid var(--line);
+}
+
+.photo img{
+  width:100%;
+  display:block;
+  transition:.5s;
+}
+
+.photo:hover img{
+  transform:scale(1.04);
+}
+
+.photo-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding:15px;
+  background:linear-gradient(
+    transparent 45%,
+    rgba(0,0,0,.9)
+  );
+  opacity:0;
+  transition:.3s;
+}
+
+.photo:hover .photo-overlay{
+  opacity:1;
+}
+
+.photo-actions{
+  display:flex;
+  gap:7px;
+}
+
+.photo-actions button{
+  background:rgba(20,20,20,.8);
+  color:white;
+  border:1px solid #444;
+  border-radius:8px;
+  padding:7px 10px;
+}
+
+/* =========================
+   VIDEOS
+========================= */
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.video{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.video-thumb{
+  aspect-ratio:16/10;
+  background:
+    linear-gradient(135deg,#292929,#090909);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.video-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.play{
+  position:absolute;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  border:0;
+  background:white;
+  color:#000;
+  font-size:17px;
+}
+
+.video-info{
+  padding:16px;
+}
+
+.video-info h3{
+  font-size:14px;
+}
+
+.video-info p{
+  color:#666;
+  font-size:11px;
+  margin-top:5px;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
+  background:#0d0d0d;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.profile-cover{
+  height:220px;
+  background:
+    linear-gradient(180deg,transparent,#090909),
+    url("YOUR_PROFILE_COVER.jpg") center/cover;
+}
+
+.profile-body{
+  padding:0 25px 28px;
+}
+
+.profile-avatar{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  margin-top:-52px;
+  border:5px solid #0d0d0d;
+  background:
+    url("YOUR_PROFILE_IMAGE.jpg") center/cover,
+    linear-gradient(135deg,#333,#111);
+}
+
+.profile-body h2{
+  margin-top:13px;
+}
+
+.profile-meta{
+  color:#777;
+  font-size:12px;
+}
+
+.profile-bio{
+  max-width:650px;
+  color:#aaa;
+  margin-top:12px;
+  font-size:13px;
+}
+
+.profile-stats{
+  display:flex;
+  gap:35px;
+  margin-top:20px;
+}
+
+.profile-stats strong{
+  display:block;
+}
+
+.profile-stats span{
+  color:#666;
+  font-size:10px;
+}
+
+/* =========================
+   VIP
+========================= */
+
+.vip-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.vip{
+  background:
+    radial-gradient(circle at 80% 10%,rgba(215,180,106,.2),transparent 30%),
+    #101010;
+  border:1px solid #332d20;
+  border-radius:19px;
+  padding:25px;
+}
+
+.vip .tag{
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.vip h3{
+  font-size:23px;
+  margin:10px 0;
+}
+
+.vip p{
+  color:#777;
+  font-size:12px;
+}
+
+.vip-price{
+  font-size:30px;
+  font-weight:950;
+  margin:20px 0;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.chat{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  height:600px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#0d0d0d;
+}
+
+.chat-list{
+  border-right:1px solid var(--line);
+  overflow:auto;
+}
+
+.chat-user{
+  padding:15px;
+  display:flex;
+  gap:10px;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;
+}
+
+.chat-user:hover{
+  background:#171717;
+}
+
+.chat-avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+
+.chat-area{
+  display:flex;
+  flex-direction:column;
+}
+
+.chat-head{
+  padding:16px;
+  border-bottom:1px solid var(--line);
+}
+
+.messages{
+  flex:1;
+  padding:20px;
+  overflow:auto;
+}
+
+.msg{
+  max-width:65%;
+  background:#1b1b1b;
+  padding:11px 13px;
+  border-radius:13px;
+  margin-bottom:10px;
+  font-size:12px;
+}
+
+.msg.me{
+  margin-left:auto;
+  background:#282218;
+  border:1px solid #4b3e23;
+}
+
+.chat-input{
+  display:flex;
+  padding:12px;
+  gap:8px;
+  border-top:1px solid var(--line);
+}
+
+.chat-input input{
+  flex:1;
+  background:#111;
+  border:1px solid var(--line);
+  color:white;
+  padding:11px;
+  border-radius:10px;
+  outline:0;
+}
+
+/* =========================
+   WALLET
+========================= */
+
+.wallet{
+  max-width:700px;
+  padding:30px;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 90% 0,rgba(215,180,106,.2),transparent 35%),
+    #101010;
+  border:1px solid var(--line);
+}
+
+.wallet small{
+  color:#777;
+}
+
+.wallet-balance{
+  font-size:48px;
+  font-weight:950;
+  margin:8px 0 25px;
+}
+
+.wallet-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   UPLOAD
+========================= */
+
+.form{
+  max-width:650px;
+  background:#101010;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+}
+
+.form label{
+  display:block;
+  color:#777;
+  font-size:11px;
+  margin:15px 0 6px;
+}
+
+.form input,
+.form textarea,
+.form select{
+  width:100%;
+  background:#080808;
+  color:white;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:11px;
+  outline:0;
+}
+
+.form textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.file{
+  border:1px dashed #444;
+  padding:25px;
+  text-align:center;
+  border-radius:12px;
+  color:#777;
+  margin-top:8px;
+}
+
+/* =========================
+   MODERATION
+========================= */
+
+.mod-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.mod{
+  background:#101010;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+}
+
+.mod strong{
+  display:block;
+  font-size:28px;
+  margin:7px 0;
+}
+
+.mod span{
+  color:#666;
+  font-size:11px;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.setting{
+  max-width:700px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px;
+  background:#101010;
+  border:1px solid var(--line);
+  border-radius:13px;
+  margin-bottom:8px;
+}
+
+.toggle{
+  width:42px;
+  height:23px;
+  border-radius:20px;
+  background:#333;
+  position:relative;
+}
+
+.toggle:after{
+  content:"";
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  background:white;
+  position:absolute;
+  top:3px;
+  left:3px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1000px){
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.3s;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
+
+  .video-grid,
+  .vip-grid,
+  .mod-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .search{
+    width:45%;
+  }
+}
+
+@media(max-width:600px){
+
+  .topbar{
+    padding:0 12px;
+  }
+
+  .search{
+    display:none;
+  }
+
+  .page{
+    width:94%;
+  }
+
+  .hero{
+    min-height:500px;
+    padding:25px;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .video-grid,
+  .vip-grid,
+  .mod-grid{
+    grid-template-columns:1fr;
+  }
+
+  .chat{
+    grid-template-columns:1fr;
+  }
+
+  .chat-list{
+    display:none;
+  }
+
+  .wallet-balance{
+    font-size:38px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
 
 
-    <a href="YOUR_VIDEO_LINK_2"
-       target="_blank"
-       class="video-card">
+<!-- SIDEBAR -->
 
-      <div class="video-image">
-        <img
-          src="YOUR_IMAGE_URL_2"
-          alt="Luxury glamour portrait">
+<aside class="sidebar" id="sidebar">
 
-        <div class="video-overlay"></div>
+<div class="logo">
+TEDDY<span>ZHU</span>
+</div>
 
-        <div class="play-button">▶</div>
+<div class="nav-label">DISCOVER</div>
 
-        <div class="lock">🔒 VIP</div>
-      </div>
+<div class="nav active" onclick="showView('home')">
+⌂ &nbsp; Home
+</div>
 
-      <div class="video-info">
-        <h3>Midnight Session</h3>
-        <span>Private Collection • 06:12</span>
-      </div>
+<div class="nav" onclick="showView('gallery')">
+▦ &nbsp; Gallery
+</div>
 
-    </a>
+<div class="nav" onclick="showView('videos')">
+▶ &nbsp; Videos
+</div>
+
+<div class="nav" onclick="showView('profile')">
+● &nbsp; Profile
+</div>
+
+<div class="nav-label">MEMBERS</div>
+
+<div class="nav" onclick="showView('vip')">
+◆ &nbsp; VIP Membership
+</div>
+
+<div class="nav" onclick="showView('messages')">
+✉ &nbsp; Messages
+</div>
+
+<div class="nav" onclick="showView('notifications')">
+♢ &nbsp; Notifications
+</div>
+
+<div class="nav-label">CREATOR</div>
+
+<div class="nav" onclick="showView('upload')">
+＋ &nbsp; Upload
+</div>
+
+<div class="nav" onclick="showView('dashboard')">
+▣ &nbsp; Dashboard
+</div>
+
+<div class="nav" onclick="showView('moderation')">
+✓ &nbsp; Moderation
+</div>
+
+<div class="nav-label">FINANCE</div>
+
+<div class="nav" onclick="showView('wallet')">
+₿ &nbsp; Wallet
+</div>
+
+<div class="nav" onclick="showView('transactions')">
+↕ &nbsp; Transactions
+</div>
+
+<div class="nav-label">ACCOUNT</div>
+
+<div class="nav" onclick="showView('settings')">
+⚙ &nbsp; Settings
+</div>
+
+</aside>
 
 
-    <a href="YOUR_VIDEO_LINK_3"
-       target="_blank"
-       class="video-card">
+<!-- MAIN -->
 
-      <div class="video-image">
-        <img
-          src="YOUR_IMAGE_URL_3"
-          alt="Elegant evening portrait">
-
-        <div class="video-overlay"></div>
-
-        <div class="play-button">▶</div>
-
-        <div class="lock">🔒 VIP</div>
-      </div>
-
-      <div class="video-info">
-        <h3>Luxury Nights</h3>
-        <span>Private Collection • 08:31</span>
-      </div>
-
-    </a>
+<main class="main">
 
 
-    <a href="YOUR_VIDEO_LINK_4"
-       target="_blank"
-       class="video-card">
+<!-- TOPBAR -->
 
-      <div class="video-image">
-        <img
-          src="YOUR_IMAGE_URL_4"
-          alt="Dark luxury fashion">
+<header class="topbar">
 
-        <div class="video-overlay"></div>
+<button
+class="top-btn mobile-menu"
+onclick="toggleSidebar()">☰</button>
 
-        <div class="play-button">▶</div>
+<div class="search">
+🔎
+<input
+id="search"
+placeholder="Search creators, photos, videos...">
+</div>
 
-        <div class="lock">🔒 VIP</div>
-      </div>
+<div class="top-right">
 
-      <div class="video-info">
-        <h3>Private Lounge</h3>
-        <span>Members Only • 05:46</span>
-      </div>
+<button
+class="top-btn"
+onclick="showView('notifications')">
+♢
+</button>
 
-    </a>
+<button
+class="top-btn"
+onclick="showView('wallet')">
+₿
+</button>
 
-  </div>
+<div
+class="avatar"
+onclick="showView('profile')">
+TZ
+</div>
+
+</div>
+
+</header>
+
+
+<div class="page">
+
+
+<!-- HOME -->
+
+<section
+class="view active"
+id="home">
+
+<div class="hero">
+
+<div class="hero-content">
+
+<div class="verified">
+● VERIFIED CREATOR
+</div>
+
+<h1>
+TEDDYZHU<br>
+PRIVATE
+</h1>
+
+<p>
+A private premium space for exclusive,
+tasteful visual content, creator stories,
+community and members-only experiences.
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="btn gold"
+onclick="showView('gallery')">
+Explore Gallery
+</button>
+
+<button
+class="btn dark"
+onclick="showView('vip')">
+Become VIP
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-head">
+
+<div>
+<h2>Featured Gallery</h2>
+<p>Latest visual collection</p>
+</div>
+
+<button
+class="btn dark"
+onclick="showView('gallery')">
+View All
+</button>
+
+</div>
+
+
+<div class="gallery">
+
+<div class="photo">
+<img
+src="YOUR_IMAGE_1.jpg"
+alt="Creator gallery image">
+
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ 124</button>
+<button>↗ Share</button>
+</div>
+</div>
+</div>
+
+
+<div class="photo">
+<img
+src="YOUR_IMAGE_2.jpg"
+alt="Creator gallery image">
+
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ 98</button>
+<button>↗ Share</button>
+</div>
+</div>
+</div>
+
+
+<div class="photo">
+<img
+src="YOUR_IMAGE_3.jpg"
+alt="Creator gallery image">
+
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ 76</button>
+<button>↗ Share</button>
+</div>
+</div>
+</div>
+
+
+<div class="photo">
+<img
+src="YOUR_IMAGE_4.jpg"
+alt="Creator gallery image">
+
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ 211</button>
+<button>↗ Share</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+
+<!-- GALLERY -->
+
+<section
+class="view"
+id="gallery">
+
+<div class="section-head">
+
+<div>
+<h2>Private Gallery</h2>
+<p>Creator photos and visual collections</p>
+</div>
+
+<button
+class="btn gold"
+onclick="showView('upload')">
+Upload
+</button>
+
+</div>
+
+
+<div class="gallery">
+
+<div class="photo">
+<img src="YOUR_IMAGE_1.jpg" alt="">
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ Like</button>
+<button>💬 Comment</button>
+</div>
+</div>
+</div>
+
+<div class="photo">
+<img src="YOUR_IMAGE_2.jpg" alt="">
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ Like</button>
+<button>💬 Comment</button>
+</div>
+</div>
+</div>
+
+<div class="photo">
+<img src="YOUR_IMAGE_3.jpg" alt="">
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ Like</button>
+<button>💬 Comment</button>
+</div>
+</div>
+</div>
+
+<div class="photo">
+<img src="YOUR_IMAGE_4.jpg" alt="">
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ Like</button>
+<button>💬 Comment</button>
+</div>
+</div>
+</div>
+
+<div class="photo">
+<img src="YOUR_IMAGE_5.jpg" alt="">
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ Like</button>
+<button>💬 Comment</button>
+</div>
+</div>
+</div>
+
+<div class="photo">
+<img src="YOUR_IMAGE_6.jpg" alt="">
+<div class="photo-overlay">
+<div class="photo-actions">
+<button>♡ Like</button>
+<button>💬 Comment</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VIDEOS -->
+
+<section
+class="view"
+id="videos">
+
+<div class="section-head">
+
+<div>
+<h2>Exclusive Videos</h2>
+<p>Premium creator visual content</p>
+</div>
+
+<button
+class="btn gold"
+onclick="showView('upload')">
+Upload Video
+</button>
+
+</div>
+
+
+<div class="video-grid">
+
+<div class="video">
+
+<div class="video-thumb">
+
+<img src="YOUR_VIDEO_IMAGE_1.jpg" alt="">
+
+<button class="play">▶</button>
+
+</div>
+
+<div class="video-info">
+<h3>Midnight Session</h3>
+<p>Private Collection • 04:21</p>
+</div>
+
+</div>
+
+
+<div class="video">
+
+<div class="video-thumb">
+
+<img src="YOUR_VIDEO_IMAGE_2.jpg" alt="">
+
+<button class="play">▶</button>
+
+</div>
+
+<div class="video-info">
+<h3>Behind The Scenes</h3>
+<p>Members • 07:13</p>
+</div>
+
+</div>
+
+
+<div class="video">
+
+<div class="video-thumb">
+
+<img src="YOUR_VIDEO_IMAGE_3.jpg" alt="">
+
+<button class="play">▶</button>
+
+</div>
+
+<div class="video-info">
+<h3>Private Session</h3>
+<p>VIP • 05:48</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section
+class="view"
+id="profile">
+
+<div class="profile">
+
+<div class="profile-cover"></div>
+
+<div class="profile-body">
+
+<div class="profile-avatar"></div>
+
+<h2>
+Teddyzhu
+<span style="color:var(--gold)">✓</span>
+</h2>
+
+<div class="profile-meta">
+Verified Creator • Premium Member
+</div>
+
+<p class="profile-bio">
+Welcome to my private space. Exclusive visual
+collections, behind-the-scenes content and
+members-only updates.
+</p>
+
+<div class="profile-stats">
+
+<div>
+<strong>12.8K</strong>
+<span>Followers</span>
+</div>
+
+<div>
+<strong>248</strong>
+<span>Posts</span>
+</div>
+
+<div>
+<strong>36</strong>
+<span>Videos</span>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn gold">
+Follow
+</button>
+
+<button
+class="btn dark"
+onclick="showView('messages')">
+Message
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VIP -->
+
+<section
+class="view"
+id="vip">
+
+<div class="section-head">
+
+<div>
+<h2>VIP Membership</h2>
+<p>Unlock exclusive creator experiences</p>
+</div>
+
+</div>
+
+
+<div class="vip-grid">
+
+<div class="vip">
+
+<div class="tag">BASIC</div>
+
+<h3>Fan</h3>
+
+<p>
+Access to public community content
+and selected updates.
+</p>
+
+<div class="vip-price">
+KSh 199
+</div>
+
+<button
+class="btn dark"
+style="width:100%">
+Join
+</button>
+
+</div>
+
+
+<div class="vip">
+
+<div class="tag">POPULAR</div>
+
+<h3>VIP</h3>
+
+<p>
+Unlock private collections,
+exclusive posts and member updates.
+</p>
+
+<div class="vip-price">
+KSh 499
+</div>
+
+<button
+class="btn gold"
+style="width:100%">
+Join VIP
+</button>
+
+</div>
+
+
+<div class="vip">
+
+<div class="tag">PREMIUM</div>
+
+<h3>Black</h3>
+
+<p>
+Premium membership with exclusive
+creator experiences and priority access.
+</p>
+
+<div class="vip-price">
+KSh 999
+</div>
+
+<button
+class="btn gold"
+style="width:100%">
+Join Black
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MESSAGES -->
+
+<section
+class="view"
+id="messages">
+
+<h2>Private Messages</h2>
+
+<div class="section">
+
+<div class="chat">
+
+<div class="chat-list">
+
+<div class="chat-user">
+<div class="chat-avatar">A</div>
+<div>
+<b>Alex</b>
+<br>
+<small class="muted">Online</small>
+</div>
+</div>
+
+<div class="chat-user">
+<div class="chat-avatar">M</div>
+<div>
+<b>Mike</b>
+<br>
+<small class="muted">Last active today</small>
+</div>
+</div>
+
+</div>
+
+
+<div class="chat-area">
+
+<div class="chat-head">
+<b>Alex</b>
+<br>
+<small class="muted">Private conversation</small>
+</div>
+
+<div class="messages" id="messages">
+
+<div class="msg">
+Hey, welcome to the private community.
+</div>
+
+<div class="msg me">
+Thanks! Great to be here.
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input
+id="messageInput"
+placeholder="Write a message...">
+
+<button
+class="btn gold"
+onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+
+<section
+class="view"
+id="notifications">
+
+<h2>Notifications</h2>
+
+<div class="section">
+
+<div class="setting">
+<div>
+<b>New follower</b>
+<br>
+<small class="muted">
+Someone followed your profile.
+</small>
+</div>
+<span>2m</span>
+</div>
+
+<div class="setting">
+<div>
+<b>New comment</b>
+<br>
+<small class="muted">
+Someone commented on your post.
+</small>
+</div>
+<span>18m</span>
+</div>
+
+<div class="setting">
+<div>
+<b>VIP subscription</b>
+<br>
+<small class="muted">
+A new member joined your VIP tier.
+</small>
+</div>
+<span>1h</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- UPLOAD -->
+
+<section
+class="view"
+id="upload">
+
+<h2>Creator Upload</h2>
+
+<div class="section">
+
+<div class="form">
+
+<label>Title</label>
+
+<input
+id="uploadTitle"
+placeholder="Content title">
+
+
+<label>Description</label>
+
+<textarea
+placeholder="Tell your audience about this content...">
+</textarea>
+
+
+<label>Content Type</label>
+
+<select>
+<option>Photo</option>
+<option>Video</option>
+<option>Post</option>
+</select>
+
+
+<label>Visibility</label>
+
+<select>
+<option>Public</option>
+<option>Followers</option>
+<option>VIP Members</option>
+<option>Private</option>
+</select>
+
+
+<div class="file">
+📁 Select photo or video
+<br><br>
+<input
+type="file"
+accept="image/*,video/*">
+</div>
+
+<br>
+
+<button
+class="btn gold"
+onclick="uploadDemo()">
+Publish Content
+</button>
+
+<p
+id="uploadMessage"
+class="muted"
+style="margin-top:15px">
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section
+class="view"
+id="dashboard">
+
+<div class="section-head">
+<h2>Creator Dashboard</h2>
+</div>
+
+<div class="mod-grid">
+
+<div class="mod">
+<span>Followers</span>
+<strong>12,800</strong>
+<span>+8.2% this month</span>
+</div>
+
+<div class="mod">
+<span>Content Views</span>
+<strong>84,230</strong>
+<span>Last 30 days</span>
+</div>
+
+<div class="mod">
+<span>Subscribers</span>
+<strong>1,284</strong>
+<span>Active members</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MODERATION -->
+
+<section
+class="view"
+id="moderation">
+
+<h2>Moderation Center</h2>
+
+<div class="section">
+
+<div class="mod-grid">
+
+<div class="mod">
+<span>Pending Reports</span>
+<strong>0</strong>
+<span>Needs review</span>
+</div>
+
+<div class="mod">
+<span>Flagged Content</span>
+<strong>0</strong>
+<span>Requires action</span>
+</div>
+
+<div class="mod">
+<span>Blocked Users</span>
+<strong>0</strong>
+<span>Current total</span>
+</div>
+
+</div>
+
+<br>
+
+<div class="form">
+
+<h3>Safety Tools</h3>
+
+<br>
+
+<button class="btn dark">
+Review Reports
+</button>
+
+<button class="btn dark">
+Blocked Users
+</button>
+
+<button class="btn dark">
+Content Rules
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WALLET -->
+
+<section
+class="view"
+id="wallet">
+
+<h2>Wallet</h2>
+
+<div class="section">
+
+<div class="wallet">
+
+<small>Available Balance</small>
+
+<div class="wallet-balance">
+KSh 0.00
+</div>
+
+<div class="wallet-buttons">
+
+<button
+class="btn gold"
+onclick="depositDemo()">
+Deposit
+</button>
+
+<button class="btn dark">
+Withdraw
+</button>
+
+<button
+class="btn dark"
+onclick="showView('transactions')">
+Transactions
+</button>
+
+</div>
+
+</div>
+
+<div class="notice"
+style="
+max-width:700px;
+margin-top:15px;
+padding:14px;
+background:#15120c;
+border:1px solid #3b321e;
+border-radius:10px;
+color:#b9a96f;
+font-size:11px;
+">
+
+Wallet shown here is a frontend demo.
+Real payments require a secure backend,
+payment provider integration, authentication
+and transaction verification.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TRANSACTIONS -->
+
+<section
+class="view"
+id="transactions">
+
+<h2>Transactions</h2>
+
+<div class="section">
+
+<div class="form">
+
+<p class="muted">
+No transactions yet.
+</p>
+
+<br>
+
+<table
+style="width:100%;border-collapse:collapse">
+
+<tr>
+<td style="padding:10px 0;color:#777">
+Status
+</td>
+
+<td style="padding:10px 0">
+No transactions
+</td>
+</tr>
+
+<tr>
+<td style="padding:10px 0;color:#777">
+Balance
+</td>
+
+<td style="padding:10px 0">
+KSh 0.00
+</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section
+class="view"
+id="settings">
+
+<h2>Settings</h2>
+
+<div class="section">
+
+<div class="setting">
+<div>
+<b>Private Account</b>
+<br>
+<small class="muted">
+Only approved followers can view content.
+</small>
+</div>
+<div class="toggle"></div>
+</div>
+
+<div class="setting">
+<div>
+<b>Message Requests</b>
+<br>
+<small class="muted">
+Allow messages from new users.
+</small>
+</div>
+<div class="toggle"></div>
+</div>
+
+<div class="setting">
+<div>
+<b>Notifications</b>
+<br>
+<small class="muted">
+Receive platform notifications.
+</small>
+</div>
+<div class="toggle"></div>
+</div>
+
+<div class="setting">
+<div>
+<b>Two-Factor Authentication</b>
+<br>
+<small class="muted">
+Protect your creator account.
+</small>
+</div>
+<button class="btn dark">
+Enable
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showView(id){
+
+ document.querySelectorAll(".view")
+ .forEach(view=>{
+   view.classList.remove("active");
+ });
+
+ const target=document.getElementById(id);
+
+ if(target){
+   target.classList.add("active");
+ }
+
+ document.querySelectorAll(".nav")
+ .forEach(nav=>{
+   nav.classList.remove("active");
+ });
+
+ if(window.innerWidth<1000){
+   document
+   .getElementById("sidebar")
+   .classList.remove("open");
+ }
+
+ window.scrollTo({
+   top:0,
+   behavior:"smooth"
+ });
+}
+
+
+/* =========================
+   MOBILE SIDEBAR
+========================= */
+
+function toggleSidebar(){
+
+ document
+ .getElementById("sidebar")
+ .classList.toggle("open");
+
+}
+
+
+/* =========================
+   MESSAGE DEMO
+========================= */
+
+function sendMessage(){
+
+ const input=
+ document.getElementById("messageInput");
+
+ const value=input.value.trim();
+
+ if(!value){
+   return;
+ }
+
+ const message=
+ document.createElement("div");
+
+ message.className="msg me";
+
+ message.textContent=value;
+
+ document
+ .getElementById("messages")
+ .appendChild(message);
+
+ input.value="";
+
+ const box=
+ document.getElementById("messages");
+
+ box.scrollTop=box.scrollHeight;
+
+}
+
+
+/* =========================
+   UPLOAD DEMO
+========================= */
+
+function uploadDemo(){
+
+ const title=
+ document.getElementById("uploadTitle").value;
+
+ const message=
+ document.getElementById("uploadMessage");
+
+ if(!title){
+
+   message.textContent=
+   "Please enter a content title.";
+
+   return;
+ }
+
+ message.textContent=
+ "Content prepared. Connect a secure backend/storage system to publish it.";
+
+}
+
+
+/* =========================
+   DEMO DEPOSIT
+========================= */
+
+function depositDemo(){
+
+ alert(
+ "Demo wallet only. Connect a secure payment backend to process real payments."
+ );
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+document
+.getElementById("search")
+.addEventListener("keydown",function(e){
+
+ if(e.key==="Enter"){
+
+   const query=
+   this.value.trim();
+
+   if(query){
+
+     alert(
+       "Search backend required for: "+
+       query
+     );
+
+   }
+
+ }
+
+});
+
+</script>
+
+</body>
+</html>
+```
