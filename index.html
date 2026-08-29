@@ -1,1442 +1,1874 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090909">
-<meta name="description" content="Teddyzhu — Official Website. Music, releases, videos, biography, events and official streaming links.">
-<title>Teddyzhu — Official Website</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080808">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<title>Teddyzhu Hub — V17 PRO</title>
 
 <style>
-:root{
-  --bg:#070707;
-  --bg2:#0d0d0d;
-  --card:#111111;
-  --card2:#171717;
-  --text:#fff;
-  --muted:#999;
-  --line:rgba(255,255,255,.09);
-  --accent:#ff2d75;
-  --accent2:#ff5c9b;
-  --radius:22px;
+
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-
-html{
-  scroll-behavior:smooth;
+:root{
+ --bg:#070707;
+ --panel:#101010;
+ --panel2:#151515;
+ --panel3:#1b1b1b;
+ --text:#fff;
+ --muted:#8f8f8f;
+ --line:#272727;
+ --pink:#ff2d75;
+ --pink2:#ff5c99;
+ --green:#25d366;
+ --blue:#4285f4;
+ --gold:#f5c542;
 }
 
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
+ font-family:Inter,Arial,sans-serif;
+ background:var(--bg);
+ color:white;
+ min-height:100vh;
 }
 
-a{text-decoration:none;color:inherit}
-
-img{
-  max-width:100%;
-  display:block;
+button,
+input,
+select{
+ font-family:inherit;
 }
 
 button{
-  font-family:inherit;
+ cursor:pointer;
 }
 
-.container{
-  width:min(1180px,92%);
-  margin:auto;
+a{
+ color:inherit;
+ text-decoration:none;
 }
 
-/* NAVIGATION */
-.nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  background:rgba(7,7,7,.78);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid transparent;
-  transition:.3s;
+/* APP */
+
+.app{
+ display:flex;
+ min-height:100vh;
 }
 
-.nav.scrolled{
-  border-bottom-color:var(--line);
-}
+/* SIDEBAR */
 
-.nav-inner{
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
+.sidebar{
+ width:250px;
+ position:fixed;
+ left:0;
+ top:0;
+ bottom:0;
+ background:#090909;
+ border-right:1px solid var(--line);
+ padding:22px 15px;
+ z-index:100;
+ overflow-y:auto;
 }
 
 .logo{
-  font-family:Montserrat,sans-serif;
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:-1.5px;
+ font-size:24px;
+ font-weight:900;
+ letter-spacing:-1px;
+ padding:10px 13px 25px;
 }
 
 .logo span{
-  color:var(--accent);
+ color:var(--pink);
 }
 
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:26px;
-  list-style:none;
+.nav-title{
+ color:#555;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:2px;
+ padding:17px 13px 7px;
 }
 
-.nav-links a{
-  color:#ccc;
-  font-size:14px;
-  font-weight:600;
-  transition:.2s;
+.nav-item{
+ display:flex;
+ align-items:center;
+ gap:13px;
+ padding:11px 13px;
+ margin:3px 0;
+ border-radius:11px;
+ color:#999;
+ font-size:13px;
+ font-weight:600;
+ transition:.2s;
 }
 
-.nav-links a:hover{
-  color:#fff;
+.nav-item:hover,
+.nav-item.active{
+ background:#171717;
+ color:#fff;
 }
 
-.nav-btn{
-  background:#fff;
-  color:#000!important;
-  padding:11px 18px;
-  border-radius:30px;
+.nav-item.active{
+ border-left:3px solid var(--pink);
 }
 
-.menu{
-  display:none;
-  font-size:25px;
-  cursor:pointer;
+.icon{
+ width:21px;
+ text-align:center;
+}
+
+/* MAIN */
+
+.main{
+ margin-left:250px;
+ width:calc(100% - 250px);
+}
+
+/* TOP */
+
+.topbar{
+ position:sticky;
+ top:0;
+ height:70px;
+ background:rgba(7,7,7,.88);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--line);
+ z-index:80;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 28px;
+}
+
+.search{
+ width:380px;
+ background:#121212;
+ border:1px solid var(--line);
+ border-radius:30px;
+ display:flex;
+ align-items:center;
+ padding:0 17px;
+}
+
+.search input{
+ width:100%;
+ height:42px;
+ background:none;
+ border:0;
+ outline:0;
+ color:white;
+}
+
+.top-actions{
+ display:flex;
+ gap:10px;
+ align-items:center;
+}
+
+.top-btn{
+ width:40px;
+ height:40px;
+ border:1px solid var(--line);
+ background:#111;
+ color:#fff;
+ border-radius:50%;
+}
+
+.avatar{
+ width:39px;
+ height:39px;
+ border-radius:50%;
+ background:linear-gradient(135deg,#ff2d75,#5a102d);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:900;
+}
+
+/* PAGE */
+
+.page{
+ padding:30px;
+ max-width:1500px;
+ margin:auto;
+}
+
+.view{
+ display:none;
+}
+
+.view.active{
+ display:block;
 }
 
 /* HERO */
+
 .hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 78% 35%,rgba(255,45,117,.22),transparent 30%),
-    radial-gradient(circle at 15% 80%,rgba(255,255,255,.05),transparent 30%),
-    #070707;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(90deg,rgba(0,0,0,.5),transparent 60%);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  padding-top:80px;
-  max-width:700px;
-}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  color:#ddd;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-weight:800;
-  margin-bottom:22px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  background:var(--accent);
-  border-radius:50%;
-  box-shadow:0 0 20px var(--accent);
+ min-height:390px;
+ border-radius:28px;
+ padding:55px;
+ display:flex;
+ align-items:center;
+ background:
+ radial-gradient(circle at 75% 30%,rgba(255,45,117,.32),transparent 32%),
+ linear-gradient(130deg,#151515,#090909);
+ border:1px solid var(--line);
+ overflow:hidden;
+ position:relative;
 }
 
 .hero h1{
-  font-family:Montserrat,sans-serif;
-  font-size:clamp(58px,10vw,125px);
-  line-height:.87;
-  letter-spacing:-7px;
-  margin-bottom:30px;
+ font-size:clamp(45px,7vw,90px);
+ line-height:.9;
+ letter-spacing:-5px;
+ max-width:700px;
 }
 
 .hero h1 span{
-  color:var(--accent);
+ color:var(--pink);
 }
 
 .hero p{
-  color:#aaa;
-  font-size:17px;
-  max-width:580px;
-  margin-bottom:34px;
+ color:#999;
+ max-width:580px;
+ margin:25px 0;
 }
 
-.hero-actions{
-  display:flex;
-  gap:13px;
-  flex-wrap:wrap;
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  min-height:50px;
-  padding:0 23px;
-  border-radius:30px;
-  border:1px solid var(--line);
-  font-weight:700;
-  font-size:14px;
-  transition:.25s;
-  cursor:pointer;
+ border:0;
+ border-radius:10px;
+ padding:12px 20px;
+ font-weight:800;
+ background:#fff;
+ color:#000;
 }
 
-.btn-primary{
-  background:#fff;
-  color:#000;
+.btn.dark{
+ background:#181818;
+ color:white;
+ border:1px solid var(--line);
 }
 
-.btn-primary:hover{
-  transform:translateY(-2px);
+.btn.pink{
+ background:var(--pink);
+ color:white;
 }
 
-.btn-dark{
-  background:#111;
-  color:#fff;
+.btn.green{
+ background:var(--green);
+ color:#000;
 }
 
-.btn-dark:hover{
-  background:#1b1b1b;
-}
+/* SECTION */
 
-.hero-card{
-  position:absolute;
-  right:7%;
-  top:50%;
-  transform:translateY(-50%);
-  width:390px;
-  aspect-ratio:1;
-  border-radius:30px;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,0)),
-    radial-gradient(circle at 50% 35%,#ff5a9a,#74152f 43%,#080808 75%);
-  box-shadow:0 35px 100px rgba(0,0,0,.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.hero-card:before{
-  content:"TEDDYZHU";
-  position:absolute;
-  font-family:Montserrat;
-  font-size:58px;
-  font-weight:900;
-  letter-spacing:-4px;
-  transform:rotate(-90deg);
-  opacity:.09;
-}
-
-.hero-card-content{
-  text-align:center;
-  position:relative;
-  z-index:2;
-}
-
-.hero-card-content strong{
-  font-family:Montserrat;
-  font-size:65px;
-  display:block;
-  line-height:1;
-}
-
-.hero-card-content small{
-  letter-spacing:5px;
-  color:#ddd;
-  font-weight:800;
-}
-
-/* SECTIONS */
-section{
-  padding:100px 0;
+.section{
+ margin-top:45px;
 }
 
 .section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:30px;
-  margin-bottom:35px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:18px;
 }
 
 .section-head h2{
-  font-family:Montserrat;
-  font-size:42px;
-  letter-spacing:-2px;
+ font-size:25px;
 }
 
-.section-head p{
-  color:#888;
-  max-width:450px;
-  font-size:14px;
+.muted{
+ color:var(--muted);
 }
 
-/* RELEASE */
-.release{
-  display:grid;
-  grid-template-columns:390px 1fr;
-  gap:50px;
-  align-items:center;
+/* CARDS */
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px;
 }
 
-.cover{
-  aspect-ratio:1;
-  border-radius:25px;
-  overflow:hidden;
-  background:
-    linear-gradient(135deg,rgba(255,255,255,.12),transparent),
-    radial-gradient(circle at 60% 35%,#ff75a9,#7d1238 45%,#0a0a0a 78%);
-  position:relative;
-  box-shadow:0 30px 80px rgba(0,0,0,.5);
+.card{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:18px;
+ overflow:hidden;
 }
 
-.cover-text{
-  position:absolute;
-  left:28px;
-  bottom:25px;
+.card-body{
+ padding:15px;
 }
 
-.cover-text .small{
-  font-size:11px;
-  letter-spacing:4px;
-  font-weight:800;
+.art{
+ aspect-ratio:1;
+ background:
+ radial-gradient(circle at 50% 35%,#ff5a98,#581129 45%,#090909 75%);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:34px;
+ font-weight:900;
 }
 
-.cover-text h3{
-  font-family:Montserrat;
-  font-size:52px;
-  line-height:.9;
-  letter-spacing:-3px;
-  margin-top:10px;
+.card h3{
+ font-size:14px;
+ margin-bottom:4px;
 }
 
-.release-info .label{
-  color:var(--accent);
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:3px;
-  font-weight:900;
+.card p{
+ font-size:11px;
+ color:#777;
 }
 
-.release-info h2{
-  font-family:Montserrat;
-  font-size:60px;
-  line-height:1;
-  margin:12px 0 18px;
+/* MUSIC */
+
+.music-row{
+ display:grid;
+ grid-template-columns:55px 1fr auto auto;
+ align-items:center;
+ gap:15px;
+ background:var(--panel);
+ padding:10px;
+ border:1px solid var(--line);
+ border-radius:12px;
+ margin-bottom:8px;
 }
 
-.release-info p{
-  color:#999;
-  max-width:560px;
-  margin-bottom:28px;
-}
-
-.platforms{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.platform{
-  border:1px solid var(--line);
-  background:#0e0e0e;
-  padding:11px 15px;
-  border-radius:12px;
-  color:#ddd;
-  font-size:12px;
-  font-weight:700;
-  transition:.25s;
-}
-
-.platform:hover{
-  border-color:#555;
-  transform:translateY(-2px);
-}
-
-/* SONGS */
-.songs{
-  display:grid;
-  gap:10px;
-}
-
-.song{
-  display:grid;
-  grid-template-columns:52px 1fr auto auto;
-  align-items:center;
-  gap:18px;
-  background:var(--card);
-  border:1px solid var(--line);
-  padding:12px;
-  border-radius:16px;
-  transition:.25s;
-}
-
-.song:hover{
-  background:#151515;
-  transform:translateX(3px);
-}
-
-.song-number{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:#1b1b1b;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#777;
-  font-size:13px;
-  font-weight:800;
-}
-
-.song-title{
-  font-weight:800;
-}
-
-.song-meta{
-  color:#777;
-  font-size:12px;
-  margin-top:2px;
-}
-
-.song-time{
-  color:#777;
-  font-size:12px;
+.music-cover{
+ width:48px;
+ height:48px;
+ border-radius:9px;
+ background:linear-gradient(135deg,#ff2d75,#330914);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:12px;
+ font-weight:900;
 }
 
 .play{
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:50%;
-  background:#fff;
-  color:#000;
-  cursor:pointer;
-  font-size:15px;
+ width:38px;
+ height:38px;
+ border-radius:50%;
+ border:0;
+ background:#fff;
+ color:#000;
 }
 
-/* VIDEOS */
-.video-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.video-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.video-thumb{
-  aspect-ratio:16/10;
-  background:
-    linear-gradient(135deg,#29111b,#0a0a0a);
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.video-thumb span{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:#fff;
-  color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.video-info{
-  padding:18px;
-}
-
-.video-info h3{
-  font-size:16px;
-  margin-bottom:5px;
-}
-
-.video-info p{
-  color:#777;
-  font-size:12px;
-}
-
-/* ABOUT */
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-}
-
-.about h2{
-  font-family:Montserrat;
-  font-size:52px;
-  line-height:1;
-  letter-spacing:-3px;
-}
-
-.about p{
-  color:#999;
-  margin-top:20px;
-}
+/* DASHBOARD */
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px;
 }
 
 .stat{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:28px;
+ background:var(--panel);
+ border:1px solid var(--line);
+ padding:22px;
+ border-radius:18px;
 }
 
 .stat strong{
-  display:block;
-  font-family:Montserrat;
-  font-size:34px;
+ display:block;
+ font-size:28px;
+ margin-top:8px;
 }
 
 .stat span{
-  color:#777;
-  font-size:12px;
+ color:#777;
+ font-size:12px;
 }
 
-/* DIGITAL */
-.digital{
-  background:#0a0a0a;
+/* WALLET */
+
+.wallet{
+ background:
+ radial-gradient(circle at 90% 10%,rgba(255,45,117,.35),transparent 35%),
+ linear-gradient(135deg,#191919,#090909);
+ border:1px solid var(--line);
+ border-radius:25px;
+ padding:30px;
+ max-width:700px;
 }
 
-.digital-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+.wallet small{
+ color:#888;
 }
 
-.digital-card{
-  min-height:150px;
-  background:#111;
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:25px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:.25s;
+.balance{
+ font-size:48px;
+ font-weight:900;
+ margin:12px 0 25px;
 }
 
-.digital-card:hover{
-  transform:translateY(-4px);
-  border-color:#333;
+.wallet-actions{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
 }
 
-.digital-card .icon{
-  font-size:28px;
+.form{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:18px;
+ padding:22px;
+ margin-top:20px;
+ max-width:600px;
 }
 
-.digital-card h3{
-  margin-top:20px;
+.form input,
+.form select{
+ width:100%;
+ height:45px;
+ background:#090909;
+ border:1px solid var(--line);
+ border-radius:9px;
+ color:white;
+ padding:0 12px;
+ margin:7px 0 15px;
+ outline:none;
 }
 
-.digital-card p{
-  color:#777;
-  font-size:12px;
+/* SHOP */
+
+.product-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px;
+}
+
+.product-image{
+ aspect-ratio:1;
+ background:linear-gradient(135deg,#191919,#080808);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:45px;
+}
+
+.price{
+ color:var(--pink2);
+ font-weight:900;
+ margin-top:7px;
+}
+
+.buy{
+ width:100%;
+ margin-top:12px;
+ padding:10px;
+ border:0;
+ border-radius:9px;
+ background:white;
+ color:black;
+ font-weight:800;
+}
+
+/* GAMES */
+
+.game{
+ position:relative;
+ min-height:220px;
+ padding:22px;
+ display:flex;
+ flex-direction:column;
+ justify-content:end;
+ background:
+ linear-gradient(180deg,transparent 30%,#050505 100%),
+ linear-gradient(135deg,#24111a,#0a0a0a);
+ border-radius:18px;
+ border:1px solid var(--line);
+}
+
+.game h3{
+ font-size:20px;
+}
+
+.game p{
+ color:#888;
+ font-size:12px;
+}
+
+.game button{
+ margin-top:12px;
+ width:max-content;
 }
 
 /* SOCIAL */
-.socials{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
+
+.post{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:18px;
+ padding:18px;
+ margin-bottom:15px;
+ max-width:800px;
 }
 
-.social{
-  padding:15px 19px;
-  border-radius:14px;
-  background:#111;
-  border:1px solid var(--line);
-  font-weight:700;
-  font-size:13px;
+.post-head{
+ display:flex;
+ gap:12px;
+ align-items:center;
 }
 
-/* CONTACT */
-.contact{
-  background:
-    radial-gradient(circle at 50% 0,rgba(255,45,117,.12),transparent 45%),
-    #090909;
+.post-avatar{
+ width:42px;
+ height:42px;
+ border-radius:50%;
+ background:linear-gradient(135deg,#ff2d75,#24101a);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:900;
 }
 
-.contact-box{
-  max-width:800px;
-  margin:auto;
-  text-align:center;
+.post-text{
+ margin:18px 0;
+ color:#ccc;
 }
 
-.contact-box h2{
-  font-family:Montserrat;
-  font-size:clamp(40px,7vw,75px);
-  line-height:.95;
-  letter-spacing:-4px;
+.post-actions{
+ display:flex;
+ gap:8px;
 }
 
-.contact-box p{
-  color:#888;
-  margin:20px auto 30px;
-  max-width:550px;
+.post-actions button{
+ background:#171717;
+ border:1px solid var(--line);
+ color:#aaa;
+ padding:8px 12px;
+ border-radius:8px;
 }
 
-/* FOOTER */
-footer{
-  border-top:1px solid var(--line);
-  padding:35px 0;
+/* PROFILE */
+
+.profile{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:22px;
+ overflow:hidden;
 }
 
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
+.cover-photo{
+ height:200px;
+ background:
+ radial-gradient(circle at 60% 20%,#ff3d82,transparent 30%),
+ linear-gradient(120deg,#111,#300b1b);
 }
 
-.footer-copy{
-  color:#666;
-  font-size:12px;
+.profile-info{
+ padding:0 25px 25px;
+ position:relative;
 }
 
-.footer-links{
-  display:flex;
-  gap:18px;
+.profile-avatar{
+ width:100px;
+ height:100px;
+ margin-top:-50px;
+ border:5px solid var(--panel);
+ border-radius:50%;
+ background:linear-gradient(135deg,#ff2d75,#410b21);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:30px;
+ font-weight:900;
 }
 
-.footer-links a{
-  color:#777;
-  font-size:12px;
+.profile-info h2{
+ margin-top:10px;
 }
 
-.footer-links a:hover{
-  color:#fff;
+.badge{
+ display:inline-block;
+ background:var(--pink);
+ padding:3px 7px;
+ border-radius:5px;
+ font-size:9px;
+ font-weight:900;
 }
 
-/* PLAYER */
-.player{
-  position:fixed;
-  left:50%;
-  bottom:18px;
-  transform:translate(-50%,130px);
-  width:min(650px,92%);
-  background:rgba(20,20,20,.94);
-  backdrop-filter:blur(20px);
-  border:1px solid #292929;
-  border-radius:20px;
-  padding:12px 16px;
-  z-index:2000;
-  transition:.35s;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
+/* NOTIFICATION */
+
+.notification{
+ background:var(--panel);
+ border:1px solid var(--line);
+ padding:15px;
+ border-radius:13px;
+ margin-bottom:8px;
 }
 
-.player.active{
-  transform:translate(-50%,0);
+.notification b{
+ font-size:13px;
 }
 
-.player-row{
-  display:flex;
-  align-items:center;
-  gap:13px;
+.notification small{
+ color:#777;
+ display:block;
 }
 
-.player-cover{
-  width:45px;
-  height:45px;
-  border-radius:10px;
-  background:linear-gradient(135deg,#ff5c9b,#35101e);
+/* TABLE */
+
+.table{
+ width:100%;
+ border-collapse:collapse;
+ background:var(--panel);
+ border-radius:15px;
+ overflow:hidden;
 }
 
-.player-details{
-  flex:1;
+.table th,
+.table td{
+ padding:14px;
+ border-bottom:1px solid var(--line);
+ text-align:left;
+ font-size:12px;
 }
 
-.player-details strong{
+.table th{
+ color:#777;
+}
+
+/* MODAL */
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.75);
+ backdrop-filter:blur(10px);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ z-index:500;
+ padding:20px;
+}
+
+.modal.show{
+ display:flex;
+}
+
+.modal-box{
+ width:min(500px,100%);
+ background:#121212;
+ border:1px solid #333;
+ border-radius:20px;
+ padding:25px;
+}
+
+.modal-head{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:20px;
+}
+
+.close{
+ background:none;
+ color:#aaa;
+ border:0;
+ font-size:22px;
+}
+
+/* MOBILE */
+
+.mobile-menu{
+ display:none;
+}
+
+@media(max-width:1100px){
+
+ .grid,
+ .product-grid{
+  grid-template-columns:repeat(3,1fr);
+ }
+
+}
+
+@media(max-width:850px){
+
+ .sidebar{
+  transform:translateX(-100%);
+  transition:.3s;
+ }
+
+ .sidebar.open{
+  transform:translateX(0);
+ }
+
+ .main{
+  margin-left:0;
+  width:100%;
+ }
+
+ .mobile-menu{
   display:block;
-  font-size:13px;
+ }
+
+ .search{
+  width:45%;
+ }
+
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .grid,
+ .product-grid{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .hero{
+  padding:35px;
+ }
+
 }
 
-.player-details span{
-  color:#777;
-  font-size:11px;
+@media(max-width:550px){
+
+ .page{
+  padding:15px;
+ }
+
+ .topbar{
+  padding:0 15px;
+ }
+
+ .search{
+  display:none;
+ }
+
+ .hero{
+  min-height:470px;
+  padding:27px;
+ }
+
+ .hero h1{
+  font-size:52px;
+ }
+
+ .grid,
+ .product-grid,
+ .stats{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .music-row{
+  grid-template-columns:45px 1fr auto;
+ }
+
+ .music-row .time{
+  display:none;
+ }
+
 }
 
-.player-close{
-  cursor:pointer;
-  color:#777;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .nav-links{
-    position:fixed;
-    top:76px;
-    left:0;
-    width:100%;
-    background:#090909;
-    border-bottom:1px solid var(--line);
-    padding:25px;
-    display:none;
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .nav-links.open{
-    display:flex;
-  }
-
-  .menu{
-    display:block;
-  }
-
-  .nav-btn{
-    width:100%;
-    text-align:center;
-  }
-
-  .hero{
-    min-height:900px;
-  }
-
-  .hero-card{
-    position:absolute;
-    width:270px;
-    right:50%;
-    top:auto;
-    bottom:50px;
-    transform:translateX(50%);
-  }
-
-  .hero-content{
-    padding-top:80px;
-  }
-
-  .release{
-    grid-template-columns:1fr;
-  }
-
-  .release-info h2{
-    font-size:48px;
-  }
-
-  .video-grid,
-  .digital-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .about{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:600px){
-  section{
-    padding:75px 0;
-  }
-
-  .hero h1{
-    font-size:65px;
-    letter-spacing:-4px;
-  }
-
-  .hero p{
-    font-size:14px;
-  }
-
-  .section-head{
-    display:block;
-  }
-
-  .section-head h2{
-    font-size:35px;
-    margin-bottom:10px;
-  }
-
-  .video-grid,
-  .digital-grid{
-    grid-template-columns:1fr;
-  }
-
-  .song{
-    grid-template-columns:45px 1fr auto;
-  }
-
-  .song-time{
-    display:none;
-  }
-
-  .about h2{
-    font-size:42px;
-  }
-
-  .footer-inner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .hero-card{
-    width:230px;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-<header class="nav" id="nav">
-  <div class="container nav-inner">
+<div class="app">
 
-    <a href="#home" class="logo">TEDDY<span>ZHU</span></a>
+<!-- SIDEBAR -->
 
-    <div class="menu" id="menu">☰</div>
+<aside class="sidebar" id="sidebar">
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#music">Music</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#platforms">Platforms</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a class="nav-btn" href="YOUR_SPOTIFY_ARTIST_LINK" target="_blank">Listen Now</a></li>
-    </ul>
+<div class="logo">
+ TEDDY<span>ZHU</span>
+</div>
 
-  </div>
+<div class="nav-title">MAIN</div>
+
+<a class="nav-item active" onclick="show('home')">
+ <span class="icon">⌂</span> Home
+</a>
+
+<a class="nav-item" onclick="show('music')">
+ <span class="icon">♫</span> Music
+</a>
+
+<a class="nav-item" onclick="show('watch')">
+ <span class="icon">▶</span> Watch
+</a>
+
+<a class="nav-item" onclick="show('social')">
+ <span class="icon">◎</span> Social
+</a>
+
+<div class="nav-title">DISCOVER</div>
+
+<a class="nav-item" onclick="show('games')">
+ <span class="icon">🎮</span> Games
+</a>
+
+<a class="nav-item" onclick="show('shop')">
+ <span class="icon">🛍</span> Marketplace
+</a>
+
+<a class="nav-item" onclick="show('events')">
+ <span class="icon">◷</span> Events
+</a>
+
+<div class="nav-title">CREATOR</div>
+
+<a class="nav-item" onclick="show('creator')">
+ <span class="icon">◆</span> Creator Studio
+</a>
+
+<a class="nav-item" onclick="show('earnings')">
+ <span class="icon">▣</span> Earnings
+</a>
+
+<a class="nav-item" onclick="show('members')">
+ <span class="icon">♙</span> Memberships
+</a>
+
+<div class="nav-title">FINANCE</div>
+
+<a class="nav-item" onclick="show('wallet')">
+ <span class="icon">₿</span> Wallet
+</a>
+
+<a class="nav-item" onclick="show('transactions')">
+ <span class="icon">↕</span> Transactions
+</a>
+
+<div class="nav-title">ACCOUNT</div>
+
+<a class="nav-item" onclick="show('profile')">
+ <span class="icon">●</span> Profile
+</a>
+
+<a class="nav-item" onclick="show('notifications')">
+ <span class="icon">♢</span> Notifications
+</a>
+
+<a class="nav-item" onclick="show('settings')">
+ <span class="icon">⚙</span> Settings
+</a>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+<header class="topbar">
+
+<button class="top-btn mobile-menu"
+onclick="toggleSidebar()">☰</button>
+
+<div class="search">
+ 🔎
+ <input placeholder="Search music, games, products...">
+</div>
+
+<div class="top-actions">
+
+<button class="top-btn"
+onclick="show('notifications')">♢</button>
+
+<button class="top-btn"
+onclick="show('wallet')">₿</button>
+
+<div class="avatar"
+onclick="show('profile')">TZ</div>
+
+</div>
+
 </header>
 
 
-<!-- HERO -->
-<section class="hero" id="home">
-
-  <div class="container hero-content">
-
-    <div class="eyebrow">
-      <span class="dot"></span>
-      Official Artist Website
-    </div>
-
-    <h1>
-      TEDDY<br>
-      <span>ZHU</span>
-    </h1>
-
-    <p>
-      Welcome to the official home of Teddyzhu.
-      Discover new music, releases, videos, stories and official
-      streaming platforms — all in one place.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#music" class="btn btn-primary">Explore Music →</a>
-      <a href="#platforms" class="btn btn-dark">All Platforms</a>
-    </div>
-
-  </div>
-
-  <div class="hero-card">
-    <div class="hero-card-content">
-      <strong>TZ</strong>
-      <small>OFFICIAL</small>
-    </div>
-  </div>
-
-</section>
+<div class="page">
 
 
-<!-- LATEST RELEASE -->
-<section id="music">
+<!-- HOME -->
 
-  <div class="container">
+<section class="view active" id="home">
 
-    <div class="section-head">
-      <div>
-        <h2>Latest Release</h2>
-      </div>
-      <p>
-        Listen to the latest Teddyzhu release across your favorite
-        digital music platforms.
-      </p>
-    </div>
+<div class="hero">
 
-    <div class="release">
+<div>
 
-      <div class="cover">
-        <div class="cover-text">
-          <div class="small">TEDDYZHU</div>
-          <h3>NUMBER<br>ONE</h3>
-        </div>
-      </div>
+<p class="muted">TEDDYZHU HUB • V17 PRO</p>
 
-      <div class="release-info">
+<h1>
+One world.<br>
+<span>Everything.</span>
+</h1>
 
-        <div class="label">Latest Single</div>
+<p>
+Music, entertainment, creators, business, gaming,
+community and digital commerce — built into one
+modern platform.
+</p>
 
-        <h2>Number One</h2>
+<div class="actions">
 
-        <p>
-          A love-inspired release from Teddyzhu.
-          Stream the official song through the digital platforms below.
-        </p>
+<button class="btn pink"
+onclick="show('music')">
+Explore Music
+</button>
 
-        <div class="platforms">
+<button class="btn dark"
+onclick="show('shop')">
+Open Marketplace
+</button>
 
-          <a class="platform"
-             href="YOUR_SPOTIFY_SONG_LINK"
-             target="_blank">Spotify</a>
+<button class="btn dark"
+onclick="show('games')">
+Game Hub
+</button>
 
-          <a class="platform"
-             href="YOUR_APPLE_MUSIC_LINK"
-             target="_blank">Apple Music</a>
+</div>
 
-          <a class="platform"
-             href="YOUR_YOUTUBE_MUSIC_LINK"
-             target="_blank">YouTube Music</a>
+</div>
 
-          <a class="platform"
-             href="YOUR_AUDIOMACK_LINK"
-             target="_blank">Audiomack</a>
+</div>
 
-          <a class="platform"
-             href="YOUR_SOUNDCLOUD_LINK"
-             target="_blank">SoundCloud</a>
 
-          <a class="platform"
-             href="YOUR_TIDAL_LINK"
-             target="_blank">TIDAL</a>
+<div class="section">
 
-        </div>
+<div class="section-head">
+<h2>Quick Access</h2>
+</div>
 
-      </div>
+<div class="grid">
 
-    </div>
+<div class="card">
+<div class="card-body">
+<h3>Music</h3>
+<p>Discover songs and releases.</p>
+<br>
+<button class="btn pink"
+onclick="show('music')">Open</button>
+</div>
+</div>
 
-  </div>
+<div class="card">
+<div class="card-body">
+<h3>Marketplace</h3>
+<p>Products and digital goods.</p>
+<br>
+<button class="btn"
+onclick="show('shop')">Shop</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h3>Games</h3>
+<p>Explore the game hub.</p>
+<br>
+<button class="btn"
+onclick="show('games')">Play</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h3>Wallet</h3>
+<p>Manage your digital balance.</p>
+<br>
+<button class="btn"
+onclick="show('wallet')">Wallet</button>
+</div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- MUSIC CATALOG -->
-<section>
+<!-- MUSIC -->
 
-  <div class="container">
+<section class="view" id="music">
 
-    <div class="section-head">
-      <h2>Music</h2>
-      <p>Selected songs from the Teddyzhu catalogue.</p>
-    </div>
+<div class="section-head">
+<div>
+<h2>Music</h2>
+<p class="muted">Songs • Albums • Playlists</p>
+</div>
 
-    <div class="songs">
+<button class="btn pink">
++ Upload
+</button>
+</div>
 
-      <div class="song">
-        <div class="song-number">01</div>
+<div class="music-row">
+<div class="music-cover">TZ</div>
+<div>
+<b>Number One</b>
+<p class="muted">Teddyzhu • Single</p>
+</div>
+<span class="time muted">03:20</span>
+<button class="play">▶</button>
+</div>
 
-        <div>
-          <div class="song-title">Number One</div>
-          <div class="song-meta">Teddyzhu • Single</div>
-        </div>
+<div class="music-row">
+<div class="music-cover">TZ</div>
+<div>
+<b>MY TIME</b>
+<p class="muted">Teddyzhu • Single</p>
+</div>
+<span class="time muted">03:30</span>
+<button class="play">▶</button>
+</div>
 
-        <div class="song-time">03:20</div>
+<div class="music-row">
+<div class="music-cover">TZ</div>
+<div>
+<b>Vumilia</b>
+<p class="muted">Teddyzhu • Single</p>
+</div>
+<span class="time muted">03:15</span>
+<button class="play">▶</button>
+</div>
 
-        <button class="play"
-                onclick="openPlayer('Number One','Teddyzhu')">▶</button>
-      </div>
-
-
-      <div class="song">
-        <div class="song-number">02</div>
-
-        <div>
-          <div class="song-title">MY TIME</div>
-          <div class="song-meta">Teddyzhu • Single</div>
-        </div>
-
-        <div class="song-time">03:30</div>
-
-        <button class="play"
-                onclick="openPlayer('MY TIME','Teddyzhu')">▶</button>
-      </div>
-
-
-      <div class="song">
-        <div class="song-number">03</div>
-
-        <div>
-          <div class="song-title">Vumilia</div>
-          <div class="song-meta">Teddyzhu • Single</div>
-        </div>
-
-        <div class="song-time">03:15</div>
-
-        <button class="play"
-                onclick="openPlayer('Vumilia','Teddyzhu')">▶</button>
-      </div>
-
-
-      <div class="song">
-        <div class="song-number">04</div>
-
-        <div>
-          <div class="song-title">Pumzika Mama</div>
-          <div class="song-meta">Teddyzhu • Tribute</div>
-        </div>
-
-        <div class="song-time">03:40</div>
-
-        <button class="play"
-                onclick="openPlayer('Pumzika Mama','Teddyzhu')">▶</button>
-      </div>
-
-
-      <div class="song">
-        <div class="song-number">05</div>
-
-        <div>
-          <div class="song-title">God Help Me</div>
-          <div class="song-meta">Teddyzhu X Lisaah</div>
-        </div>
-
-        <div class="song-time">03:25</div>
-
-        <button class="play"
-                onclick="openPlayer('God Help Me','Teddyzhu X Lisaah')">▶</button>
-      </div>
-
-    </div>
-
-  </div>
+<div class="music-row">
+<div class="music-cover">TZ</div>
+<div>
+<b>Pumzika Mama</b>
+<p class="muted">Teddyzhu • Tribute</p>
+</div>
+<span class="time muted">03:40</span>
+<button class="play">▶</button>
+</div>
 
 </section>
 
 
-<!-- VIDEOS -->
-<section id="videos">
-
-  <div class="container">
-
-    <div class="section-head">
-      <h2>Videos</h2>
-      <p>
-        Official music videos, animations, visualizers and selected
-        Teddyzhu content.
-      </p>
-    </div>
-
-    <div class="video-grid">
-
-      <a class="video-card"
-         href="YOUR_YOUTUBE_NUMBER_ONE_LINK"
-         target="_blank">
-
-        <div class="video-thumb">
-          <span>▶</span>
-        </div>
-
-        <div class="video-info">
-          <h3>Number One — Official Animated Music Video</h3>
-          <p>Watch on YouTube</p>
-        </div>
-
-      </a>
-
-
-      <a class="video-card"
-         href="YOUR_YOUTUBE_CHANNEL_LINK"
-         target="_blank">
-
-        <div class="video-thumb">
-          <span>▶</span>
-        </div>
-
-        <div class="video-info">
-          <h3>Official YouTube Channel</h3>
-          <p>Music • Shorts • Visuals</p>
-        </div>
-
-      </a>
-
-
-      <a class="video-card"
-         href="YOUR_YOUTUBE_STORY_VIDEO_LINK"
-         target="_blank">
-
-        <div class="video-thumb">
-          <span>▶</span>
-        </div>
-
-        <div class="video-info">
-          <h3>The Untold Story of Teddyzhu</h3>
-          <p>Official Story</p>
-        </div>
-
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section id="about">
-
-  <div class="container about">
-
-    <div>
-      <h2>Music is the story.</h2>
-
-      <p>
-        Teddyzhu is an independent artist building a sound and identity
-        through music, visual storytelling and genuine connection with
-        listeners.
-      </p>
-
-      <p>
-        This official website brings together music, videos, releases,
-        digital platforms and important updates in one central destination.
-      </p>
-
-      <a href="#contact" class="btn btn-primary" style="margin-top:25px;">
-        Contact Teddyzhu
-      </a>
-    </div>
-
-
-    <div class="stats">
-
-      <div class="stat">
-        <strong>2007</strong>
-        <span>Born</span>
-      </div>
-
-      <div class="stat">
-        <strong>15+</strong>
-        <span>Music Journey</span>
-      </div>
-
-      <div class="stat">
-        <strong>∞</strong>
-        <span>Dreams</span>
-      </div>
-
-      <div class="stat">
-        <strong>GLOBAL</strong>
-        <span>Audience</span>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DIGITAL PLATFORMS -->
-<section class="digital" id="platforms">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-        <h2>Listen Everywhere</h2>
-      </div>
-
-      <p>
-        Find Teddyzhu on the world's leading digital music platforms.
-      </p>
-
-    </div>
-
-
-    <div class="digital-grid">
-
-      <a class="digital-card"
-         href="YOUR_SPOTIFY_ARTIST_LINK"
-         target="_blank">
-
-        <div class="icon">◉</div>
-
-        <div>
-          <h3>Spotify</h3>
-          <p>Stream Teddyzhu on Spotify.</p>
-        </div>
-
-      </a>
-
-
-      <a class="digital-card"
-         href="YOUR_APPLE_MUSIC_ARTIST_LINK"
-         target="_blank">
-
-        <div class="icon">♪</div>
-
-        <div>
-          <h3>Apple Music</h3>
-          <p>Listen to releases and albums.</p>
-        </div>
-
-      </a>
-
-
-      <a class="digital-card"
-         href="YOUR_YOUTUBE_MUSIC_ARTIST_LINK"
-         target="_blank">
-
-        <div class="icon">▶</div>
-
-        <div>
-          <h3>YouTube Music</h3>
-          <p>Music, songs and artist content.</p>
-        </div>
-
-      </a>
-
-
-      <a class="digital-card"
-         href="YOUR_AUDIOMACK_ARTIST_LINK"
-         target="_blank">
-
-        <div class="icon">A</div>
-
-        <div>
-          <h3>Audiomack</h3>
-          <p>Discover and stream Teddyzhu.</p>
-        </div>
-
-      </a>
-
-
-      <a class="digital-card"
-         href="YOUR_SOUNDCLOUD_ARTIST_LINK"
-         target="_blank">
-
-        <div class="icon">☁</div>
-
-        <div>
-          <h3>SoundCloud</h3>
-          <p>Follow and discover new sounds.</p>
-        </div>
-
-      </a>
-
-
-      <a class="digital-card"
-         href="YOUR_TIDAL_ARTIST_LINK"
-         target="_blank">
-
-        <div class="icon">◆</div>
-
-        <div>
-          <h3>TIDAL</h3>
-          <p>Listen to Teddyzhu releases.</p>
-        </div>
-
-      </a>
-
-    </div>
-
-  </div>
+<!-- WATCH -->
+
+<section class="view" id="watch">
+
+<div class="section-head">
+<h2>Watch</h2>
+<p class="muted">Videos • Shorts • Live</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="art">▶</div>
+<div class="card-body">
+<h3>Number One</h3>
+<p>Official Animated Music Video</p>
+</div>
+</div>
+
+<div class="card">
+<div class="art">▶</div>
+<div class="card-body">
+<h3>Visual Stories</h3>
+<p>Official visuals</p>
+</div>
+</div>
+
+<div class="card">
+<div class="art">LIVE</div>
+<div class="card-body">
+<h3>Live Sessions</h3>
+<p>Watch live performances</p>
+</div>
+</div>
+
+<div class="card">
+<div class="art">TZ</div>
+<div class="card-body">
+<h3>Shorts</h3>
+<p>Quick entertainment</p>
+</div>
+</div>
+
+</div>
 
 </section>
 
 
 <!-- SOCIAL -->
-<section>
 
-  <div class="container">
+<section class="view" id="social">
 
-    <div class="section-head">
-      <h2>Connect</h2>
-      <p>Follow Teddyzhu across social platforms.</p>
-    </div>
+<div class="section-head">
+<div>
+<h2>Community</h2>
+<p class="muted">Connect with the Teddyzhu community.</p>
+</div>
 
-    <div class="socials">
-
-      <a class="social"
-         href="YOUR_YOUTUBE_CHANNEL_LINK"
-         target="_blank">YouTube</a>
-
-      <a class="social"
-         href="YOUR_INSTAGRAM_LINK"
-         target="_blank">Instagram</a>
-
-      <a class="social"
-         href="YOUR_FACEBOOK_LINK"
-         target="_blank">Facebook</a>
-
-      <a class="social"
-         href="YOUR_TIKTOK_LINK"
-         target="_blank">TikTok</a>
-
-      <a class="social"
-         href="YOUR_X_LINK"
-         target="_blank">X</a>
-
-      <a class="social"
-         href="YOUR_WHATSAPP_LINK"
-         target="_blank">WhatsApp</a>
-
-    </div>
-
-  </div>
-
-</section>
+<button class="btn pink">
+Create Post
+</button>
+</div>
 
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<div class="post">
 
-  <div class="container contact-box">
+<div class="post-head">
+<div class="post-avatar">TZ</div>
+<div>
+<b>Teddyzhu</b>
+<br>
+<span class="muted">Official Artist • 2h</span>
+</div>
+</div>
 
-    <div class="eyebrow">
-      <span class="dot"></span>
-      Official Contact
-    </div>
+<div class="post-text">
+New music is coming. Thank you for supporting the journey.
+❤️
+</div>
 
-    <h2>Let's build something unforgettable.</h2>
+<div class="post-actions">
+<button>♡ Like</button>
+<button>◯ Comment</button>
+<button>↗ Share</button>
+</div>
 
-    <p>
-      For bookings, collaborations, media, music opportunities and
-      official enquiries, get in touch.
-    </p>
+</div>
 
-    <a href="mailto:YOUR_EMAIL@example.com"
-       class="btn btn-primary">
-       Email Teddyzhu
-    </a>
 
-  </div>
+<div class="post">
+
+<div class="post-head">
+<div class="post-avatar">F</div>
+<div>
+<b>Fan Community</b>
+<br>
+<span class="muted">Today</span>
+</div>
+</div>
+
+<div class="post-text">
+What is your favorite Teddyzhu song?
+</div>
+
+<div class="post-actions">
+<button>♡ Like</button>
+<button>◯ Comment</button>
+<button>↗ Share</button>
+</div>
+
+</div>
 
 </section>
 
 
-<!-- FOOTER -->
-<footer>
+<!-- GAMES -->
 
-  <div class="container footer-inner">
+<section class="view" id="games">
 
-    <div class="footer-copy">
-      © 2026 Teddyzhu. All Rights Reserved.
-    </div>
+<div class="section-head">
+<div>
+<h2>Game Hub</h2>
+<p class="muted">
+Discover games, purchases and digital gaming content.
+</p>
+</div>
 
-    <div class="footer-links">
-      <a href="#music">Music</a>
-      <a href="#videos">Videos</a>
-      <a href="#about">About</a>
-      <a href="#platforms">Platforms</a>
-      <a href="#contact">Contact</a>
-    </div>
+<button class="btn pink">
+My Games
+</button>
+</div>
 
-  </div>
+<div class="grid">
 
-</footer>
+<div class="game">
+<h3>Neon Runner</h3>
+<p>Arcade • Action</p>
+<button class="btn pink">Play</button>
+</div>
+
+<div class="game">
+<h3>Street Legends</h3>
+<p>Racing • Multiplayer</p>
+<button class="btn pink">Play</button>
+</div>
+
+<div class="game">
+<h3>Kingdom Quest</h3>
+<p>Adventure • RPG</p>
+<button class="btn pink">Play</button>
+</div>
+
+<div class="game">
+<h3>Pixel Arena</h3>
+<p>Strategy • Multiplayer</p>
+<button class="btn pink">Play</button>
+</div>
+
+</div>
 
 
-<!-- MINI PLAYER -->
-<div class="player" id="player">
+<div class="section">
 
-  <div class="player-row">
+<h2>Game Wallet</h2>
 
-    <div class="player-cover"></div>
+<div class="wallet">
 
-    <div class="player-details">
-      <strong id="playerTitle">Number One</strong>
-      <span id="playerArtist">Teddyzhu</span>
-    </div>
+<small>Available gaming balance</small>
 
-    <div class="player-close" onclick="closePlayer()">✕</div>
+<div class="balance">
+KSh 0.00
+</div>
 
-  </div>
+<div class="wallet-actions">
+
+<button class="btn pink"
+onclick="openDeposit()">
+Deposit
+</button>
+
+<button class="btn dark">
+Transaction History
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MARKETPLACE -->
+
+<section class="view" id="shop">
+
+<div class="section-head">
+<div>
+<h2>Marketplace</h2>
+<p class="muted">
+Physical products • Digital products • Merchandise
+</p>
+</div>
+
+<button class="btn pink">Seller Center</button>
+</div>
+
+
+<div class="product-grid">
+
+<div class="card">
+<div class="product-image">👕</div>
+<div class="card-body">
+<h3>Teddyzhu Official Tee</h3>
+<p>Official merchandise</p>
+<div class="price">KSh 2,500</div>
+<button class="buy">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="product-image">🎧</div>
+<div class="card-body">
+<h3>Digital Music Pack</h3>
+<p>Digital download</p>
+<div class="price">KSh 500</div>
+<button class="buy">Buy</button>
+</div>
+</div>
+
+<div class="card">
+<div class="product-image">💿</div>
+<div class="card-body">
+<h3>Album Collection</h3>
+<p>Digital album</p>
+<div class="price">KSh 800</div>
+<button class="buy">Buy</button>
+</div>
+</div>
+
+<div class="card">
+<div class="product-image">🎟</div>
+<div class="card-body">
+<h3>Event Pass</h3>
+<p>Digital ticket</p>
+<div class="price">KSh 1,000</div>
+<button class="buy">Get Ticket</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section class="view" id="events">
+
+<div class="section-head">
+<h2>Events</h2>
+<p class="muted">Shows • Concerts • Meetups</p>
+</div>
+
+<div class="card">
+<div class="card-body">
+
+<h3>Teddyzhu Live Experience</h3>
+
+<p class="muted">
+Official event • Coming soon
+</p>
+
+<br>
+
+<button class="btn pink">
+Get Tickets
+</button>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- CREATOR -->
+
+<section class="view" id="creator">
+
+<div class="section-head">
+<div>
+<h2>Creator Studio</h2>
+<p class="muted">Manage your content and audience.</p>
+</div>
+
+<button class="btn pink">
+Upload Content
+</button>
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<span>Views</span>
+<strong>0</strong>
+</div>
+
+<div class="stat">
+<span>Followers</span>
+<strong>0</strong>
+</div>
+
+<div class="stat">
+<span>Content</span>
+<strong>0</strong>
+</div>
+
+<div class="stat">
+<span>Revenue</span>
+<strong>KSh 0</strong>
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="form">
+
+<h3>Upload New Content</h3>
+
+<label>Title</label>
+<input placeholder="Content title">
+
+<label>Content type</label>
+
+<select>
+<option>Music</option>
+<option>Video</option>
+<option>Short</option>
+<option>Podcast</option>
+<option>Digital Product</option>
+</select>
+
+<button class="btn pink">
+Choose File
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EARNINGS -->
+
+<section class="view" id="earnings">
+
+<h2>Earnings</h2>
+
+<div class="section">
+
+<div class="stats">
+
+<div class="stat">
+<span>Total earnings</span>
+<strong>KSh 0</strong>
+</div>
+
+<div class="stat">
+<span>This month</span>
+<strong>KSh 0</strong>
+</div>
+
+<div class="stat">
+<span>Pending</span>
+<strong>KSh 0</strong>
+</div>
+
+<div class="stat">
+<span>Paid out</span>
+<strong>KSh 0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MEMBERS -->
+
+<section class="view" id="members">
+
+<h2>Memberships</h2>
+
+<div class="section">
+
+<div class="grid">
+
+<div class="card">
+<div class="card-body">
+<h3>FREE</h3>
+<p>Community access</p>
+<br>
+<button class="btn dark">Join</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h3>FAN</h3>
+<p>Exclusive content</p>
+<br>
+<button class="btn pink">Join</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h3>VIP</h3>
+<p>Premium experiences</p>
+<br>
+<button class="btn pink">Join</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WALLET -->
+
+<section class="view" id="wallet">
+
+<h2>Wallet</h2>
+
+<div class="section">
+
+<div class="wallet">
+
+<small>Total available balance</small>
+
+<div class="balance">
+KSh 0.00
+</div>
+
+<div class="wallet-actions">
+
+<button class="btn pink"
+onclick="openDeposit()">
+Deposit
+</button>
+
+<button class="btn dark">
+Withdraw
+</button>
+
+<button class="btn dark"
+onclick="show('transactions')">
+Transactions
+</button>
+
+</div>
+
+</div>
+
+
+<div class="form">
+
+<h3>Payment Methods</h3>
+
+<p class="muted">
+Connect a supported payment method through the secure backend.
+</p>
+
+<br>
+
+<button class="btn green">
++ Add M-Pesa
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TRANSACTIONS -->
+
+<section class="view" id="transactions">
+
+<h2>Transactions</h2>
+
+<div class="section">
+
+<table class="table">
+
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Status</th>
+<th>Amount</th>
+</tr>
+
+<tr>
+<td>—</td>
+<td>No transactions</td>
+<td>—</td>
+<td>KSh 0</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section class="view" id="profile">
+
+<div class="profile">
+
+<div class="cover-photo"></div>
+
+<div class="profile-info">
+
+<div class="profile-avatar">
+TZ
+</div>
+
+<h2>
+Teddyzhu
+<span class="badge">OFFICIAL</span>
+</h2>
+
+<p class="muted">
+Artist • Creator • Entrepreneur
+</p>
+
+<p class="muted">
+Official Teddyzhu Hub profile.
+</p>
+
+<br>
+
+<button class="btn pink">
+Edit Profile
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+
+<section class="view" id="notifications">
+
+<h2>Notifications</h2>
+
+<div class="section">
+
+<div class="notification">
+<b>Welcome to Teddyzhu Hub</b>
+<small>Your account dashboard is ready.</small>
+</div>
+
+<div class="notification">
+<b>New release</b>
+<small>Number One is available on digital platforms.</small>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section class="view" id="settings">
+
+<h2>Settings</h2>
+
+<div class="section">
+
+<div class="form">
+
+<h3>Account Settings</h3>
+
+<label>Username</label>
+<input value="teddyzhu">
+
+<label>Email</label>
+<input placeholder="your@email.com">
+
+<label>Language</label>
+
+<select>
+<option>English</option>
+<option>Swahili</option>
+</select>
+
+<button class="btn pink">
+Save Changes
+</button>
+
+</div>
+
+
+<div class="form">
+
+<h3>Security</h3>
+
+<button class="btn dark">
+Change Password
+</button>
+
+<br><br>
+
+<button class="btn dark">
+Enable 2FA
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- DEPOSIT MODAL -->
+
+<div class="modal" id="depositModal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2>Deposit</h2>
+
+<button class="close"
+onclick="closeDeposit()">×</button>
+
+</div>
+
+<p class="muted">
+Select an amount to continue.
+</p>
+
+<div class="form">
+
+<label>Amount (KSh)</label>
+
+<input
+id="depositAmount"
+type="number"
+min="10"
+placeholder="Enter amount">
+
+<label>Payment Method</label>
+
+<select>
+<option>M-Pesa</option>
+<option>Card</option>
+<option>Bank</option>
+</select>
+
+<button
+class="btn pink"
+onclick="startDeposit()">
+Continue
+</button>
+
+</div>
+
+<p
+id="depositMessage"
+class="muted"
+style="margin-top:15px">
+</p>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* NAV SCROLL */
-const nav = document.getElementById("nav");
+/* NAVIGATION */
 
-window.addEventListener("scroll",()=>{
-  if(window.scrollY > 30){
-    nav.classList.add("scrolled");
-  }else{
-    nav.classList.remove("scrolled");
+function show(id){
+
+ document.querySelectorAll(".view")
+ .forEach(v=>v.classList.remove("active"));
+
+ const target=document.getElementById(id);
+
+ if(target){
+  target.classList.add("active");
+ }
+
+ document.querySelectorAll(".nav-item")
+ .forEach(n=>n.classList.remove("active"));
+
+ if(window.innerWidth<850){
+  document.getElementById("sidebar")
+  .classList.remove("open");
+ }
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+}
+
+
+/* SIDEBAR */
+
+function toggleSidebar(){
+
+ document.getElementById("sidebar")
+ .classList.toggle("open");
+
+}
+
+
+/* DEPOSIT */
+
+function openDeposit(){
+
+ document.getElementById("depositModal")
+ .classList.add("show");
+
+}
+
+function closeDeposit(){
+
+ document.getElementById("depositModal")
+ .classList.remove("show");
+
+}
+
+function startDeposit(){
+
+ const amount=
+ document.getElementById("depositAmount").value;
+
+ const message=
+ document.getElementById("depositMessage");
+
+ if(!amount || Number(amount)<10){
+
+  message.textContent=
+  "Enter a valid amount of at least KSh 10.";
+
+  return;
+ }
+
+ /*
+ IMPORTANT:
+
+ This is only the frontend.
+
+ A real M-Pesa deposit must call your
+ backend Daraja/API integration.
+
+ Never put M-Pesa consumer secrets,
+ passkeys or credentials inside HTML.
+ */
+
+ message.textContent=
+ "Payment request ready. Connect your secure backend payment API to process this deposit.";
+
+}
+
+
+/* DEMO SEARCH */
+
+document.querySelector(".search input")
+.addEventListener("keydown",function(e){
+
+ if(e.key==="Enter"){
+
+  const query=this.value.trim();
+
+  if(query){
+
+   alert(
+    "Search backend required for: "+query
+   );
+
   }
+
+ }
+
 });
-
-
-/* MOBILE MENU */
-const menu = document.getElementById("menu");
-const navLinks = document.getElementById("navLinks");
-
-menu.addEventListener("click",()=>{
-  navLinks.classList.toggle("open");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    navLinks.classList.remove("open");
-  });
-});
-
-
-/* SIMPLE PLAYER UI */
-function openPlayer(title,artist){
-
-  document.getElementById("playerTitle").textContent = title;
-  document.getElementById("playerArtist").textContent = artist;
-
-  document.getElementById("player").classList.add("active");
-}
-
-function closePlayer(){
-
-  document.getElementById("player").classList.remove("active");
-}
 
 </script>
 
 </body>
 </html>
-```
